@@ -983,8 +983,14 @@
           </div>
         `;
 
-        card.querySelector('.view-btn').onclick = () => openTemplateDetail(item, kind);
-        grid.appendChild(card);
+        card.querySelector('.view-btn').onclick = () => {
+          if ((kind === 'paid' || kind === 'premium') && !window.isUserLoggedIn) {
+            openLogin();
+          } else {
+            openTemplateDetail(item, kind);
+          }
+        };
+         grid.appendChild(card);
       });
     }
 
@@ -1453,7 +1459,8 @@ function confirmLogout() {
       const adminMenu = document.getElementById('menu-admin');
 
       if (user) {
-        loginBtn.style.display = 'none';
+        window.isUserLoggedIn = true;
+       loginBtn.style.display = 'none';
         userChip.style.display = 'flex';
         document.getElementById('navUserPhoto').src = user.photoURL || '';
         document.getElementById('navUserName').textContent = (user.displayName || 'User').split(' ')[0];
@@ -1467,7 +1474,8 @@ function confirmLogout() {
           window.isAdminUser = false;
         }
       } else {
-        loginBtn.style.display = 'inline-block';
+        window.isUserLoggedIn = false;
+       loginBtn.style.display = 'inline-block';
         userChip.style.display = 'none';
         adminMenu.style.display = 'none';
         window.isAdminUser = false;
