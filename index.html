@@ -621,14 +621,11 @@
       <a href="javascript:void(0)" id="menu-admin" onclick="filterMenu('admin')" style="display:none;">Admin</a>
     </div>
     
-    <div class="nav-right">
-      <button class="login-btn" id="navLoginBtn" onclick="openLogin()">Login</button>
-      <div id="navUserChip" style="display:none; align-items:center; gap:6px;">
-        <img id="navUserPhoto" src="" alt="" style="width:24px; height:24px; border-radius:50%; object-fit:cover; border:1px solid var(--accent-pink);">
-        <span id="navUserName" style="font-size:11px; font-weight:600; max-width:70px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"></span>
-        <button class="settings-icon" onclick="signOutUser()" title="Logout" style="font-size:14px;">🚪</button>
-      </div>
-      <button class="settings-icon" onclick="openSettings()">⚙️</button>
+    <button class="login-btn" id="navLoginBtn" onclick="openLogin()">Login</button>
+<div id="navUserChip" style="display:none; align-items:center; gap:6px; cursor:pointer;" onclick="openSettings()">
+  <img id="navUserPhoto" src="" alt="" style="width:24px; height:24px; border-radius:50%; object-fit:cover; border:1px solid var(--accent-pink);">
+  <span id="navUserName" style="font-size:11px; font-weight:600; max-width:70px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"></span>
+</div>
     </div>
   </nav>
 
@@ -829,7 +826,7 @@
             <span class="toggle-slider"></span>
           </label>
         </div>
-        <div class="settings-list-item" style="color:var(--accent-pink);">
+        <div class="settings-list-item" style="color:var(--accent-pink); cursor:pointer;"onclick="confirmlogout()">
           <span>🚪 Log Out</span><span>›</span>
         </div>
       </div>
@@ -1331,7 +1328,12 @@
     function closeSettings() {
       document.getElementById('settingsModal').classList.remove('active');
     }
-
+function confirmLogout() {
+      if (confirm('Kya aap sach mein logout karna chahte hain?')) {
+        closeSettings();
+        signOutUser();
+      }
+   
     // ---------- INIT ----------
 
     filterMenu('cards');
