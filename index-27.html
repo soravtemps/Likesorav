@@ -1,0 +1,2188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ============================================================
+     # YAHAN SITE KA "TITLE" AUR "SEO KEYWORDS" HAI #
+     Google search mein site kaise dikhegi - yeh control karta hai.
+     - <title> = browser tab pe jo naam dikhta hai
+     - description = Google search result mein jo chhota text dikhta hai
+     - keywords = Google search console ke liye keywords (comma se separate)
+     Bas inke andar ka text badlo, tags mat chhedo.
+============================================================ -->
+ <title>Sorav Temps - Birthday, Anniversary & Love Surprise Templates | No Coding Needed</title>
+ <meta name="google-site-verification" content="e8zBAbHjqkRbT6cKdThHF90io0QyKyGfOD3aB1trMTc" />
+ <meta name="description" content="Create personalized birthday wish templates, anniversary surprise cards, and love proposal templates online free — just upload photos and message, get a shareable link. No coding needed.">
+ <meta name="keywords" content="Sorav Temps, tejas,tejas templates,tejas tiwari,Likesorav, surprise templates, birthday wish template, birthday surprise website, anniversary surprise template, online birthday card maker, personalized birthday link, digital birthday card free, love proposal template, valentine surprise template, birthday countdown website, photo surprise link maker, free birthday website generator, romantic surprise link, passcode birthday surprise, virtual hug birthday card, birthday wish link online, marriage invitation template online, rakshabandhan wish template, sankranti wish template, sorabh sabal, tejas tiwari templates, free templates, birthday, anniversary, marriage, love, valentine, link templates">
+ <meta name="author" content="Sorabh sabal">
+ <link rel="canonical" href="https://soravtemps.github.io/Likesorav/" />
+ <link rel="icon" type="image/jpeg" href="https://i.ibb.co/5W3zyvcX/IMG-20260719-082242.jpg">
+<link rel="apple-touch-icon" href="https://i.ibb.co/5W3zyvcX/IMG-20260719-082242.jpg">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+ 
+ <style>
+  * { box-sizing: border-box; }
+
+  /* SORAV TEMPS — PREMIUM CELEBRATION THEME */
+  :root {
+    --bg-main: #0B0A17;
+    --card-bg: #171227;
+    --card-bg-alt: #1D1733;
+    --accent-pink: #fff6;
+    --accent-blue: #900;
+    --accent-pink-deep: #5C2450;
+    --accent-gold: #E8B36A;
+    --text-light: #ffffff;
+    --text-muted: #9C93B5;
+    --font-display: 'Fraunces', 'Georgia', serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    background: linear-gradient(160deg, #05040B, #0B0A17 45%, #171227 75%, #1C1530);
+    background-size: 300% 300%;
+    animation: gradientBG 22s ease infinite;
+    background-attachment: fixed;
+    color: var(--text-light);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Premium Glassmorphic Slim Navbar */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(6, 1, 7, 0.4);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 10px 02px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(25, 79, 134, 0.30);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+
+
+  /* Horizontal Scrolling/Flow Links for Mobile */
+  .nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex: 1;
+    gap: 6px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin: 0 10px;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 8px 16px;
+    border-radius: 18px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .nav-links a:hover, .nav-links a.active {
+    color: #fff;
+    background-color: rgba(5, 9, 84, 0.80);
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Compact Pill Login Button */
+  .login-btn {
+    background: linear-gradient(135deg, #900909, #300710);
+    color: white;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 15px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    font-size: 11px;
+    letter-spacing: 0.2px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 12px rgba(225, 79, 134, 0.25);
+  }
+
+  .login-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(25, 79, 134, 0.4);
+  }
+
+  .settings-icon {
+    font-size: 16px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #fff;
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Profile Avatar Vibe */
+  .profile-header {
+    text-align: center;
+    padding: 30px 20px 10px;
+  }
+
+  .profile-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    border: 3px solid var(--accent-blue);
+    margin: 0 auto 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    box-shadow: 0 0 15px rgba(20, 7, 184, 0.3);
+    overflow: hidden;
+  }
+
+  .profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Optimized Store Container */
+  .store-container {
+    max-width: 600px; 
+    margin: 0 auto 60px auto;
+    padding: 0 14px;
+    width: 100%;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    margin: 30px 0 6px;
+    padding-left: 0;
+    border-left: none;
+    position: relative;
+    padding-bottom: 10px;
+  }
+
+  .section-title::after {
+    content: '';
+    display: block;
+    width: 42px;
+    height: 3px;
+    margin-top: 8px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--accent-gold), var(--accent-pink));
+  }
+
+  .section-sub {
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-bottom: 15px;
+    line-height: 1.4;
+  }
+
+  .category-bar {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 30px;
+    overflow-x: auto;
+    padding-bottom: 5px;
+    scrollbar-width: none;
+  }
+  .category-bar::-webkit-scrollbar { display: none; }
+
+  .category-chip {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #fff;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .category-chip.active {
+    background: var(--accent-pink);
+    border-color: var(--accent-pink);
+    box-shadow: 04px 04px rgba(22, 79, 134, 0.2);
+  }
+
+  /* RESPONSIVE 2-COLUMN GRID */
+  .templates-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 12px;
+    margin-bottom: 30px;
+    width: 100%;
+  }
+
+  .template-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(225, 79, 134, 0.12);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .card-image-box {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(135deg, #2A2045, #0B0A17);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    overflow: hidden;
+    border-radius: inherit;
+  }
+
+  .card-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .card-info {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    gap: 6px;
+  }
+
+  .badge-row {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    font-size: 8px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 8px;
+    text-transform: uppercase;
+  }
+  .badge.free { background: rgba(52, 211, 153, 0.2); color: #34D399; }
+  .badge.paid { background: rgba(225, 79, 134, 0.2); color: var(--accent-pink); }
+  .badge.premium { background: rgba(232, 179, 106, 0.2); color: #E8B36A; }
+  .badge.cat { background: rgba(255, 255, 255, 0.1); color: #fff; }
+
+  .card-info h3 {
+    margin: 0;
+    font-size: 13px;
+    color: #fff;
+    font-weight: 700;
+    line-height: 1.3;
+    height: 34px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .card-info p {
+    margin: 0;
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 8px;
+  }
+
+  .price {
+    font-size: 13px;
+    font-weight: 800;
+    font-family: var(--font-display);
+  }
+
+  .view-btn {
+    background: linear-gradient(135deg, var(--accent-pink), #0B0A17);
+    color: #fff;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 11px;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+  }
+
+  .view-btn:active {
+    transform: scale(0.96);
+  }
+
+  @media (hover: hover) {
+    .template-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
+      border-color: rgba(25, 79, 134, 0.3);
+    }
+  }
+
+  .about-box {
+    background: var(--card-bg);
+    border: 1px solid rgba(80, 108, 190, 0.12);
+    border-radius: 16px;
+    padding: 18px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-muted);
+  }
+
+  .about-hero {
+    text-align: center;
+    padding: 10px 10px 22px;
+  }
+
+  .about-hero .founder-avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    background: linear-gradient(135deg,var(--accent-pink), #5C2450);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: 800;
+    color: #fff;
+    box-shadow: 0 0 90px linear-gradient(135deg, #608,#ff08,#00f6,#ff78b6, #5C2450);
+  }
+
+  .about-hero h3 {
+    font-family: var(--font-display);
+    margin: 4px 0 2px;
+    font-size: 19px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .about-hero .founder-role {
+    font-size: 12px;
+    color: var(--accent-pink);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .about-section-block {
+    margin-bottom: 22px;
+  }
+
+  .about-section-block h4 {
+    font-size: 15px;
+    color: #fff;
+    margin: 0 0 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .about-section-block p {
+    margin: 0 0 10px;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .about-grid-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(225, 79, 134, 0.1);
+    border-radius: 12px;
+    padding: 12px;
+  }
+
+  .about-grid-item .agi-icon {
+    font-size: 20px;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .about-grid-item h5 {
+    font-size: 12.5px;
+    color: #fff;
+    margin: 0 0 4px;
+  }
+
+  .about-grid-item p {
+    font-size: 11.5px;
+    margin: 0;
+    color: var(--text-muted);
+  }
+
+  .about-timeline {
+    border-left: 2px solid rgba(225, 79, 134, 0.25);
+    padding-left: 14px;
+    margin-top: 10px;
+  }
+
+  .about-timeline-item {
+    position: relative;
+    margin-bottom: 16px;
+  }
+
+  .about-timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -19px;
+    top: 4px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-pink);
+    box-shadow: 0 0 6px var(--accent-pink);
+  }
+
+  .about-timeline-item .att-year {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent-pink);
+    text-transform: uppercase;
+  }
+
+  .about-timeline-item p {
+    margin: 3px 0 0;
+  }
+
+  .about-faq-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 10px 0;
+  }
+
+  .about-faq-item:last-child {
+    border-bottom: none;
+  }
+
+  .about-faq-item .faq-q {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 4px;
+  }
+
+  .about-faq-item .faq-a {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  .about-values-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+  }
+
+  .about-values-list li {
+    padding: 6px 0 6px 20px;
+    position: relative;
+    font-size: 12.5px;
+  }
+
+  .about-values-list li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--accent-pink);
+  }
+
+  .about-contact-box {
+    background: linear-gradient(135deg, rgba(255,0,222,0.12), rgba(106,5,114,0.25));
+    border: 1px solid rgba(225, 79, 134, 0.25);
+    border-radius: 14px;
+    padding: 16px;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .about-contact-box p {
+    margin: 0 0 4px;
+    font-size: 12.5px;
+  }
+
+  .empty-note {
+    color: var(--text-muted);
+    font-size: 13px;
+    text-align: center;
+    padding: 20px;
+    background: var(--card-bg);
+    border-radius: 16px;
+    border: 1px dashed rgba(255,255,255,0.2);
+  }
+
+  /* Template Detail Page */
+  .back-btn {
+    background: rgba(255,255,255,0.01);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .detail-hero {
+    width: 100%;
+    height: 220px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #2A2045, #0B0A17);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(225, 79, 134, 0.15);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    overflow: hidden;
+  }
+
+  .detail-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+  }
+
+  .detail-name {
+    font-family: var(--font-display);
+    font-size: 23px;
+    font-weight: 600;
+    margin: 4px 0 6px;
+  }
+
+  .detail-badges {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+
+  .detail-desc {
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 18px;
+  }
+
+  .detail-subheading {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 0 10px;
+  }
+
+  .pages-strip {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    margin-bottom: 22px;
+    scrollbar-width: none;
+  }
+  .pages-strip::-webkit-scrollbar { display: none; }
+
+  .page-thumb {
+    flex: 0 0 auto;
+    width: 90px;
+    height: 160px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #241C3B, #0B0A17);
+    border: 1px solid rgba(225, 79, 134, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    overflow: hidden;
+  }
+
+  .page-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+  }
+
+  .detail-footer-bar {
+    position: sticky;
+    bottom: 0;
+    background: rgba(33, 6, 53, 0.85);
+    backdrop-filter: blur(10px);
+    padding: 14px 0 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 10px;
+  }
+
+  .buy-btn {
+    background: linear-gradient(135deg, var(--accent-pink), #5C2450);
+    color: #fff;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(225, 79, 134, 0.3);
+  }
+
+  /* Modals */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+  }
+  .modal-overlay.active { display: flex; }
+
+  .modal-box {
+    background: rgba(5,9,4,0.1);
+    border: 1px solid rgba(225, 79, 134, 0.3);
+    color: #fff;
+    padding: 26px;
+    border-radius: 20px;
+    width: 88%;
+    max-width: 350px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  }
+  .modal-box h3 { margin: 0 0 15px 0; text-align: center; font-family: var(--font-display); font-weight: 600; font-size: 19px; }
+  .modal-box input, .modal-box textarea, .modal-box select {
+    width: 100%;
+    padding: 12px;
+    margin: 6px 0;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: var(--bg-main);
+    color: white;
+    font-family: var(--font-body);
+  }
+  .modal-box textarea { resize: vertical; min-height: 60px; }
+  .modal-box input:focus, .modal-box textarea:focus, .modal-box select:focus {
+    outline: none;
+    border-color: var(--accent-pink);
+  }
+  .field-group { margin-bottom: 2px; }
+  .modal-box button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    background: var(--accent-pink);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+  }
+  .modal-box button:active { transform: scale(0.97); }
+  .modal-close { background: transparent !important; color: var(--text-muted) !important; margin-top: 5px !important; }
+
+  /* Customize Modal (image + text collection) */
+  .customize-box { max-width: 380px; max-height: 85vh; overflow-y: auto; }
+  .field-label { font-size: 12px; color: var(--text-muted); margin: 10px 0 4px; display: block; font-weight: 600; }
+  .upload-box {
+    border: 2px dashed rgba(255,255,255,0.25);
+    border-radius: 12px;
+    padding: 14px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 12px;
+    color: var(--text-muted);
+    background: rgba(255,255,255,0.03);
+    position: relative;
+  }
+  .upload-box.has-image { border-color: var(--accent-pink); padding: 6px; }
+  .upload-box img { max-width: 100%; max-height: 120px; border-radius: 8px; display: block; margin: 0 auto; }
+  .upload-box input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+  .photo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .upload-box.small { padding: 8px; min-height: 70px; display: flex; align-items: center; justify-content: center; }
+  .upload-box.small.has-image { padding: 4px; }
+  .upload-box.small img { max-height: 62px; }
+  .generate-btn { margin-top: 16px; }
+  .generate-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .status-text { font-size: 12px; text-align: center; margin-top: 8px; min-height: 16px; color: var(--text-muted); }
+  .link-result {
+    display: none;
+    margin-top: 14px;
+    background: var(--bg-main);
+    border: 1px solid var(--accent-pink);
+    border-radius: 12px;
+    padding: 12px;
+  }
+  .link-result.active { display: block; }
+  .link-result input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 11px;
+    padding: 4px 0;
+  }
+  .link-actions { display: flex; gap: 8px; margin-top: 8px; }
+  .link-actions button { margin-top: 0; padding: 10px; font-size: 12px; }
+  .btn-secondary { background: rgba(255,255,255,0.1) !important; }
+  .spinner {
+    display: inline-block;
+    width: 12px; height: 12px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .settings-list { display: flex; flex-direction: column; gap: 8px; margin: 15px 0; }
+  .settings-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-main);
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+  }
+  .toggle-switch { position: relative; width: 40px; height: 22px; }
+  .toggle-switch input { opacity: 0; width: 0; height: 0; }
+  .toggle-slider { position: absolute; inset: 0; background: #555; border-radius: 22px; cursor: pointer; }
+  .toggle-slider::before { content: ""; position: absolute; height: 16px; width: 16px; left: 3px; bottom: 3px; background: #fff; border-radius: 50%; transition: 0.3s; }
+  .toggle-switch input:checked + .toggle-slider { background: var(--accent-pink); }
+  .toggle-switch input:checked + .toggle-slider::before { transform: translateX(18px); }
+
+  /* Desktop View Extension */
+  @media (min-width: 768px) {
+    .navbar { padding: 12px 30px; }
+    .nav-links { gap: 20px; }
+    .nav-links a { font-size: 14px; padding: 9px 20px; }
+    .login-btn { font-size: 13px; padding: 8px 20px; }
+    .templates-grid { grid-template-columns: repeat(3, 1fr); gap: 15px; }
+  }
+
+  footer { text-align: center; padding: 30px 20px; font-size: 13px; color: var(--text-muted); }
+</style>
+</head>
+<body>
+
+  <!-- FIXED ROW-BASED ULTRA SLIM NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-links">
+      <a href="javascript:void(0)" id="menu-cards" class="active" onclick="filterMenu('cards')">Cards</a>
+      <a href="javascript:void(0)" id="menu-surprise" onclick="filterMenu('surprise')">Surprise</a>
+      <a href="javascript:void(0)" id="menu-premium" onclick="filterMenu('premium')">Premium</a>
+      <a href="javascript:void(0)" id="menu-about" onclick="filterMenu('about')">About Us</a>
+      <a href="javascript:void(0)" id="menu-admin" onclick="filterMenu('admin')" style="display:none;">Admin</a>
+    </div>
+
+    
+    <button class="login-btn" id="navLoginBtn" onclick="openLogin()">Login</button>
+<div id="navUserChip" style="display:none; align-items:center; gap:6px; cursor:pointer;" onclick="openSettings()">
+  <img id="navUserPhoto" src="" alt="" style="width:24px; height:24px; border-radius:50%; object-fit:cover; border:1px solid var(--accent-pink);">
+  <span id="navUserName" style="display:none;"></span>
+</div>
+    </div>
+  </nav>
+
+  <!-- SuperProfile Avatar Circle Header -->
+  <header class="profile-header">
+    <div class="profile-avatar"><img src="https://i.ibb.co/hRM4ZvHf/207136a883b3094c53a79b5f4ad5de96.jpg" alt="S"></div>
+    <h1 style="margin:0; font-size:26px; font-family:var(--font-display); font-weight:600; letter-spacing:0.3px;">DIGITAL TEMPLATES</h1>
+    <p style="margin:5px 0 0; color:var(--text-muted); font-size:14px;">MAK3 FREE TEMPLATES NO CODING NEEDED CUSTOMISE AND MAKE IT YOURS</p>
+  </header>
+
+  <main class="store-container">
+
+    <!-- CARDS SECTION -->
+    <div id="cards-section-wrapper">
+      <h2 class="section-title" id="cards-title">Cards</h2>
+      <p class="section-sub">Choose a moment, pick a design, and make it yours in minutes.</p>
+      <div class="category-bar" id="cards-categories"></div>
+      <div class="templates-grid" id="cards-grid"></div>
+    </div>
+
+    <!-- SURPRISE SECTION -->
+    <div id="surprise-section-wrapper" style="display:none;">
+      <h2 class="section-title" id="free">Free Templates</h2>
+      <p class="section-sub">Get started with no-cost surprise templates, ready to customise in minutes.</p>
+      <div class="category-bar" id="free-categories"></div>
+      <div class="templates-grid" id="free-grid"></div>
+
+      <h2 class="section-title" id="paid">Paid Templates</h2>
+      <p class="section-sub">Premium, fully interactive templates with extra polish and features.</p>
+      <div class="category-bar" id="paid-categories"></div>
+      <div class="templates-grid" id="paid-grid"></div>
+    </div>
+
+    <!-- PREMIUM SECTION -->
+    <div id="premium-section-wrapper" style="display:none;">
+      <h2 class="section-title" id="premium-title">Premium</h2>
+      <p class="section-sub">Our most exclusive, high-effort templates — extra animation, extra detail.</p>
+      <div class="category-bar" id="premium-categories"></div>
+      <div class="templates-grid" id="premium-grid"></div>
+    </div>
+
+    <!-- ABOUT SECTION CONTAINER -->
+    <div id="about-section-wrapper" style="display:none; margin-top: 20px;">
+      <h2 class="section-title">About Us</h2>
+
+      <div class="about-box">
+
+        <!-- FOUNDER -->
+        <div class="about-hero">
+          <div class="founder-avatar">SS</div>
+          <h3>Sorabh Sabal</h3>
+          <div class="founder-role">Founder &amp; Creator, Sorav Temps</div>
+        </div>
+
+        <!-- OUR STORY -->
+        <div class="about-section-block">
+          <h4>📖 Our Story</h4>
+          <p>Sorav Temps was started by <b>Sorabh Sabal</b> with one simple idea — surprises should feel personal, not generic. What began as a few hand-coded birthday pages for friends and family slowly grew into a full library of interactive, shareable web templates used by people across the country to celebrate the moments that matter most to them.</p>
+          <p>Every template on this platform is built from scratch, tested on real phones, and designed to load fast even on slow internet connections — because a surprise shouldn't feel like a chore to open.</p>
+          <p>Sorabh Sabal personally reviews every new template design before it goes live, making sure it meets the same standard of quality, emotion, and polish that Sorav Temps was founded on.</p>
+        </div>
+
+        <!-- FOUNDER MESSAGE -->
+        <div class="about-section-block">
+          <h4>💬 A Note from Sorabh Sabal</h4>
+          <p>"I built Sorav Temps because I wanted sending a surprise to feel as special as receiving one. Every template here is made with the same care I'd put into a gift for someone I love. Thank you for trusting us to be a part of your celebrations." — Sorabh Sabal, Founder</p>
+        </div>
+
+        <!-- MISSION & VISION -->
+        <div class="about-section-block">
+          <h4>🎯 Our Mission</h4>
+          <p>To make heartfelt, interactive surprises accessible to everyone — no design skills or coding knowledge required. We believe the best surprises come from thought and effort, not expensive gifts, and our templates exist to make that effort easy to express.</p>
+          <h4>🔭 Our Vision</h4>
+          <p>To become the most trusted name in digital celebration templates — a place people think of first whenever a birthday, anniversary, proposal, or special occasion is coming up.</p>
+        </div>
+
+        <!-- WHAT WE OFFER -->
+        <div class="about-section-block">
+          <h4>🎁 What We Offer</h4>
+          <div class="about-grid">
+            <div class="about-grid-item">
+              <span class="agi-icon">🎂</span>
+              <h5>Birthday Templates</h5>
+              <p>Animated cakes, countdowns, photo memories, and personalised messages.</p>
+            </div>
+            <div class="about-grid-item">
+              <span class="agi-icon">💌</span>
+              <h5>Surprise Cards</h5>
+              <p>Interactive reveal-style cards for proposals, apologies, and love notes.</p>
+            </div>
+            <div class="about-grid-item">
+              <span class="agi-icon">📸</span>
+              <h5>Photobooth Templates</h5>
+              <p>Upload your own photos into a beautifully animated template layout.</p>
+            </div>
+            <div class="about-grid-item">
+              <span class="agi-icon">🎉</span>
+              <h5>Anniversary Pages</h5>
+              <p>Timeline-style pages that celebrate milestones and shared memories.</p>
+            </div>
+            <div class="about-grid-item">
+              <span class="agi-icon">🔗</span>
+              <h5>One-Link Sharing</h5>
+              <p>Every template becomes a single shareable link — no app or install needed.</p>
+            </div>
+            <div class="about-grid-item">
+              <span class="agi-icon">📱</span>
+              <h5>Mobile-First Design</h5>
+              <p>Built and tested primarily for phones, since that's how most surprises are opened.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- WHY CHOOSE US -->
+        <div class="about-section-block">
+          <h4>⭐ Why People Choose Sorav Temps</h4>
+          <ul class="about-values-list">
+            <li>Every template is designed and quality-checked personally by Sorabh Sabal.</li>
+            <li>Free templates are genuinely free — no hidden charges or forced upgrades.</li>
+            <li>Paid and Premium templates come with extra animation, polish, and personalisation options.</li>
+            <li>Fast load times, even on average mobile networks.</li>
+            <li>No account required to view a shared surprise — only the sender needs to log in.</li>
+            <li>New designs are added regularly based on real customer requests.</li>
+          </ul>
+        </div>
+
+        <!-- OUR VALUES -->
+        <div class="about-section-block">
+          <h4>🧡 Our Values</h4>
+          <div class="about-grid">
+            <div class="about-grid-item">
+              <span class="agi-icon">✨</span>
+              <h5>Simplicity</h5>
+              <p>If it takes more than a few taps to create a surprise, it's too complicated.</p>
+            </div>
+            <div class="about-grid-item">
+              <span class="agi-icon">🎨</span>
+              <h5>Craft</h5>
+              <p>Every animation and layout is designed with genuine care, not templated filler.</p>
+            </div>
+            <div class="about-grid-item">
+              <span class="agi-icon">🔒</span>
+              <h5>Trust</h5>
+              <p>Your photos, names, and messages are handled responsibly and never sold or shared.</p>
+            </div>
+            <div class="about-grid-item">
+              <span class="agi-icon">💡</span>
+              <h5>Constant Improvement</h5>
+              <p>We keep refining templates based on real feedback from real customers.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TIMELINE -->
+        <div class="about-section-block">
+          <h4>🕓 Our Journey</h4>
+          <div class="about-timeline">
+            <div class="about-timeline-item">
+              <div class="att-year">The Idea</div>
+              <p>Sorabh Sabal starts designing personal surprise web pages for close friends and family.</p>
+            </div>
+            <div class="about-timeline-item">
+              <div class="att-year">First Templates</div>
+              <p>A small collection of free birthday templates is shared publicly for the first time.</p>
+            </div>
+            <div class="about-timeline-item">
+              <div class="att-year">Sorav Temps Launches</div>
+              <p>The platform is rebuilt into a proper store with Free, Paid, and Premium categories.</p>
+            </div>
+            <div class="about-timeline-item">
+              <div class="att-year">Growing Every Day</div>
+              <p>New templates, smoother login, and better customisation tools are added regularly.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="about-section-block">
+          <h4>❓ Frequently Asked Questions</h4>
+
+          <div class="about-faq-item">
+            <p class="faq-q">Do I need to know coding to use a template?</p>
+            <p class="faq-a">No. Just pick a template, fill in the name, message, and photos, and share the generated link.</p>
+          </div>
+
+          <div class="about-faq-item">
+            <p class="faq-q">Does the person receiving the surprise need an account?</p>
+            <p class="faq-a">No. Only you, as the sender, need to log in to create and save your card. The recipient just opens the link.</p>
+          </div>
+
+          <div class="about-faq-item">
+            <p class="faq-q">What is the difference between Free, Paid, and Premium templates?</p>
+            <p class="faq-a">Free templates are simple and fully usable at no cost. Paid templates include extra polish and features. Premium templates are our most exclusive, highest-effort designs.</p>
+          </div>
+
+          <div class="about-faq-item">
+            <p class="faq-q">Are my photos and messages safe?</p>
+            <p class="faq-a">Yes. Your data is stored securely and access is restricted using strict backend security rules — see the section below for details.</p>
+          </div>
+
+          <div class="about-faq-item">
+            <p class="faq-q">Can I get a custom template made for me?</p>
+            <p class="faq-a">Reach out through the contact details below and Sorabh Sabal's team will get back to you about custom requests.</p>
+          </div>
+        </div>
+
+        <!-- SECURITY -->
+        <div class="about-section-block">
+          <h4>🔒 Data &amp; Security</h4>
+          <p>We take the privacy of your names, messages, and photos seriously. Login is handled securely through Google Sign-In, and all card and order data is stored in Firestore behind strict, role-based security rules — meaning only you can see your own data, and only the admin account can view orders and the full user list.</p>
+          <ul class="about-values-list">
+            <li>Every signed-in user can only read and write their own card and order records.</li>
+            <li>Only the verified admin account can read the orders and users collections.</li>
+            <li>No visitor can create, edit, or delete another person's data, even if they try directly through the database.</li>
+            <li>These rules are enforced on Firebase's servers, not just hidden in the app — so they can't be bypassed from the browser.</li>
+          </ul>
+        </div>
+
+        <!-- CONTACT -->
+        <div class="about-contact-box">
+          <p><b>Have a question or a custom request?</b></p>
+          <p>Reach out to us anytime — Sorabh Sabal and the Sorav Temps team read every message.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ADMIN SECTION (only visible to the admin account) -->
+    <div id="admin-section-wrapper" style="display:none; margin-top: 20px;">
+      <h2 class="section-title">Admin — Orders (Payments)</h2>
+      <p class="section-sub">Naya order sabse upar. UTR check karke UPI app mein confirm kar lena payment aayi hai.</p>
+      <div id="adminOrdersList"></div>
+
+      <h2 class="section-title" style="margin-top:30px;">Admin — Logged-in Users</h2>
+      <p class="section-sub">Yeh list sirf admin account ko dikhti hai.</p>
+      <div id="adminUsersList"></div>
+    </div>
+
+    <!-- TEMPLATE DETAIL PAGE (opens when a template's View button is clicked) -->
+    <div id="detail-section-wrapper" style="display:none; margin-top: 16px;">
+      <button class="back-btn" onclick="closeTemplateDetail()">← Back</button>
+
+      <div class="detail-hero" id="detailHero">🎁</div>
+
+      <h2 class="detail-name" id="detailName">Template Name</h2>
+      <div class="detail-badges" id="detailBadges"></div>
+      <p class="detail-desc" id="detailDesc"></p>
+
+      <p class="detail-subheading">More pages in this template</p>
+      <div class="pages-strip" id="detailPagesStrip"></div>
+
+      <div class="detail-footer-bar">
+        <span class="price" id="detailPrice"></span>
+        <button class="buy-btn" id="detailBuyBtn">Buy Now</button>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>&copy; 2026 Sorav Temps. All rights reserved.</footer>
+
+  <!-- Customize / Generate Link Modal -->
+  <div class="modal-overlay" id="customizeModal">
+    <div class="modal-box customize-box">
+      <h3 id="customizeTitle">Customize Template</h3>
+
+      <!-- Fields here are generated dynamically by renderCustomFields() based on
+           each template's own `fields` array (see the DATA section in the script
+           below). Adding a new template with different requirements (age, a
+           passcode, a memory/message box, more or fewer photos, etc.) does NOT
+           need any HTML changes — just describe it in that template's `fields`. -->
+      <div id="customFieldsContainer"></div>
+
+      <button class="generate-btn" id="generateBtn" onclick="generateTemplateLink()">Generate Link</button>
+      <div class="status-text" id="statusText"></div>
+
+      <div class="link-result" id="linkResult">
+        <input type="text" id="finalLinkInput" readonly>
+        <div class="link-actions">
+          <button onclick="copyGeneratedLink()">📋 Copy Link</button>
+          <a id="openLinkBtn" class="btn-secondary" href="#" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; justify-content:center; text-decoration:none; color:#fff; border-radius:25px; font-weight:600;">↗ Open</a>
+        </div>
+      </div>
+
+      <button class="modal-close" onclick="closeCustomizeModal()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- UPI Payment Modal -->
+  <div class="modal-overlay" id="paymentModal">
+    <div class="modal-box customize-box">
+      <h3>Payment</h3>
+      <p style="text-align:center; color:var(--text-muted); font-size:13px; margin: 0 0 6px;" id="paymentTemplateName"></p>
+      <p style="text-align:center; font-size:24px; font-weight:800; margin: 0 0 16px;" id="paymentAmountText"></p>
+
+      <button id="payUpiBtn" onclick="payViaUPI('gpay')" style="display:flex; align-items:center; justify-content:center; gap:8px; background:#fff; color:#4285F4; font-weight:800;">
+        <span style="width:18px; height:18px; border-radius:50%; background:conic-gradient(#4285F4 0 25%, #34A853 25% 50%, #FBBC05 50% 75%, #EA4335 75% 100%); display:inline-block;"></span>
+        Google Pay
+      </button>
+      <button id="payPhonePeBtn" onclick="payViaUPI('phonepe')" style="display:flex; align-items:center; justify-content:center; gap:8px; background:#5f259f; color:#fff; font-weight:800;">
+        📱 PhonePe
+      </button>
+      <button id="payPaytmBtn" onclick="payViaUPI('paytm')" style="display:flex; align-items:center; justify-content:center; gap:8px; background:#00baf2; color:#fff; font-weight:800;">
+        💠 Paytm
+      </button>
+      <button id="payOtherBtn" onclick="payViaUPI('other')" class="btn-secondary" style="margin-top:0;">Other UPI App</button>
+      <p class="status-text" style="margin-top:6px;">App khulega, tumhari UPI ID par amount pehle se bhara hoga. Payment karo, phir wapas aakar neeche transaction ID daalo.</p>
+
+      <label class="field-label">Your Name</label>
+      <input type="text" id="payBuyerName" placeholder="e.g. Rahul Sharma">
+
+      <label class="field-label">Phone / Email (contact)</label>
+      <input type="text" id="payBuyerContact" placeholder="e.g. 9876543210">
+
+      <label class="field-label">UPI Transaction ID / UTR (after paying)</label>
+      <input type="text" id="payUtr" placeholder="e.g. 123456789012">
+
+      <button class="generate-btn" id="paymentConfirmBtn" onclick="submitPayment()">I've Paid — Continue</button>
+      <div class="status-text" id="paymentStatusText"></div>
+
+      <button class="modal-close" onclick="closePaymentModal()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div class="modal-overlay" id="loginModal">
+    <div class="modal-box">
+      <h3>Login</h3>
+      <p style="text-align:center; color:var(--text-muted); font-size:13px; margin: 0 0 16px;">Apne Google account se sign in karo.</p>
+      <button onclick="signInWithGoogle()" style="display:flex; align-items:center; justify-content:center; gap:8px;">
+        <span style="background:#fff; color:#4285F4; width:20px; height:20px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-weight:800; font-size:13px;">G</span>
+        Sign in with Google
+      </button>
+      <div class="status-text" id="loginStatusText"></div>
+      <button class="modal-close" onclick="closeLogin()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Settings Modal -->
+  <div class="modal-overlay" id="settingsModal">
+    <div class="modal-box">
+      <h3>Settings</h3>
+      <div class="settings-list">
+        <div class="settings-list-item">
+          <span>👤 User Profile</span><span>›</span>
+        </div>
+        <div class="settings-list-item">
+          <span>🌙 Dark Mode</span>
+          <label class="toggle-switch">
+            <input type="checkbox" id="darkModeToggle" checked disabled>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="settings-list-item" style="color:var(--accent-pink);"> 
+          <span onclick="confirmLogout()" style="cursor:pointer;">🚪 Log Out</span><span>›</span>
+        </div>
+      </div>
+      <button class="modal-close" onclick="closeSettings()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    // ---------- DATA ----------
+    //
+    // HOW TO ADD A NEW TEMPLATE WITH CUSTOM REQUIREMENTS
+    // ----------------------------------------------------
+    // Every template object below can optionally have a `fields` array. The
+    // "Customize" upload box is built automatically from this array — no other
+    // code needs to change when you add a new template with different needs
+    // (age, a passcode/password, a memory box, more/fewer photos, etc).
+    //
+    // If a template has NO `fields` array, it automatically falls back to the
+    // old behaviour: Recipient's Name + optional Message + (photosRequired)
+    // photo slots — so all existing templates keep working exactly as before.
+    //
+    // Each item in `fields` looks like:
+    //   { type: 'text',     key: 'name',   label: "Recipient's Name", placeholder: 'e.g. Rahul', required: true }
+    //   { type: 'text',     key: 'message',label: 'Message',          placeholder: 'e.g. Happy Birthday!', required: false }
+    //   { type: 'number',   key: 'age',    label: 'Age',              placeholder: 'e.g. 21', required: true }
+    //   { type: 'password', key: 'passcode', label: 'Set a Passcode', placeholder: '4-digit code', required: true }
+    //   { type: 'textarea', key: 'memory', label: 'A Special Memory', placeholder: 'Write something...', required: false }
+    //   { type: 'photos',   key: 'photos', label: 'Upload Photos',    count: 4, required: true }
+    //
+    // - `type` can be: text | number | password | textarea | photos
+    // - `key` is how the value gets saved to Firestore (and how your template's
+    //   own page should read it back, e.g. docSnap.data().age).
+    // - `required` (default true) — if false, the field is skippable.
+    // - For `photos`, `count` sets how many photo boxes are shown.
+    // - You can add as many fields as a template needs, in any order.
+
+    // ============================================================
+    // # YAHAN SE MUSIC WALE OPTIONS HAIN #
+    // Naya gaana add karna ho: neeche { } jaisa ek naya line copy karke
+    // apna 'label' (naam jo dikhega) aur 'url' (Catbox/GitHub se mila mp3 link) daal do.
+    // Gaana hatana ho: uski poori { } line delete kar do.
+    // ============================================================
+    // Shared list of background-music choices offered on every paid/premium
+    // template. `url` must be a direct, working link to an mp3 file (host it
+    // in your GitHub repo or any audio hosting) — the customer's pick is
+    // saved to Firestore under the `music` key, same as name/message/photos.
+    const MUSIC_OPTIONS = [
+      
+      { label: 'Happy Birthday Tune 1', url: 'https://files.catbox.moe/ktiubo.mp3' },
+      { label: 'punjabi Tune', url: 'https://files.catbox.moe/j00c24.mp3' },
+      { label: 'kasoor Romantic Tune', url: 'https://files.catbox.moe/s4d5yh.mp3' },
+      { label: 'Be with me Romantic Tune', url: 'https://files.catbox.moe/12bdji.mp3' },
+      { label: 'happy birthday 2', url: 'https://files.catbox.moe/b5ojzs.mp3' }
+    ];
+
+    // Subcategories for the Cards section
+    const cardsCategories = ["Birthday", "Marriage","Anniversary","Valentine's", "Proposal", "Invitation", "Rakshabandhan", "Sankranti"];
+
+    // ============================================================
+    // # "CARDS" SECTION KE TEMPLATES (Home pe "Cards" tab) #
+    // Naya template add karna ho: neeche { ... } jaisa poora block copy karo,
+    // { } ke andar naya comma { } daal do, apni details bhar do.
+    // Zaroori: downloadUrl spelling EXACT waisi hi likho (chhota d, capital U)
+    // warna link kaam nahi karega.
+    // ============================================================
+    const cardsTemplates = [
+      { name: "Birthday Photobooth Strip", category: "Birthday", emoji: "📸", desc: "A cute 4-photo photobooth strip card, perfect for an Instagram story — just drop in your favourite pictures.", photosRequired: 4,
+        fields: [
+          { type: 'text', key: 'name', label: "Recipient's Name", placeholder: 'e.g. Rahul', required: true },
+          { type: 'number', key: 'age', label: 'Age (for the countdown)', placeholder: 'e.g. 21', required: true },
+          { type: 'password', key: 'passcode', label: 'Set a Passcode', placeholder: '4-digit code', required: true },
+          { type: 'textarea', key: 'memory', label: 'A Special Memory / Love Letter', placeholder: 'Write something special...', required: false },
+          { type: 'photos', key: 'photos', label: 'Upload Photos (4 required)', count: 4, required: true },
+          { type: 'select', key: 'music', label: 'Choose Background Music', required: false, options: MUSIC_OPTIONS }
+        ],
+      previewImages: ["https://i.ibb.co/5W3zyvcX/IMG-20260719-082242.jpg"], downloadUrl: "https://soravtemps.github.io/Card1/" },
+     { name:"Anniversary one photo", category:"Anniversary",emoji:"😘",desc:"A cute 1 photo aniversary template for your partner's and just try and send it to your favourite person.",photosRequired: 1,pages: ["💸"], previewImages: ["https://i.ibb.co/5W3zyvcX/IMG-20260719-082242.jpg"], downloadUrl: "https://soravtemps.github.io/Card2/" }
+    ];
+
+    // Old "Home" categories, kept as-is for the Surprise section
+    const categories = ["Birthday", "Valentine's", "Anniversary", "Hug Day"];
+
+    // ============================================================
+    // # "SURPRISE" SECTION KE FREE TEMPLATES #
+    // Yeh sab bina paise ke customer ko milte hain — isliye inme "price"
+    // field nahi hai, aur music dropdown bhi nahi aayega (kyunki music
+    // sirf paid/premium templates mein automatic add hota hai).
+    // ============================================================
+    const freeTemplates = [
+      { name: "Pls Accept The Gift", category: "Birthday", emoji: "🎁", desc: "A playful accept-or-reject gift reveal that leads to a birthday cake surprise and a hidden gift box to open.", isViral: true, previewImages: ["https://i.ibb.co/zH5rpnLh/Screenshot-2026-07-19-09-11-49-783-com-android-chrome.jpg", "https://i.ibb.co/qF5sjTBJ/Screenshot-2026-07-19-09-11-59-238-com-android-chrome.jpg", "https://i.ibb.co/CpRK3P0G/Screenshot-2026-07-19-09-12-02-801-com-android-chrome.jpg", "https://i.ibb.co/Rkp3WNZJ/Screenshot-2026-07-19-09-12-05-125-com-android-chrome.jpg", "https://i.ibb.co/tP4WBzhk/Screenshot-2026-07-19-09-12-07-086-com-android-chrome.jpg", "https://i.ibb.co/zV7xtFjW/Screenshot-2026-07-19-09-12-11-715-com-android-chrome.jpg"], downloadUrl: "https://soravtemplates.github.io/Temp1/" },
+      { name: "Cute Diary Surprise", category: "Birthday", emoji: "🧸", desc: "A cosy diary-style birthday surprise with a heartfelt love letter, a virtual hug, and a romantic proposal ending.", isViral: false, previewImages: ["https://i.ibb.co/0RjPX2Tj/Screenshot-2026-07-19-09-58-11-690-com-android-chrome.jpg", "https://i.ibb.co/5xxJkzh7/Screenshot-2026-07-19-09-58-14-432-com-android-chrome.jpg", "https://i.ibb.co/hF3KfGGj/Screenshot-2026-07-19-09-58-16-512-com-android-chrome.jpg", "https://i.ibb.co/ddSyfs9/Screenshot-2026-07-19-09-58-19-182-com-android-chrome.jpg", "https://i.ibb.co/p6sRGPqw/Screenshot-2026-07-19-09-58-23-676-com-android-chrome.jpg"], downloadUrl: "https://soravtemplates.github.io/Temp4/" },
+      { name: "Milk & Mocha Anniversary Surprise", category: "Anniversary", emoji: "🤎", desc: "A soft, cosy anniversary tribute with a heartfelt wish, a virtual hug, and a sweet forever promise.", isViral: false, previewImages: ["https://i.ibb.co/93cPv4x2/Screenshot-2026-07-19-10-01-22-860-com-android-chrome.jpg", "https://i.ibb.co/RppFdq8j/Screenshot-2026-07-19-10-01-28-521-com-android-chrome.jpg", "https://i.ibb.co/x8SshKbB/Screenshot-2026-07-19-10-01-30-606-com-android-chrome.jpg", "https://i.ibb.co/mrStzzm2/Screenshot-2026-07-19-10-01-34-067-com-android-chrome.jpg", "https://i.ibb.co/mVcB5kf0/Screenshot-2026-07-19-10-01-38-044-com-android-chrome.jpg", "https://i.ibb.co/M5GymhYM/Screenshot-2026-07-19-10-01-32-281-com-android-chrome.jpg"], downloadUrl: "https://soravtemplates.github.io/Temp5/" }
+    ];
+
+    // ============================================================
+    // # "SURPRISE" SECTION KE PAID TEMPLATES (₹100 wale) #
+    // Inme "price" field hai — isliye music dropdown YAHAN AUTOMATIC
+    // aa jaayega, kuch extra likhne ki zaroorat nahi.
+    // Standard price for every paid template: ₹100
+    // ============================================================
+    const paidTemplates = [
+      { name: "Cute Birthday Surprise (With Passcode)", category: "Birthday", emoji: "🔒", price: "₹100", desc: "A passcode-locked birthday surprise with cute cat reactions, a heartfelt wish, and a sweet 'will you be mine' finish.", isViral: true, previewImages: ["https://i.ibb.co/p66cDPGg/Screenshot-2026-07-19-09-51-06-513-com-android-chrome.jpg", "https://i.ibb.co/hppjBzz/Screenshot-2026-07-19-09-51-11-367-com-android-chrome.jpg", "https://i.ibb.co/7JpzwM4f/Screenshot-2026-07-19-09-51-14-039-com-android-chrome.jpg", "https://i.ibb.co/FLgd2vHT/Screenshot-2026-07-19-09-51-16-282-com-android-chrome.jpg", "https://i.ibb.co/Lzbv25fF/Screenshot-2026-07-19-09-51-18-130-com-android-chrome.jpg", "https://i.ibb.co/7JPJRdjJ/Screenshot-2026-07-19-09-51-19-838-com-android-chrome.jpg", "https://i.ibb.co/LKTYkB9/Screenshot-2026-07-19-09-51-21-451-com-android-chrome.jpg"], downloadUrl: "https://soravtemplates.github.io/Temp3/" }
+    ];
+
+    // ============================================================
+    // # "PREMIUM" SECTION KE TEMPLATES (₹199 wale) #
+    // Yeh templates apna custom "fields" array define karte hain
+    // (jaise age, passcode, memory) — isliye inme music dropdown
+    // manually is line se add karna padta hai:
+    //   { type: 'select', key: 'music', label: 'Choose Background Music', required: false, options: MUSIC_OPTIONS }
+    // (yeh already niche daala hua hai, bas reference ke liye)
+    // ============================================================
+    // Premium section (new)
+    const premiumCategories = ["Birthday", "Marriage", "Valentine's", "Proposal"];
+
+    const premiumTemplates = [
+      { name: "Special Surprise (Passcode Birthday)", category: "Birthday", emoji: "🔒", price: "₹199", desc: "A passcode-locked birthday surprise with an age countdown, a swipeable memories carousel, and a sealed love letter to unseal.", isViral: true, photosRequired: 4,
+        fields: [
+          { type: 'text', key: 'name', label: "Recipient's Name", placeholder: 'e.g. Rahul', required: true },
+          { type: 'number', key: 'age', label: 'Age (for the countdown)', placeholder: 'e.g. 21', required: true },
+          { type: 'password', key: 'passcode', label: 'Set a Passcode', placeholder: '4-digit code', required: true },
+          { type: 'textarea', key: 'memory', label: 'A Special Memory / Love Letter', placeholder: 'Write something special...', required: false },
+          { type: 'photos', key: 'photos', label: 'Upload Photos (4 required)', count: 4, required: true },
+          { type: 'select', key: 'music', label: 'Choose Background Music', required: false, options: MUSIC_OPTIONS }
+        ],
+        image: "https://i.ibb.co/gb20c8v2/Screenshot-2026-07-19-10-05-29-492-com-android-chrome.jpg", previewImages: ["https://i.ibb.co/m5vkgPHn/Screenshot-2026-07-19-10-05-31-461-com-android-chrome.jpg", "https://i.ibb.co/1G5LXjpw/Screenshot-2026-07-19-10-05-34-845-com-android-chrome.jpg", "https://i.ibb.co/0R2cKtXc/Screenshot-2026-07-19-10-05-37-383-com-android-chrome.jpg", "https://i.ibb.co/dJX0SXRM/Screenshot-2026-07-19-10-05-39-125-com-android-chrome.jpg", "https://i.ibb.co/bj3FFtfZ/Screenshot-2026-07-19-10-05-40-644-com-android-chrome.jpg", "https://i.ibb.co/GQMYhWjG/Screenshot-2026-07-19-10-05-43-137-com-android-chrome.jpg", "https://i.ibb.co/PzzYh895/Screenshot-2026-07-19-10-05-45-705-com-android-chrome.jpg", "https://i.ibb.co/VYrMryWb/Screenshot-2026-07-19-10-05-47-941-com-android-chrome.jpg", "https://i.ibb.co/Xx9jWSxn/Screenshot-2026-07-19-10-05-51-653-com-android-chrome.jpg"], downloadUrl: "https://soravtemplates.github.io/Birthdaypre/" },
+       
+         { name: "A Little Surprise (Lock, Quiz & Memories)", category: "Birthday", emoji: "💌", price: "₹199", desc: "A story-style locked surprise with a quiz, scratch-card reveal, balloon pop, swipeable memories, and a final love letter.", isViral: false, photosRequired: 0,
+        fields: [
+          { type: 'text', key: 'name', label: "Recipient's Name", placeholder: 'e.g. Aditi', required: true },
+          { type: 'text', key: 'from', label: 'Your Name (from)', placeholder: 'e.g. Your Bestie', required: false },
+          { type: 'password', key: 'secretCode', label: 'Set a 4-Digit Secret Code', placeholder: 'e.g. 1403', required: true },
+          { type: 'textarea', key: 'message', label: 'Your Message / Letter', placeholder: 'Write your message... (each new line = new page)', required: false },
+          { type: 'photos', key: 'introPhoto', label: 'Main Intro Photo (1 required)', count: 1, required: true },
+          { type: 'photos', key: 'scratchPhoto', label: 'Scratch-Card Surprise Photo (1 required)', count: 1, required: true },
+          { type: 'photos', key: 'memoryPhotos', label: 'Memory Photos (up to 6)', count: 6, required: true },
+          { type: 'select', key: 'music', label: 'Choose Background Music', required: false, options: MUSIC_OPTIONS }
+        ],
+        image: "https://i.ibb.co/5W3zyvcX/IMG-20260719-082242.jpg", previewImages: ["https://i.ibb.co/5W3zyvcX/IMG-20260719-082242.jpg"], downloadUrl: "https://soravtemps.github.io/Surprisepremium/" },
+       ];
+
+    // ---------- NAVIGATION ----------
+
+    function filterMenu(view) {
+      document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+      const cardsWrapper = document.getElementById('cards-section-wrapper');
+      const surpriseWrapper = document.getElementById('surprise-section-wrapper');
+      const premiumWrapper = document.getElementById('premium-section-wrapper');
+      const aboutWrapper = document.getElementById('about-section-wrapper');
+      const adminWrapper = document.getElementById('admin-section-wrapper');
+      const detailWrapper = document.getElementById('detail-section-wrapper');
+
+      cardsWrapper.style.display = 'none';
+      surpriseWrapper.style.display = 'none';
+      premiumWrapper.style.display = 'none';
+      aboutWrapper.style.display = 'none';
+      adminWrapper.style.display = 'none';
+      if (detailWrapper) detailWrapper.style.display = 'none';
+
+      lastMenuView = view;
+
+      if (view === 'cards') {
+        document.getElementById('menu-cards').classList.add('active');
+        cardsWrapper.style.display = 'block';
+        buildCategoryBar('cards-categories', cardsCategories, 'cards-grid', cardsTemplates, 'cards');
+        buildGrid('cards-grid', cardsTemplates, 'cards');
+      }
+      else if (view === 'surprise') {
+        document.getElementById('menu-surprise').classList.add('active');
+        surpriseWrapper.style.display = 'block';
+        buildCategoryBar('free-categories', categories, 'free-grid', freeTemplates, 'free');
+        buildCategoryBar('paid-categories', categories, 'paid-grid', paidTemplates, 'paid');
+        buildGrid('free-grid', freeTemplates, 'free');
+        buildGrid('paid-grid', paidTemplates, 'paid');
+      }
+      else if (view === 'premium') {
+        document.getElementById('menu-premium').classList.add('active');
+        premiumWrapper.style.display = 'block';
+        buildCategoryBar('premium-categories', premiumCategories, 'premium-grid', premiumTemplates, 'premium');
+        buildGrid('premium-grid', premiumTemplates, 'premium');
+      }
+      else if (view === 'about') {
+        document.getElementById('menu-about').classList.add('active');
+        aboutWrapper.style.display = 'block';
+      }
+      else if (view === 'admin') {
+        document.getElementById('menu-admin').classList.add('active');
+        adminWrapper.style.display = 'block';
+        if (typeof loadAdminUsers === 'function') loadAdminUsers();
+        if (typeof loadAdminOrders === 'function') loadAdminOrders();
+      }
+    }
+
+    // ---------- CATEGORY BAR ----------
+
+    function buildCategoryBar(containerId, categoryList, gridId, dataArray, kind) {
+      const bar = document.getElementById(containerId);
+      bar.innerHTML = '';
+
+      const all = document.createElement('button');
+      all.className = 'category-chip active';
+      all.textContent = 'All';
+      all.onclick = () => filterCategory(bar, all, gridId, dataArray, 'All', kind);
+      bar.appendChild(all);
+
+      categoryList.forEach(cat => {
+        const chip = document.createElement('button');
+        chip.className = 'category-chip';
+        chip.textContent = cat;
+        chip.onclick = () => filterCategory(bar, chip, gridId, dataArray, cat, kind);
+        bar.appendChild(chip);
+      });
+    }
+
+    function filterCategory(bar, activeChip, gridId, dataArray, cat, kind) {
+      bar.querySelectorAll('.category-chip').forEach(c => c.classList.remove('active'));
+      activeChip.classList.add('active');
+      const filtered = cat === 'All' ? dataArray : dataArray.filter(t => t.category === cat);
+      buildGrid(gridId, filtered, kind);
+    }
+
+    // ---------- GRID RENDERING ----------
+
+    function buildGrid(gridId, data, kind) {
+      const grid = document.getElementById(gridId);
+      grid.innerHTML = '';
+
+      if (!data || data.length === 0) {
+        grid.innerHTML = '<div class="empty-note" style="grid-column: 1 / -1;">No templates here yet — check back soon.</div>';
+        return;
+      }
+
+      data.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'template-card';
+
+        const priceLabel = (kind === 'free' || kind === 'cards') ? 'FREE' : (item.price || '');
+        const badgeClass = kind === 'free' ? 'free' : (kind === 'premium' ? 'premium' : (kind === 'cards' ? 'free' : 'paid'));
+        const badgeText = kind === 'free' ? 'FREE' : (kind === 'premium' ? 'PREMIUM' : (kind === 'cards' ? 'CARDS' : 'PAID'));
+
+        card.innerHTML = `
+          <div class="card-image-box">${item.image ? `<img src="${item.image}" alt="${item.name}">` : (item.emoji || '🎁')}</div>
+          <div class="card-info">
+            <div class="badge-row">
+              <span class="badge ${badgeClass}">${badgeText}</span>
+              <span class="badge cat">${item.category}</span>
+            </div>
+            <h3>${item.name}</h3>
+            <p>${item.desc || ''}</p>
+            <div class="card-footer">
+              <span class="price">${priceLabel}</span>
+              <button class="view-btn">View</button>
+            </div>
+          </div>
+        `;
+
+        card.querySelector('.view-btn').onclick = () => {
+          if ((kind === 'paid' || kind === 'premium') && !window.isUserLoggedIn) {
+            openLogin();
+          } else {
+            openTemplateDetail(item, kind);
+          }
+        };
+         grid.appendChild(card);
+      });
+    }
+
+    // ---------- TEMPLATE DETAIL PAGE ----------
+
+    let lastMenuView = 'cards';
+
+    function generateMockPages(item) {
+      // Preview screens for the template (thumbnail strip).
+      // Uses the template's real page flow if provided, starting with its thumbnail.
+      if (item.pages && item.pages.length) return item.pages;
+      return [item.emoji || '🎁', '🔒', '🎉', '📤'];
+    }
+
+    function openTemplateDetail(item, kind) {
+      const heroEl = document.getElementById('detailHero');
+      heroEl.innerHTML = item.image ? `<img src="${item.image}" alt="${item.name}">` : (item.emoji || '🎁');
+      document.getElementById('detailName').textContent = item.name;
+      document.getElementById('detailDesc').textContent = item.desc || '';
+
+      const isAdminFreebie = !!window.isAdminUser && (kind === 'paid' || kind === 'premium');
+      const isFreeFlow = (kind === 'free' || kind === 'cards') || isAdminFreebie;
+      const isDirectLink = (kind === 'free'); // surprise free templates only: no name/photo needed. Admin freebies still customize, just skip payment.
+
+      const badgeClass = kind === 'free' ? 'free' : (kind === 'premium' ? 'premium' : (kind === 'cards' ? 'free' : 'paid'));
+      const badgeText = kind === 'free' ? 'FREE' : (kind === 'premium' ? 'PREMIUM' : (kind === 'cards' ? 'CARDS' : 'PAID'));
+      document.getElementById('detailBadges').innerHTML = `
+        <span class="badge ${badgeClass}">${badgeText}</span>
+        <span class="badge cat">${item.category}</span>
+        ${isAdminFreebie ? '<span class="badge free">ADMIN FREE</span>' : ''}
+      `;
+
+      const priceLabel = isAdminFreebie ? 'FREE (Admin)' : (isFreeFlow ? 'FREE' : (item.price || ''));
+      document.getElementById('detailPrice').textContent = priceLabel;
+
+      const buyBtn = document.getElementById('detailBuyBtn');
+      buyBtn.textContent = isDirectLink ? 'Get Link' : (isFreeFlow ? 'Use This Template' : ('Buy Now' + (item.price ? ' — ' + item.price : '')));
+      buyBtn.onclick = () => {
+        if (isDirectLink) {
+          openDirectLink(item);
+        } else if (isFreeFlow) {
+          openCustomizeModal(item);
+        } else {
+          openPaymentModal(item);
+        }
+      };
+
+      const stripEl = document.getElementById('detailPagesStrip');
+      stripEl.innerHTML = '';
+      if (item.previewImages && item.previewImages.length) {
+        item.previewImages.forEach(src => {
+          const thumb = document.createElement('div');
+          thumb.className = 'page-thumb';
+          thumb.innerHTML = `<img src="${src}" alt="${item.name} preview">`;
+          stripEl.appendChild(thumb);
+        });
+      } else {
+        generateMockPages(item).forEach(emoji => {
+          const thumb = document.createElement('div');
+          thumb.className = 'page-thumb';
+          thumb.textContent = emoji;
+          stripEl.appendChild(thumb);
+        });
+      }
+
+      // Hide every other section, show the detail page
+      ['cards-section-wrapper', 'surprise-section-wrapper', 'premium-section-wrapper', 'about-section-wrapper', 'admin-section-wrapper'].forEach(id => {
+        document.getElementById(id).style.display = 'none';
+      });
+      document.getElementById('detail-section-wrapper').style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+
+    function closeTemplateDetail() {
+      document.getElementById('detail-section-wrapper').style.display = 'none';
+      filterMenu(lastMenuView);
+    }
+
+    // ---------- CUSTOMIZE / GENERATE LINK MODAL ----------
+
+    let currentTemplate = null;
+    let currentFields = [];
+    // Keyed by field.key -> { slotNumber: dataUrl }. Lets a template have more
+    // than one photo group if it ever needs to (e.g. "coupleGroupPhotos" and
+    // "soloPhotos" as two separate `photos` fields with different keys).
+    let uploadedPhotosByKey = {};
+
+    // Returns the field list to render for a template. If the template defines
+    // its own `fields` array, that's used as-is. Otherwise we fall back to the
+    // old fixed behaviour (name + message + N photos) so nothing breaks for
+    // templates that haven't been migrated to `fields` yet.
+    function getTemplateFields(item) {
+      if (Array.isArray(item.fields) && item.fields.length) return item.fields;
+
+      const fields = [
+        { type: 'text', key: 'name', label: "Recipient's Name", placeholder: 'e.g. Rahul', required: true },
+        { type: 'text', key: 'message', label: 'Message', placeholder: 'e.g. Happy Birthday!', required: false }
+      ];
+      if (item.photosRequired > 0) {
+        fields.push({ type: 'photos', key: 'photos', label: `Upload Photos (${item.photosRequired} required)`, count: item.photosRequired, required: true });
+      }
+      // Paid + premium templates carry a `price`; free/cards templates don't —
+      // that's the existing signal we use to decide who gets the music picker.
+      if (item.price) {
+        fields.push({ type: 'select', key: 'music', label: 'Choose Background Music', required: false, options: MUSIC_OPTIONS });
+      }
+      return fields;
+    }
+
+    // Builds the actual input elements inside #customFieldsContainer from a
+    // field-definition array. This is the one place that needs to understand
+    // each field `type` — everything else just works off currentFields.
+    function renderCustomFields(fields) {
+      const container = document.getElementById('customFieldsContainer');
+      container.innerHTML = '';
+
+      fields.forEach(field => {
+        const wrap = document.createElement('div');
+        wrap.className = 'field-group';
+
+        if (field.type === 'photos') {
+          uploadedPhotosByKey[field.key] = {};
+
+          const label = document.createElement('label');
+          label.className = 'field-label';
+          label.textContent = field.label || `Upload Photos (${field.count} required)`;
+          wrap.appendChild(label);
+
+          const grid = document.createElement('div');
+          grid.className = 'photo-grid';
+          for (let i = 1; i <= field.count; i++) {
+            uploadedPhotosByKey[field.key][i] = null;
+            const box = document.createElement('div');
+            box.className = 'upload-box small';
+            box.dataset.key = field.key;
+            box.dataset.slot = i;
+            box.innerHTML = `<span class="uploadHint">Photo ${i}</span>
+              <input type="file" class="custPhotoSlot" accept="image/*" onchange="handlePhotoSelect(event, '${field.key}', ${i})">`;
+            grid.appendChild(box);
+          }
+          wrap.appendChild(grid);
+
+        } else if (field.type === 'select') {
+          const label = document.createElement('label');
+          label.className = 'field-label';
+          label.textContent = field.label + (field.required === false ? ' (optional)' : '');
+          wrap.appendChild(label);
+
+          const select = document.createElement('select');
+          select.id = 'field_' + field.key;
+          (field.options || []).forEach(opt => {
+            const o = document.createElement('option');
+            o.value = opt.url;
+            o.textContent = opt.label;
+            select.appendChild(o);
+          });
+          wrap.appendChild(select);
+
+        } else {
+          const label = document.createElement('label');
+          label.className = 'field-label';
+          label.textContent = field.label + (field.required === false ? ' (optional)' : '');
+          wrap.appendChild(label);
+
+          let input;
+          if (field.type === 'textarea') {
+            input = document.createElement('textarea');
+            input.rows = 3;
+          } else {
+            input = document.createElement('input');
+            input.type = (field.type === 'password' || field.type === 'number') ? field.type : 'text';
+          }
+          input.id = 'field_' + field.key;
+          if (field.placeholder) input.placeholder = field.placeholder;
+          wrap.appendChild(input);
+        }
+
+        container.appendChild(wrap);
+      });
+    }
+
+    function openCustomizeModal(item) {
+      currentTemplate = item;
+      currentFields = getTemplateFields(item);
+      uploadedPhotosByKey = {};
+
+      document.getElementById('customizeTitle').textContent = 'Customize: ' + item.name;
+      document.getElementById('generateBtn').style.display = '';
+      document.getElementById('statusText').textContent = '';
+      document.getElementById('linkResult').classList.remove('active');
+
+      renderCustomFields(currentFields);
+
+      document.getElementById('customizeModal').classList.add('active');
+    }
+
+    // Direct link flow for surprise "free" templates — no fields needed, link is ready instantly.
+    function openDirectLink(item) {
+      currentTemplate = item;
+      currentFields = [];
+      uploadedPhotosByKey = {};
+
+      document.getElementById('customizeTitle').textContent = item.name;
+      document.getElementById('customFieldsContainer').innerHTML = '';
+      document.getElementById('generateBtn').style.display = 'none';
+      document.getElementById('statusText').textContent = '';
+
+      document.getElementById('finalLinkInput').value = item.downloadUrl;
+      document.getElementById('openLinkBtn').href = item.downloadUrl;
+      document.getElementById('linkResult').classList.add('active');
+
+      document.getElementById('customizeModal').classList.add('active');
+    }
+
+    function closeCustomizeModal() {
+      document.getElementById('customizeModal').classList.remove('active');
+      currentTemplate = null;
+      currentFields = [];
+    }
+
+    // ---------- UPI PAYMENT MODAL ----------
+
+    const UPI_ID = "9784602916@ybl";
+    const UPI_PAYEE_NAME = "Sorav Temps";
+    let currentPaymentTemplate = null;
+
+    function openPaymentModal(item) {
+      currentPaymentTemplate = item;
+      document.getElementById('paymentTemplateName').textContent = item.name;
+      document.getElementById('paymentAmountText').textContent = item.price || '';
+      document.getElementById('payBuyerName').value = '';
+      document.getElementById('payBuyerContact').value = '';
+      document.getElementById('payUtr').value = '';
+      document.getElementById('paymentStatusText').textContent = '';
+      document.getElementById('paymentModal').classList.add('active');
+    }
+
+    function closePaymentModal() {
+      document.getElementById('paymentModal').classList.remove('active');
+    }
+
+    function getPaymentAmount() {
+      if (!currentPaymentTemplate || !currentPaymentTemplate.price) return '';
+      return currentPaymentTemplate.price.replace(/[^0-9.]/g, '');
+    }
+
+    function payViaUPI(app) {
+      const amount = getPaymentAmount();
+      const note = encodeURIComponent('Sorav Temps - ' + (currentPaymentTemplate ? currentPaymentTemplate.name : 'Template'));
+      const payeeName = encodeURIComponent(UPI_PAYEE_NAME);
+      const params = `pa=${UPI_ID}&pn=${payeeName}&am=${amount}&cu=INR&tn=${note}`;
+
+      let url;
+      if (app === 'gpay') url = `tez://upi/pay?${params}`;
+      else if (app === 'phonepe') url = `phonepe://pay?${params}`;
+      else if (app === 'paytm') url = `paytmmp://pay?${params}`;
+      else url = `upi://pay?${params}`;
+
+      window.location.href = url;
+
+      // If the chosen app isn't installed, this generic UPI link opens the phone's
+      // "choose an app" screen as a fallback (works on most Android phones).
+      setTimeout(() => {
+        window.location.href = `upi://pay?${params}`;
+      }, 1200);
+    }
+
+    function submitPayment() {
+      const name = document.getElementById('payBuyerName').value.trim();
+      const contact = document.getElementById('payBuyerContact').value.trim();
+      const utr = document.getElementById('payUtr').value.trim();
+      const statusText = document.getElementById('paymentStatusText');
+
+      if (!name || !contact || !utr) {
+        statusText.textContent = 'Naam, contact aur transaction ID — teeno bharo.';
+        return;
+      }
+
+      statusText.textContent = 'Saving order...';
+
+      const orderData = {
+        templateName: currentPaymentTemplate ? currentPaymentTemplate.name : '',
+        price: currentPaymentTemplate ? currentPaymentTemplate.price : '',
+        buyerName: name,
+        buyerContact: contact,
+        utr: utr
+      };
+
+      const proceedToCustomize = () => {
+        closePaymentModal();
+        openCustomizeModal(currentPaymentTemplate);
+      };
+
+      if (typeof saveOrderToFirestore === 'function') {
+        saveOrderToFirestore(orderData)
+          .then(proceedToCustomize)
+          .catch((err) => {
+            console.error(err);
+            statusText.textContent = 'Order save nahi ho paya, par aage badh sakte ho.';
+            setTimeout(proceedToCustomize, 1200);
+          });
+      } else {
+        proceedToCustomize();
+      }
+    }
+
+    // ============================================================
+    // # PHOTO UPLOAD — CLOUDINARY #
+    // Photos ab Firestore doc ke andar base64 ki jagah Cloudinary pe
+    // upload hoti hain (HD quality, koi blur nahi) aur sirf ek chhota
+    // URL Firestore me save hota hai. Agar kabhi Cloudinary account
+    // badalna ho, bas neeche ye 2 values update kar dena.
+    // ============================================================
+    const CLOUDINARY_CLOUD_NAME = 'y4nwlkqt';
+    const CLOUDINARY_UPLOAD_PRESET = 'sorav_temps_cards';
+
+    function handlePhotoSelect(event, key, slot) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const box = document.querySelector(`.upload-box[data-key="${key}"][data-slot="${slot}"]`);
+      const statusText = document.getElementById('statusText');
+
+      // Turant local preview dikhao (original quality, bina wait kiye)
+      // taaki user ko lage instant hua — asli upload background me chalta hai.
+      const localPreviewUrl = URL.createObjectURL(file);
+      box.classList.add('has-image');
+      box.innerHTML = `<img src="${localPreviewUrl}" alt="Photo ${slot}" style="opacity:0.6;">
+        <input type="file" class="custPhotoSlot" accept="image/*" onchange="handlePhotoSelect(event, '${key}', ${slot})">`;
+
+      (async () => {
+        try {
+          statusText.textContent = 'Uploading photo...';
+
+          const formData = new FormData();
+          formData.append('file', file); // original HD file — Cloudinary khud optimize karta hai
+          formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+
+          const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`, {
+            method: 'POST',
+            body: formData
+          });
+          if (!res.ok) throw new Error('Cloudinary upload failed');
+          const data = await res.json();
+
+          // q_auto,f_auto = display ke waqt Cloudinary khud best quality/format
+          // choose karta hai — HD dikhega, bina blur ke.
+          const finalUrl = data.secure_url.replace('/upload/', '/upload/q_auto,f_auto/');
+
+          if (!uploadedPhotosByKey[key]) uploadedPhotosByKey[key] = {};
+          uploadedPhotosByKey[key][slot] = finalUrl;
+
+          const img = box.querySelector('img');
+          if (img) { img.src = finalUrl; img.style.opacity = '1'; }
+          statusText.textContent = '';
+          URL.revokeObjectURL(localPreviewUrl);
+        } catch (err) {
+          console.error(err);
+          statusText.textContent = 'Photo upload nahi ho payi, dobara try karo.';
+          box.classList.remove('has-image');
+        }
+      })();
+    }
+
+    async function generateTemplateLink() {
+      const statusText = document.getElementById('statusText');
+
+      // 1) Collect + validate every non-photo field (text/number/password/textarea)
+      const values = {};
+      for (const field of currentFields) {
+        if (field.type === 'photos') continue;
+        const el = document.getElementById('field_' + field.key);
+        const val = el ? el.value.trim() : '';
+        if (field.required !== false && !val) {
+          statusText.textContent = `Please fill "${field.label}".`;
+          return;
+        }
+        if (val) values[field.key] = val;
+      }
+
+      // 2) Validate every photo group has its required number of uploads
+      const photoGroups = {};
+      for (const field of currentFields) {
+        if (field.type !== 'photos') continue;
+        const slots = uploadedPhotosByKey[field.key] || {};
+        const uploadedCount = Object.values(slots).filter(Boolean).length;
+        if (field.required !== false && uploadedCount < field.count) {
+          statusText.textContent = `Please upload all ${field.count} photo(s) for "${field.label}".`;
+          return;
+        }
+        photoGroups[field.key] = slots;
+      }
+
+      const btn = document.getElementById('generateBtn');
+      btn.disabled = true;
+
+      try {
+        let link = currentTemplate ? currentTemplate.downloadUrl : '#';
+
+        if (currentFields.length > 0 && typeof window.saveCardData === 'function') {
+          statusText.innerHTML = '<span class="spinner"></span> Saving your card...';
+          const cardId = await window.saveCardData({
+            templateName: currentTemplate.name,
+            values,
+            photoGroups
+          });
+          link = `${currentTemplate.downloadUrl}?id=${cardId}`;
+        } else {
+          await new Promise(res => setTimeout(res, 500));
+        }
+
+        document.getElementById('finalLinkInput').value = link;
+        document.getElementById('openLinkBtn').href = link;
+        document.getElementById('linkResult').classList.add('active');
+        statusText.textContent = 'Your link is ready!';
+      } catch (err) {
+        console.error(err);
+        statusText.textContent = 'Link generate nahi ho paya, dobara try karo.';
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    function copyGeneratedLink() {
+      const input = document.getElementById('finalLinkInput');
+      input.select();
+      input.setSelectionRange(0, 99999);
+      navigator.clipboard.writeText(input.value).then(() => {
+        document.getElementById('statusText').textContent = 'Link copied!';
+      }).catch(() => {
+        document.execCommand('copy');
+      });
+    }
+
+    // ---------- LOGIN MODAL ----------
+
+    function openLogin() {
+      document.getElementById('loginModal').classList.add('active');
+    }
+    function closeLogin() {
+      document.getElementById('loginModal').classList.remove('active');
+    }
+
+    // ---------- SETTINGS MODAL ----------
+
+    function openSettings() {
+      document.getElementById('settingsModal').classList.add('active');
+    }
+    function closeSettings() {
+      document.getElementById('settingsModal').classList.remove('active');
+    }
+function confirmLogout() {
+      if (confirm('Kya aap sach mein logout karna chahte hain?')) {
+        closeSettings();
+        signOutUser();
+      }
+}
+   
+    // ---------- INIT ----------
+
+    filterMenu('cards');
+  </script>
+
+  <!-- Firebase: real Google login + user data -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+    import {
+      getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult,
+      onAuthStateChanged, signOut, setPersistence, browserLocalPersistence
+    } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
+    import {
+      getFirestore, doc, setDoc, addDoc, collection, getDocs, query, orderBy, serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+
+    // ============================================================
+    // # YEH SITE KA "BACKEND" HAI (Firebase) — ISKO MAT CHHEDO #
+    // Yeh wahi settings hain jo login/data-saving ke liye zaroori hain.
+    // Sirf ek cheez badal sakte ho: neeche ADMIN_EMAIL mein apna email
+    // daalo — usse login karne pe tumhe "Admin" wala menu (users/orders
+    // dekhne wala) dikhega.
+    // ============================================================
+    const firebaseConfig = {
+      apiKey: "AIzaSyCRAO7UDddkFKvKbGGBBtkruD22NZnNozU",
+      authDomain: "soravtemps-d5419.firebaseapp.com",
+      projectId: "soravtemps-d5419",
+      storageBucket: "soravtemps-d5419.firebasestorage.app",
+      messagingSenderId: "889624784593",
+      appId: "1:889624784593:web:3a325467962639facedff0"
+    };
+
+    // # YAHAN APNA EMAIL DAALO taaki login karne pe "Admin" panel dikhe #
+    const ADMIN_EMAIL = "sorav978460@gmail.com";
+
+    const firebaseApp = initializeApp(firebaseConfig);
+    const auth = getAuth(firebaseApp);
+    const db = getFirestore(firebaseApp);
+    const provider = new GoogleAuthProvider();
+
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    // WhatsApp/Instagram/Facebook/etc in-app browsers block Google login entirely —
+    // detect them so we can show a clear message instead of silently failing.
+    const isInAppBrowser = /FBAN|FBAV|Instagram|Line\/|WhatsApp|MicroMessenger|TikTok|Snapchat/i.test(navigator.userAgent);
+
+    setPersistence(auth, browserLocalPersistence).catch((e) => console.warn('Persistence set failed:', e));
+
+    async function saveUserData(user) {
+      await setDoc(doc(db, "users", user.uid), {
+        name: user.displayName || '',
+        email: user.email || '',
+        photoURL: user.photoURL || '',
+        lastLogin: serverTimestamp()
+      }, { merge: true });
+    }
+
+    window.signInWithGoogle = async function () {
+      const statusText = document.getElementById('loginStatusText');
+
+      if (isInAppBrowser) {
+        statusText.innerHTML = 'Ye page kisi app (WhatsApp / Instagram / Facebook) ke andar wale browser mein khula hai, jaha Google login kaam nahi karta.<br><br>Upar-right corner ke "•••" menu se <b>"Open in Chrome"</b> ya <b>"Open in Browser"</b> chuno, phir dobara try karo.';
+        return;
+      }
+
+      statusText.textContent = 'Signing in...';
+      try {
+        // Try popup first on every device — it avoids the redirect round-trip
+        // entirely, which is where things were silently failing.
+        const result = await signInWithPopup(auth, provider);
+        await saveUserData(result.user);
+        statusText.textContent = '';
+      } catch (err) {
+        const code = err && err.code;
+        if (code === 'auth/popup-closed-by-user' || code === 'auth/cancelled-popup-request') {
+          statusText.textContent = '';
+          return;
+        }
+        // Popup blocked/unsupported — fall back to redirect flow.
+        try {
+          sessionStorage.setItem('googleLoginPending', '1');
+          await signInWithRedirect(auth, provider);
+        } catch (err2) {
+          console.error(err2);
+          statusText.textContent = 'Error: ' + (err2.code || err2.message || 'unknown');
+        }
+      }
+    };
+
+    // Handle result after redirect-based login (mobile fallback)
+    getRedirectResult(auth).then(async (result) => {
+      sessionStorage.removeItem('googleLoginPending');
+      if (result && result.user) {
+        await saveUserData(result.user);
+        openLogin(); // ensure modal is visible so the "logged in" state is obvious, then it auto-closes via onAuthStateChanged
+      }
+    }).catch((err) => {
+      sessionStorage.removeItem('googleLoginPending');
+      console.error('Redirect login error:', err);
+      const statusText = document.getElementById('loginStatusText');
+      if (statusText) statusText.textContent = 'Error: ' + (err.code || err.message || 'unknown');
+    });
+
+    // Safety net: if we sent the user off to sign in via redirect but the page
+    // came back with no error AND no user, the browser silently dropped the
+    // session (common with strict privacy modes) — tell the user clearly
+    // instead of leaving them guessing.
+    setTimeout(() => {
+      if (sessionStorage.getItem('googleLoginPending') && !auth.currentUser) {
+        sessionStorage.removeItem('googleLoginPending');
+        const statusText = document.getElementById('loginStatusText');
+        if (statusText) {
+          statusText.innerHTML = 'Login complete nahi ho paya (browser ne session block kar diya).<br>Chrome ya Safari mein site seedhe kholkar dobara try karo.';
+        }
+      }
+    }, 3000);
+
+    window.signOutUser = function () {
+      signOut(auth);
+    };
+
+    onAuthStateChanged(auth, (user) => {
+      const loginBtn = document.getElementById('navLoginBtn');
+      const userChip = document.getElementById('navUserChip');
+      const adminMenu = document.getElementById('menu-admin');
+
+      if (user) {
+        window.isUserLoggedIn = true;
+       loginBtn.style.display = 'none';
+        userChip.style.display = 'flex';
+        document.getElementById('navUserPhoto').src = user.photoURL || '';
+        document.getElementById('navUserName').textContent = (user.displayName || 'User').split(' ')[0];
+        if (typeof closeLogin === 'function') closeLogin();
+
+        if (user.email === ADMIN_EMAIL) {
+          adminMenu.style.display = 'inline-block';
+          window.isAdminUser = true;
+        } else {
+          adminMenu.style.display = 'none';
+          window.isAdminUser = false;
+        }
+      } else {
+        window.isUserLoggedIn = false;
+       loginBtn.style.display = 'inline-block';
+        userChip.style.display = 'none';
+        adminMenu.style.display = 'none';
+        window.isAdminUser = false;
+      }
+    });
+
+    window.loadAdminUsers = async function () {
+      const listEl = document.getElementById('adminUsersList');
+      if (!listEl) return;
+      listEl.innerHTML = '<div class="empty-note">Loading...</div>';
+      try {
+        const q = query(collection(db, "users"), orderBy("lastLogin", "desc"));
+        const snap = await getDocs(q);
+        if (snap.empty) {
+          listEl.innerHTML = '<div class="empty-note">Abhi tak koi user login nahi hua.</div>';
+          return;
+        }
+        listEl.innerHTML = '';
+        snap.forEach((docSnap) => {
+          const d = docSnap.data();
+          const row = document.createElement('div');
+          row.className = 'settings-list-item';
+          row.style.textAlign = 'left';
+          const time = d.lastLogin && d.lastLogin.toDate ? d.lastLogin.toDate().toLocaleString() : '';
+          row.innerHTML = `
+            <span style="display:flex; align-items:center; gap:10px;">
+              <img src="${d.photoURL || ''}" alt="" style="width:32px; height:32px; border-radius:50%; object-fit:cover;">
+              <span>
+                <div style="font-weight:700;">${d.name || 'Unknown'}</div>
+                <div style="font-weight:400; color:var(--text-muted); font-size:11px;">${d.email || ''}</div>
+                <div style="font-weight:400; color:var(--text-muted); font-size:10px;">${time}</div>
+              </span>
+            </span>`;
+          listEl.appendChild(row);
+        });
+      } catch (err) {
+        console.error(err);
+        listEl.innerHTML = '<div class="empty-note">Data load nahi ho paya. Firestore rules check karo.</div>';
+      }
+    };
+    // Saves whatever fields a template's `fields` array collected — text values
+    // (name, message, age, passcode, memory, ...) plus any photo groups —
+    // directly inside one Firestore document. Photos themselves live on
+    // Cloudinary now (see handlePhotoSelect above); only their short URLs
+    // land here, so the old base64-size limit isn't needed anymore. Returns
+    // the card's document ID, which gets appended to the template's URL as
+    // ?id=... so the template page can fetch this doc and read back e.g.
+    // docSnap.data().age or docSnap.data().passcode by the same `key` used
+    // in that template's fields.
+    //
+    // Backward compatible: a `photos` field still gets stored as `photoUrls`
+    // (an array), and `values.name` / `values.message` land as top-level `name`
+    // / `message` — exactly like every existing template page already expects.
+    window.saveCardData = async function ({ templateName, values, photoGroups }) {
+      const docData = {
+        templateName: templateName || '',
+        createdAt: serverTimestamp()
+      };
+
+      Object.entries(values || {}).forEach(([key, val]) => {
+        docData[key] = val;
+      });
+
+      Object.entries(photoGroups || {}).forEach(([key, slots]) => {
+        const slotNums = Object.keys(slots || {}).sort((a, b) => Number(a) - Number(b));
+        const urls = slotNums.map(slot => slots[slot]).filter(Boolean);
+        docData[key === 'photos' ? 'photoUrls' : key] = urls;
+      });
+
+      const cardRef = await addDoc(collection(db, "cards"), docData);
+      return cardRef.id;
+    };
+
+    window.saveOrderToFirestore = async function (orderData) {
+      const user = auth.currentUser;
+      await addDoc(collection(db, "orders"), {
+        templateName: orderData.templateName || '',
+        price: orderData.price || '',
+        buyerName: orderData.buyerName || '',
+        buyerContact: orderData.buyerContact || '',
+        utr: orderData.utr || '',
+        buyerUid: user ? user.uid : null,
+        buyerEmail: user ? user.email : null,
+        createdAt: serverTimestamp()
+      });
+    };
+
+    window.loadAdminOrders = async function () {
+      const listEl = document.getElementById('adminOrdersList');
+      if (!listEl) return;
+      listEl.innerHTML = '<div class="empty-note">Loading...</div>';
+      try {
+        const q = query(collection(db, "orders"), orderBy("createdAt", "desc"));
+        const snap = await getDocs(q);
+        if (snap.empty) {
+          listEl.innerHTML = '<div class="empty-note">Abhi tak koi order nahi aaya.</div>';
+          return;
+        }
+        listEl.innerHTML = '';
+        snap.forEach((docSnap) => {
+          const d = docSnap.data();
+          const row = document.createElement('div');
+          row.className = 'settings-list-item';
+          row.style.textAlign = 'left';
+          row.style.flexDirection = 'column';
+          row.style.alignItems = 'flex-start';
+          row.style.gap = '4px';
+          const time = d.createdAt && d.createdAt.toDate ? d.createdAt.toDate().toLocaleString() : '';
+          row.innerHTML = `
+            <div style="display:flex; justify-content:space-between; width:100%;">
+              <span style="font-weight:700;">${d.templateName || 'Template'}</span>
+              <span style="color:var(--accent-pink); font-weight:800;">${d.price || ''}</span>
+            </div>
+            <div style="font-size:11px; color:var(--text-muted);">Buyer: ${d.buyerName || ''} (${d.buyerContact || ''})</div>
+            <div style="font-size:11px; color:var(--text-muted);">UTR: ${d.utr || ''}</div>
+            <div style="font-size:10px; color:var(--text-muted);">${time}</div>`;
+          listEl.appendChild(row);
+        });
+      } catch (err) {
+        console.error(err);
+        listEl.innerHTML = '<div class="empty-note">Orders load nahi hue. Firestore rules check karo.</div>';
+      }
+    };
+  </script>
+</body>
+</html>
