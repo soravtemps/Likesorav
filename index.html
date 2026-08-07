@@ -2948,7 +2948,17 @@ var qrcode = function() {
           { type: 'select', key: 'music', label: 'Choose Background Music', required: false, options: MUSIC_OPTIONS }
         ],
         image: "https://files.catbox.moe/k76y8a.jpg", previewImages: ["https://files.catbox.moe/eet6w2.jpg","https://files.catbox.moe/qtdrio.jpg","https://files.catbox.moe/bzwhlu.jpg","https://files.catbox.moe/4whmu3.jpg","https://files.catbox.moe/yd2cfc.jpg","https://files.catbox.moe/kkac8y.jpg","https://files.catbox.moe/xtabte.jpg","https://files.catbox.moe/0jnjn5.jpg","https://files.catbox.moe/cl6z6j.jpg","https://files.catbox.moe/llu28w.jpg","https://files.catbox.moe/017e2p.jpg","https://files.catbox.moe/6ikv8g.jpg","https://files.catbox.moe/bqw2x5.jpg","https://files.catbox.moe/ndjeby.jpg","https://files.catbox.moe/ohjamo.jpg","https://files.catbox.moe/hhduv3.jpg","https://files.catbox.moe/uvpa08.jpg","https://files.catbox.moe/zogdwy.jpg","https://files.catbox.moe/4owsa2.jpg","https://files.catbox.moe/hmqdg0.jpg","https://files.catbox.moe/fxc8oi.jpg","https://files.catbox.moe/000c56.jpg","https://files.catbox.moe/5rf401.jpg","https://files.catbox.moe/ffwhri.jpg"], downloadUrl: "https://soravtemps.github.io/Surprisepremium/" },
-       ];
+         { name: "A little surprise for my love", category : " birthday ", price:" ₹50" , desc:"just a normal surprise ", isviral:false, 
+        fields: [
+  { type: 'text', key: 'name', label: "Recipient's Name", placeholder: 'e.g. Anshika', required: true },
+  { type: 'text', key: 'from', label: 'Your Name (from)', placeholder: 'e.g. Krish', required: false },
+  { type: 'textarea', key: 'letter', label: 'Short Letter (first reveal)', placeholder: 'Write something...', required: false },
+  { type: 'textarea', key: 'finalNote', label: 'Final Love Note', placeholder: 'Write your ending message...', required: false },
+  { type: 'photos', key: 'photos', label: 'Upload Memory Photo (1 required)', count: 1, required: true },
+  { type: 'select', key: 'music', label: 'Choose Background Music', required: false, options: MUSIC_OPTIONS }
+];  
+      
+      
 
     // ============================================================
     // # "ALL" SECTION KA DATA #
