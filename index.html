@@ -708,7 +708,10 @@
   .detail-footer-bar {
     position: sticky;
     bottom: 0;
-    background: rgba(33, 6, 53, 0.85);
+    z-index: 50; /* stay above phone-mockup / live-badge so nothing from
+                    the live preview shows through the buy bar */
+    background: rgb(33, 6, 53);
+    background: linear-gradient(rgba(33,6,53,0.98), rgba(33,6,53,0.98));
     backdrop-filter: blur(10px);
     padding: 14px 0 6px;
     display: flex;
@@ -769,6 +772,8 @@
 
   .phone-mockup {
     position: relative;
+    z-index: 1; /* contains its own children's z-index (notch, LIVE badge)
+                   so they can't leak above the sticky footer bar below */
     width: 210px;
     height: 430px;
     background: #050208;
@@ -799,11 +804,21 @@
     background: var(--bg-main);
   }
 
+  /* The live template is a real mobile page (designed for ~375px wide
+     phones). Rendering it at the mockup's tiny 192px screen width made
+     it look "zoomed in" / cropped. Instead we render it at its real
+     mobile size (375x812) and scale the whole thing down to fit the
+     mockup screen, so the FULL page is visible, just shrunk. */
   .phone-iframe {
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 375px;
+    height: 812px;
     border: 0;
     display: block;
+    transform: scale(0.512);
+    transform-origin: top left;
   }
 
   .live-badge {
