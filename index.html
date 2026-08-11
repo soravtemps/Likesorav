@@ -809,6 +809,28 @@
      it look "zoomed in" / cropped. Instead we render it at its real
      mobile size (375x812) and scale the whole thing down to fit the
      mockup screen, so the FULL page is visible, just shrunk. */
+  .preview-loading-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,.52);
+    transition: opacity .2s ease, visibility .2s ease;
+  }
+  .preview-loading-overlay.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+  .preview-spinner {
+    width: 48px;
+    height: 48px;
+    border: 4px solid rgba(255,255,255,.25);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: previewSpin .75s linear infinite;
+    box-shadow: 0 0 12px rgba(255,255,255,.18);
+  }
+  @keyframes previewSpin { to { transform: rotate(360deg); } }
+
   .phone-iframe {
     position: absolute;
     top: 0;
@@ -860,6 +882,103 @@
     padding: 7px 18px;
     border-radius: 20px;
   }
+
+  /* ============================================================
+     SIMPLE HEART LOADER
+     No logo card / no separate mini-page. One lightweight loader is
+     reused everywhere a real preparation step is happening.
+  ============================================================ */
+  .site-prep-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,.92);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .22s ease, visibility .22s ease;
+  }
+  .site-prep-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+  .prep-heart-loader {
+    width: 76px;
+    height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .prep-heart-loader svg {
+    width: 68px;
+    height: 68px;
+    overflow: visible;
+    filter: drop-shadow(0 0 6px rgba(255,255,255,1)) drop-shadow(0 0 14px rgba(255,255,255,.95)) drop-shadow(0 0 28px rgba(255,255,255,.55));
+  }
+  .prep-heart-loader path {
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 3.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 210;
+    stroke-dashoffset: 210;
+    animation: prepHeartDraw 1.65s ease-in-out infinite;
+  }
+  @keyframes prepHeartDraw {
+    0% { stroke-dashoffset: 210; opacity: .72; transform: scale(.88); }
+    45% { opacity: 1; }
+    70% { stroke-dashoffset: 0; transform: scale(1.03); }
+    100% { stroke-dashoffset: -210; opacity: .72; transform: scale(.88); }
+  }
+  .prep-loader-message {
+    position: absolute;
+    top: calc(50% + 52px);
+    width: 100%;
+    text-align: center;
+    font-size: 11px;
+    color: rgba(255,255,255,.9);
+    text-shadow: 0 0 8px rgba(255,255,255,.55);
+    pointer-events: none;
+  }
+
+  /* Back-button confirmation while a real loading/preparation task is active. */
+  .prep-back-dialog {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 22px;
+    background: rgba(0,0,0,.48);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+  .prep-back-dialog.active { display: flex; }
+  .prep-back-card {
+    width: min(310px, 100%);
+    padding: 22px 20px 18px;
+    border-radius: 20px;
+    background: #fff;
+    color: #171717;
+    box-shadow: 0 18px 55px rgba(0,0,0,.28);
+    text-align: center;
+  }
+  .prep-back-card h3 { margin: 0 0 7px; font-size: 18px; }
+  .prep-back-card p { margin: 0 0 17px; font-size: 12px; color: #666; line-height: 1.45; }
+  .prep-back-actions { display: flex; gap: 9px; }
+  .prep-back-actions button {
+    flex: 1; border: 0; border-radius: 12px; padding: 11px 10px;
+    font-weight: 700; cursor: pointer; font-size: 13px;
+  }
+  .prep-continue-btn { background: #f0f0f0; color: #222; }
+  .prep-stop-btn { background: #e52c68; color: #fff; }
+
+  /* Small inline preparation state used while an upload/generation is running. */
+  .prep-busy { pointer-events:none; }
+  .prep-busy .generate-btn, .prep-busy .modal-box button { opacity:.55; }
 
   /* Modals */
   .modal-overlay {
@@ -933,6 +1052,33 @@
   .upload-box.has-image { border-color: var(--accent-pink); padding: 6px; }
   .upload-box img { max-width: 100%; max-height: 120px; border-radius: 8px; display: block; margin: 0 auto; }
   .upload-box input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+  .multi-photo-picker {
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    text-align: center;
+    cursor: pointer;
+  }
+  .multi-photo-icon {
+    width: 58px; height: 58px; border-radius: 50%;
+    display: grid; place-items: center;
+    font-size: 34px; line-height: 1;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.12);
+  }
+  .multi-photo-count { font-size: 12px; opacity: .7; }
+  .multi-photo-preview-grid { margin-top: 12px; }
+  .multi-preview-item { position: relative; overflow: hidden; }
+  .multi-preview-number {
+    position: absolute; right: 7px; top: 7px;
+    min-width: 24px; height: 24px; padding: 0 6px;
+    display: grid; place-items: center; border-radius: 999px;
+    background: rgba(0,0,0,.65); color: #fff; font-size: 11px;
+  }
+
   .photo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
   .upload-box.small { padding: 8px; min-height: 70px; display: flex; align-items: center; justify-content: center; }
   .upload-box.small.has-image { padding: 4px; }
@@ -1043,13 +1189,36 @@
 </head>
 <body>
 
+  <!-- SIMPLE HEART LOADER — used for initial image preparation, preview, uploads and link generation -->
+  <div id="sitePrepLoader" class="site-prep-loader" aria-live="polite" aria-busy="true">
+    <div class="prep-heart-loader" aria-hidden="true">
+      <svg viewBox="0 0 100 100">
+        <path d="M50 82 C45 76 18 59 18 38 C18 24 29 16 40 16 C47 16 52 20 50 27 C48 20 53 16 60 16 C71 16 82 24 82 38 C82 59 55 76 50 82 Z"/>
+      </svg>
+    </div>
+    <div id="prepLoaderMessage" class="prep-loader-message" aria-live="polite"></div>
+  </div>
+
+  <!-- BACK BUTTON DURING LOADING -->
+  <div id="prepBackDialog" class="prep-back-dialog" role="dialog" aria-modal="true" aria-labelledby="prepBackTitle">
+    <div class="prep-back-card">
+      <h3 id="prepBackTitle">Loading is still in progress</h3>
+      <p>Do you want to stop the current loading and go back?</p>
+      <div class="prep-back-actions">
+        <button type="button" class="prep-continue-btn" onclick="continuePrepLoading()">Continue</button>
+        <button type="button" class="prep-stop-btn" onclick="stopPrepLoadingAndGoBack()">Stop loading</button>
+      </div>
+    </div>
+  </div>
+
+
   <!-- FIXED ROW-BASED ULTRA SLIM NAVBAR -->
   <nav class="navbar">
     <div class="nav-links">
       <a href="javascript:void(0)" id="menu-all" class="active" onclick="filterMenu('all')">All</a>
-      <a href="javascript:void(0)" id="menu-cards" onclick="filterMenu('cards')">Cards</a>
-      <a href="javascript:void(0)" id="menu-surprise" onclick="filterMenu('surprise')">Surprise</a>
       <a href="javascript:void(0)" id="menu-premium" onclick="filterMenu('premium')">Premium</a>
+      <a href="javascript:void(0)" id="menu-surprise" onclick="filterMenu('surprise')">Surprise</a>
+      <a href="javascript:void(0)" id="menu-cards" onclick="filterMenu('cards')">Cards</a>
       <a href="javascript:void(0)" id="menu-about" onclick="filterMenu('about')">About Us</a>
       <a href="javascript:void(0)" id="menu-admin" onclick="filterMenu('admin')" style="display:none;">Admin</a>
     </div>
@@ -1086,12 +1255,12 @@
       <div class="templates-grid" id="all-grid"></div>
     </div>
 
-    <!-- CARDS SECTION -->
-    <div id="cards-section-wrapper">
-      <h2 class="section-title" id="cards-title">Cards</h2>
-      <p class="section-sub">Choose a moment, pick a design, and make it yours in minutes.</p>
-      <div class="category-bar" id="cards-categories"></div>
-      <div class="templates-grid" id="cards-grid"></div>
+    <!-- PREMIUM SECTION -->
+    <div id="premium-section-wrapper" style="display:none;">
+      <h2 class="section-title" id="premium-title">Premium</h2>
+      <p class="section-sub">Our most exclusive, high-effort templates — extra animation, extra detail.</p>
+      <div class="category-bar" id="premium-categories"></div>
+      <div class="templates-grid" id="premium-grid"></div>
     </div>
 
     <!-- SURPRISE SECTION -->
@@ -1107,12 +1276,12 @@
       <div class="templates-grid" id="paid-grid"></div>
     </div>
 
-    <!-- PREMIUM SECTION -->
-    <div id="premium-section-wrapper" style="display:none;">
-      <h2 class="section-title" id="premium-title">Premium</h2>
-      <p class="section-sub">Our most exclusive, high-effort templates — extra animation, extra detail.</p>
-      <div class="category-bar" id="premium-categories"></div>
-      <div class="templates-grid" id="premium-grid"></div>
+    <!-- CARDS SECTION -->
+    <div id="cards-section-wrapper">
+      <h2 class="section-title" id="cards-title">Cards</h2>
+      <p class="section-sub">Choose a moment, pick a design, and make it yours in minutes.</p>
+      <div class="category-bar" id="cards-categories"></div>
+      <div class="templates-grid" id="cards-grid"></div>
     </div>
 
     <!-- ABOUT SECTION CONTAINER -->
@@ -1331,7 +1500,10 @@
           <div class="phone-notch"></div>
           <div class="phone-screen">
             <span class="live-badge">LIVE</span>
-            <iframe id="livePreviewFrame" class="phone-iframe" src="" loading="lazy" title="Live template preview"></iframe>
+            <iframe id="livePreviewFrame" class="phone-iframe" src="" loading="eager" title="Live template preview"></iframe>
+            <div id="livePreviewLoading" class="preview-loading-overlay hidden" aria-hidden="true">
+              <div class="preview-spinner" aria-label="Loading preview"></div>
+            </div>
           </div>
         </div>
         <a id="livePreviewFullscreen" class="fullscreen-link" href="#" target="_blank" rel="noopener noreferrer">Open full preview ↗</a>
@@ -3102,12 +3274,17 @@ var qrcode = function() {
     // karo (cardsTemplates/freeTemplates/paidTemplates/premiumTemplates),
     // yeh apne aap "All" section mein bhi aa jaayega.
     // ============================================================
+    // Order here = order shown in "All": Premium first, then Surprise
+    // (Paid, then Free), then Cards last. Add a template to ANY of the
+    // 4 arrays above (cardsTemplates/freeTemplates/paidTemplates/
+    // premiumTemplates) and it lands in "All" automatically, in this
+    // exact sequence — no manual re-adding needed.
     function getAllTemplatesCombined() {
       return [
-        ...cardsTemplates.map(t => ({ item: t, kind: 'cards' })),
-        ...freeTemplates.map(t => ({ item: t, kind: 'free' })),
+        ...premiumTemplates.map(t => ({ item: t, kind: 'premium' })),
         ...paidTemplates.map(t => ({ item: t, kind: 'paid' })),
-        ...premiumTemplates.map(t => ({ item: t, kind: 'premium' }))
+        ...freeTemplates.map(t => ({ item: t, kind: 'free' })),
+        ...cardsTemplates.map(t => ({ item: t, kind: 'cards' }))
       ];
     }
 
@@ -3246,7 +3423,20 @@ var qrcode = function() {
       }
     }
 
-    window.addEventListener('popstate', function () {
+    window.addEventListener('popstate', function (event) {
+      if (isPrepLoaderActive() || prepBackDialogOpen) {
+        showPrepBackDialog();
+        return;
+      }
+      if (event.state && event.state.soravPrepConsumed) {
+        if (overlayStack.length) {
+          const top = overlayStack.pop();
+          if (top) top.hideFn();
+        } else {
+          history.back();
+        }
+        return;
+      }
       const top = overlayStack.pop();
       if (top) top.hideFn();
     });
@@ -3432,10 +3622,25 @@ var qrcode = function() {
       const liveFrame = document.getElementById('livePreviewFrame');
       const liveFull = document.getElementById('livePreviewFullscreen');
       if (item.downloadUrl) {
+        const previewLoader = document.getElementById('livePreviewLoading');
+        if (previewLoader) previewLoader.classList.remove('hidden');
+        beginPrepTask('');
+        let previewSettled = false;
+        const finishPreview = () => {
+          if (previewSettled) return;
+          previewSettled = true;
+          if (previewLoader) previewLoader.classList.add('hidden');
+          endPrepTask();
+        };
+        liveFrame.addEventListener('load', finishPreview, { once: true });
+        liveFrame.addEventListener('error', finishPreview, { once: true });
+        setTimeout(finishPreview, 15000);
         liveFrame.src = item.downloadUrl;
         liveFull.href = item.downloadUrl;
         liveWrap.style.display = 'flex';
       } else {
+        const previewLoader = document.getElementById('livePreviewLoading');
+        if (previewLoader) previewLoader.classList.add('hidden');
         liveFrame.src = '';
         liveWrap.style.display = 'none';
       }
@@ -3471,6 +3676,8 @@ var qrcode = function() {
     function hideTemplateDetail() {
       document.getElementById('detail-section-wrapper').style.display = 'none';
       const liveFrame = document.getElementById('livePreviewFrame');
+      const previewLoader = document.getElementById('livePreviewLoading');
+      if (previewLoader) previewLoader.classList.add('hidden');
       if (liveFrame) liveFrame.src = ''; // stop the live preview so it doesn't keep running in background
       filterMenu(lastMenuView);
     }
@@ -3537,19 +3744,22 @@ var qrcode = function() {
           label.textContent = field.label || `Upload Photos (${field.count} required)`;
           wrap.appendChild(label);
 
-          const grid = document.createElement('div');
-          grid.className = 'photo-grid';
-          for (let i = 1; i <= field.count; i++) {
-            uploadedPhotosByKey[field.key][i] = null;
-            const box = document.createElement('div');
-            box.className = 'upload-box small';
-            box.dataset.key = field.key;
-            box.dataset.slot = i;
-            box.innerHTML = `<span class="uploadHint">Photo ${i}</span>
-              <input type="file" class="custPhotoSlot" accept="image/*" onchange="handlePhotoSelect(event, '${field.key}', ${i})">`;
-            grid.appendChild(box);
-          }
-          wrap.appendChild(grid);
+          // One single multi-select block: choose all photos in this category together.
+          const multiBox = document.createElement('div');
+          multiBox.className = 'upload-box multi-photo-picker';
+          multiBox.dataset.key = field.key;
+          multiBox.innerHTML = `
+            <div class="multi-photo-icon">＋</div>
+            <div class="uploadHint">ADD PHOTOS</div>
+            <div class="multi-photo-count">0 / ${field.count}</div>
+            <input type="file" class="custPhotoSlot" accept="image/*" multiple
+              onchange="handleMultiPhotoSelect(event, '${field.key}', ${field.count})">`;
+          wrap.appendChild(multiBox);
+
+          const previewGrid = document.createElement('div');
+          previewGrid.className = 'photo-grid multi-photo-preview-grid';
+          previewGrid.id = `multiPreview_${field.key}`;
+          wrap.appendChild(previewGrid);
 
         } else if (field.type === 'cutout') {
           uploadedPhotosByKey[field.key] = { 1: null };
@@ -3758,6 +3968,7 @@ var qrcode = function() {
         return;
       }
 
+      beginPrepTask('Saving your order…');
       statusText.textContent = 'Saving order...';
 
       const orderData = {
@@ -3769,6 +3980,7 @@ var qrcode = function() {
       };
 
       const proceedToCustomize = () => {
+        endPrepTask();
         closePaymentModal();
         openCustomizeModal(currentPaymentTemplate);
       };
@@ -3796,6 +4008,78 @@ var qrcode = function() {
     const CLOUDINARY_CLOUD_NAME = 'y4nwlkqt';
     const CLOUDINARY_UPLOAD_PRESET = 'sorav_temps_cards';
 
+    // All photos in one category are selected together. The existing
+    // Firestore structure is preserved: photoGroups[key][1..N].
+    function handleMultiPhotoSelect(event, key, maxCount) {
+      const files = Array.from(event.target.files || []).filter(f => f.type.startsWith('image/'));
+      if (!files.length) return;
+
+      if (files.length > maxCount) {
+        alert(`Is category mein maximum ${maxCount} photos select kar sakte ho.`);
+      }
+      const selected = files.slice(0, maxCount);
+      const countText = document.querySelector(`.multi-photo-picker[data-key="${key}"] .multi-photo-count`);
+      const previewGrid = document.getElementById(`multiPreview_${key}`);
+      if (!previewGrid) return;
+
+      uploadedPhotosByKey[key] = {};
+      previewGrid.innerHTML = '';
+      if (countText) countText.textContent = `${selected.length} / ${maxCount}`;
+
+      const localUrls = [];
+      selected.forEach((file, index) => {
+        const slot = index + 1;
+        const box = document.createElement('div');
+        box.className = 'upload-box small has-image multi-preview-item';
+        box.dataset.key = key;
+        box.dataset.slot = slot;
+        const localUrl = URL.createObjectURL(file);
+        localUrls[slot] = localUrl;
+        box.innerHTML = `<img src="${localUrl}" alt="Photo ${slot}" style="opacity:.6;">
+          <span class="multi-preview-number">${slot}</span>`;
+        previewGrid.appendChild(box);
+      });
+
+      const statusText = document.getElementById('statusText');
+      beginPrepTask(`Uploading ${selected.length} photo${selected.length > 1 ? 's' : ''}…`);
+      if (statusText) statusText.textContent = `Uploading ${selected.length} photo${selected.length > 1 ? 's' : ''}...`;
+
+      (async () => {
+        try {
+          await Promise.all(selected.map(async (file, index) => {
+            const slot = index + 1;
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+
+            const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`, {
+              method: 'POST',
+              body: formData
+            });
+            if (!res.ok) throw new Error('Cloudinary photo upload failed');
+            const data = await res.json();
+            const finalUrl = data.secure_url.replace('/upload/', '/upload/q_auto,f_auto/');
+            uploadedPhotosByKey[key][slot] = finalUrl;
+
+            const box = previewGrid.querySelector(`.upload-box[data-slot="${slot}"]`);
+            const img = box ? box.querySelector('img') : null;
+            if (img) {
+              img.src = finalUrl;
+              img.style.opacity = '1';
+            }
+            if (localUrls[slot]) URL.revokeObjectURL(localUrls[slot]);
+          }));
+          if (statusText) statusText.textContent = '';
+        } catch (err) {
+          console.error(err);
+          if (statusText) statusText.textContent = 'Kuch photos upload nahi ho paayi, dobara try karo.';
+        } finally {
+          endPrepTask();
+          event.target.value = '';
+        }
+      })();
+    }
+
     function handlePhotoSelect(event, key, slot) {
       const file = event.target.files[0];
       if (!file) return;
@@ -3812,6 +4096,7 @@ var qrcode = function() {
 
       (async () => {
         try {
+          beginPrepTask('Uploading photo…');
           statusText.textContent = 'Uploading photo...';
 
           const formData = new FormData();
@@ -3840,6 +4125,8 @@ var qrcode = function() {
           console.error(err);
           statusText.textContent = 'Photo upload nahi ho payi, dobara try karo.';
           box.classList.remove('has-image');
+         } finally {
+          endPrepTask();
         }
       })();
     }
@@ -3863,6 +4150,7 @@ var qrcode = function() {
 
       (async () => {
         try {
+          beginPrepTask('Uploading video…');
           statusText.textContent = 'Uploading video... (bada file ho to time lag sakta hai)';
 
           const formData = new FormData();
@@ -3887,6 +4175,8 @@ var qrcode = function() {
           console.error(err);
           statusText.textContent = 'Video upload nahi ho paya, dobara try karo.';
           box.classList.remove('has-image');
+         } finally {
+          endPrepTask();
         }
       })();
     }
@@ -3914,6 +4204,7 @@ var qrcode = function() {
 
       (async () => {
         try {
+          beginPrepTask('Uploading music…');
           statusText.textContent = 'Uploading music...';
 
           const formData = new FormData();
@@ -3938,6 +4229,8 @@ var qrcode = function() {
           console.error(err);
           statusText.textContent = 'Music upload nahi ho payi, dobara try karo.';
           box.classList.remove('has-image');
+         } finally {
+          endPrepTask();
         }
       })();
     }
@@ -4007,6 +4300,7 @@ var qrcode = function() {
         <input type="file" class="custPhotoSlot" accept="image/*" onchange="handleCutoutSelect(event, '${key}')">`;
 
       try {
+        beginPrepTask('Preparing photo cutout…');
         statusText.textContent = 'Photo resize ho rahi hai...';
         const resizedFile = await downscaleImageFile(file, 1100);
 
@@ -4048,6 +4342,8 @@ var qrcode = function() {
         console.error(err);
         statusText.textContent = 'Cutout banane/upload karne me dikkat hui, dobara try karo.';
         box.classList.remove('has-image');
+      } finally {
+        endPrepTask();
       }
     }
 
@@ -4107,6 +4403,7 @@ var qrcode = function() {
 
       const btn = document.getElementById('generateBtn');
       btn.disabled = true;
+      beginPrepTask('Creating your Sorav Temps link…');
 
       try {
         let link = currentTemplate ? currentTemplate.downloadUrl : '#';
@@ -4132,6 +4429,7 @@ var qrcode = function() {
         statusText.textContent = 'Link generate nahi ho paya, dobara try karo.';
       } finally {
         btn.disabled = false;
+        endPrepTask();
       }
     }
 
@@ -4339,7 +4637,151 @@ function confirmLogout() {
    
     // ---------- INIT ----------
 
+    let prepTaskCount = 0;
+    let prepHistoryGuard = false;
+    let prepBackDialogOpen = false;
+    let prepStopRequested = false;
+
+    function isPrepLoaderActive() {
+      const loader = document.getElementById('sitePrepLoader');
+      return !!loader && !loader.classList.contains('hidden');
+    }
+
+    function armPrepHistoryGuard() {
+      if (prepHistoryGuard) return;
+      history.pushState({ soravPrepLoader: true }, '', location.href);
+      prepHistoryGuard = true;
+    }
+
+    function setPrepLoader(message) {
+      const loader = document.getElementById('sitePrepLoader');
+      const msg = document.getElementById('prepLoaderMessage');
+      if (!loader) return;
+      loader.classList.remove('hidden');
+      loader.setAttribute('aria-busy', 'true');
+      if (msg) msg.textContent = message || '';
+      armPrepHistoryGuard();
+    }
+
+    function hidePrepLoader() {
+      const loader = document.getElementById('sitePrepLoader');
+      if (!loader) return;
+      loader.setAttribute('aria-busy', 'false');
+      setTimeout(() => loader.classList.add('hidden'), 180);
+      prepStopRequested = false;
+      if (prepBackDialogOpen) {
+        document.getElementById('prepBackDialog').classList.remove('active');
+        prepBackDialogOpen = false;
+      }
+      // Keep the guard entry as a same-URL history checkpoint. The next back
+      // press consumes it and then immediately performs the real back.
+      if (prepHistoryGuard) {
+        history.replaceState({ soravPrepConsumed: true }, '', location.href);
+        prepHistoryGuard = false;
+      }
+    }
+
+    function showPrepBackDialog() {
+      const dialog = document.getElementById('prepBackDialog');
+      if (!dialog) return;
+      dialog.classList.add('active');
+      prepBackDialogOpen = true;
+      // Restore the loading history checkpoint so the user stays on this page.
+      history.pushState({ soravPrepLoader: true }, '', location.href);
+      prepHistoryGuard = true;
+    }
+
+    function continuePrepLoading() {
+      const dialog = document.getElementById('prepBackDialog');
+      if (dialog) dialog.classList.remove('active');
+      prepBackDialogOpen = false;
+      prepStopRequested = false;
+    }
+
+    function stopPrepLoadingAndGoBack() {
+      prepStopRequested = true;
+      const dialog = document.getElementById('prepBackDialog');
+      if (dialog) dialog.classList.remove('active');
+      prepBackDialogOpen = false;
+      const loader = document.getElementById('sitePrepLoader');
+      if (loader) loader.classList.add('hidden');
+      prepTaskCount = 0;
+      prepHistoryGuard = false;
+      // Two same-URL entries are involved here: the back press popped one
+      // guard and the dialog restored another one. Skip both so the normal
+      // page/overlay back behaviour can continue.
+      history.go(-2);
+    }
+
+    function collectSiteImageUrls() {
+      const urls = new Set();
+      document.querySelectorAll('img[src]').forEach(img => { if (img.src) urls.add(img.src); });
+      const arrays = [
+        typeof cardsTemplates !== 'undefined' ? cardsTemplates : [],
+        typeof freeTemplates !== 'undefined' ? freeTemplates : [],
+        typeof paidTemplates !== 'undefined' ? paidTemplates : [],
+        typeof premiumTemplates !== 'undefined' ? premiumTemplates : []
+      ];
+      arrays.flat().forEach(item => {
+        if (!item) return;
+        if (item.image) urls.add(item.image);
+        if (Array.isArray(item.previewImages)) item.previewImages.forEach(u => u && urls.add(u));
+        if (Array.isArray(item.pages)) item.pages.forEach(u => { if (typeof u === 'string' && /^https?:/i.test(u)) urls.add(u); });
+      });
+      return [...urls].filter(u => /^https?:/i.test(u));
+    }
+
+    async function preloadSiteImages() {
+      const urls = collectSiteImageUrls();
+      if (!urls.length) { hidePrepLoader(); return; }
+      let done = 0;
+      setPrepLoader('');
+      await Promise.allSettled(urls.map(url => new Promise(resolve => {
+        if (prepStopRequested) { resolve(); return; }
+        const img = new Image();
+        let settled = false;
+        const finish = () => {
+          if (settled) return;
+          settled = true;
+          done++;
+          resolve();
+        };
+        img.onload = finish;
+        img.onerror = finish;
+        img.src = url;
+        if (img.complete) setTimeout(finish, 0);
+      })));
+      if (!prepStopRequested) hidePrepLoader();
+    }
+
+    function beginPrepTask(message) {
+      prepTaskCount++;
+      prepStopRequested = false;
+      setPrepLoader(message || '');
+    }
+
+    function endPrepTask() {
+      prepTaskCount = Math.max(0, prepTaskCount - 1);
+      if (prepTaskCount === 0 && !prepStopRequested) hidePrepLoader();
+    }
+
+    async function runPreparation(message, task) {
+      beginPrepTask(message);
+      try {
+        return await task();
+      } finally {
+        endPrepTask();
+      }
+    }
+
+    window.setPrepLoader = setPrepLoader;
+    window.hidePrepLoader = hidePrepLoader;
+    window.runPreparation = runPreparation;
+    window.continuePrepLoading = continuePrepLoading;
+    window.stopPrepLoadingAndGoBack = stopPrepLoadingAndGoBack;
+
     filterMenu('all');
+    preloadSiteImages();
   </script>
 
   <!-- Firebase: real Google login + user data -->
