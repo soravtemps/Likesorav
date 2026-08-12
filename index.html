@@ -3261,6 +3261,9 @@ var qrcode = function() {
           { type: 'textarea', key: 'jarMessages', label: 'Jar Messages (ek line = ek message)', placeholder: 'Message 1\nMessage 2\nMessage 3', required: false },
           { type: 'photos', key: 'mainPhoto', label: 'Main Memory Photo (1 required)', count: 1, required: true },
           { type: 'photos', key: 'memoryPhotos', label: 'Memory Swipe Photos (up to 3)', count: 3, required: false },
+          // Separate field from memoryPhotos — feeds the "Our Journey" timeline
+          // screen only, so it never gets mixed up with the swipeable memories.
+          { type: 'photos', key: 'journeyPhotos', label: 'Journey Timeline Photos (up to 3)', count: 3, required: false },
           { type: 'music', key: 'music', label: 'Background Music (optional, mp3 upload karo)', required: false }
         ],
         image: "https://files.catbox.moe/7simj7.png", previewImages: ["https://files.catbox.moe/vgk9lq.jpg","https://files.catbox.moe/5pdj94.jpg","https://files.catbox.moe/3nt6gd.jpg"], downloadUrl: "https://soravtemps.github.io/Premium4/" },
