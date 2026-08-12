@@ -673,38 +673,6 @@
     margin: 0 0 10px;
   }
 
-  .pages-strip {
-    display: flex;
-    gap: 10px;
-    overflow-x: auto;
-    padding-bottom: 8px;
-    margin-bottom: 22px;
-    scrollbar-width: none;
-  }
-  .pages-strip::-webkit-scrollbar { display: none; }
-
-  .page-thumb {
-    flex: 0 0 auto;
-    width: 90px;
-    height: 160px;
-    border-radius: 14px;
-    background: linear-gradient(135deg, #241C3B, #0B0A17);
-    border: 1px solid rgba(225, 79, 134, 0.12);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 32px;
-    overflow: hidden;
-  }
-
-  .page-thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
-    display: block;
-  }
-
   .detail-footer-bar {
     position: sticky;
     bottom: 0;
@@ -1510,7 +1478,6 @@
       </div>
 
       <p class="detail-subheading">More pages in this template</p>
-      <div class="pages-strip" id="detailPagesStrip"></div>
 
       <div class="detail-footer-bar">
         <span class="price" id="detailPrice"></span>
@@ -3157,8 +3124,8 @@ var qrcode = function() {
           { type: 'cutout', key: 'cutout', label: 'Upload Cutout Photo (background hata dega automatically)', count: 1, required: false },
           { type: 'music', key: 'music', label: 'Background Music (optional, mp3 upload karo)', required: false }
         ],
-      previewImages: ["https://files.catbox.moe/u0zxin.jpg"], downloadUrl: "https://soravtemps.github.io/Card1/" },
-     { name:"Anniversary one photo", category:"Anniversary",emoji:"😘",desc:"A cute 1 photo aniversary template for your partner's and just try and send it to your favourite person.",photosRequired: 1,pages: ["💸"],image:"https://files.catbox.moe/fbt3n4.png", previewImages: ["https://i.ibb.co/5W3zyvcX/IMG-20260719-082242.jpg"], downloadUrl: "https://soravtemps.github.io/Card2/" }
+      downloadUrl: "https://soravtemps.github.io/Card1/" },
+     { name:"Anniversary one photo", category:"Anniversary",emoji:"😘",desc:"A cute 1 photo aniversary template for your partner's and just try and send it to your favourite person.",photosRequired: 1,pages: ["💸"],image:"https://files.catbox.moe/fbt3n4.png", downloadUrl: "https://soravtemps.github.io/Card2/" }
     ];
 
     // Old "Home" categories, kept as-is for the Surprise section
@@ -3171,9 +3138,9 @@ var qrcode = function() {
     // sirf paid/premium templates mein automatic add hota hai).
     // ============================================================
     const freeTemplates = [
-      { name: "Pls Accept The Gift", category: "Birthday", emoji: "🎁", image: "https://files.catbox.moe/vwkd6g.png", desc: "A playful accept-or-reject gift reveal that leads to a birthday cake surprise and a hidden gift box to open.", isViral: true, previewImages: ["https://i.ibb.co/zH5rpnLh/Screenshot-2026-07-19-09-11-49-783-com-android-chrome.jpg", "https://i.ibb.co/qF5sjTBJ/Screenshot-2026-07-19-09-11-59-238-com-android-chrome.jpg", "https://i.ibb.co/CpRK3P0G/Screenshot-2026-07-19-09-12-02-801-com-android-chrome.jpg", "https://i.ibb.co/Rkp3WNZJ/Screenshot-2026-07-19-09-12-05-125-com-android-chrome.jpg", "https://i.ibb.co/tP4WBzhk/Screenshot-2026-07-19-09-12-07-086-com-android-chrome.jpg", "https://i.ibb.co/zV7xtFjW/Screenshot-2026-07-19-09-12-11-715-com-android-chrome.jpg"], downloadUrl: "https://soravtemplates.github.io/Temp1/" },
-      { name: "Cute Diary Surprise", category: "Birthday", emoji: "🧸", image: "https://files.catbox.moe/25on12.png", desc: "A cosy diary-style birthday surprise with a heartfelt love letter, a virtual hug, and a romantic proposal ending.", isViral: false, previewImages: ["https://i.ibb.co/0RjPX2Tj/Screenshot-2026-07-19-09-58-11-690-com-android-chrome.jpg", "https://i.ibb.co/5xxJkzh7/Screenshot-2026-07-19-09-58-14-432-com-android-chrome.jpg", "https://i.ibb.co/hF3KfGGj/Screenshot-2026-07-19-09-58-16-512-com-android-chrome.jpg", "https://i.ibb.co/ddSyfs9/Screenshot-2026-07-19-09-58-19-182-com-android-chrome.jpg", "https://i.ibb.co/p6sRGPqw/Screenshot-2026-07-19-09-58-23-676-com-android-chrome.jpg"], downloadUrl: "https://soravtemplates.github.io/Temp4/" },
-      { name: "Milk & Mocha Anniversary Surprise", category: "Anniversary", emoji: "🤎", image: "https://files.catbox.moe/bj21sv.png", desc: "A soft, cosy anniversary tribute with a heartfelt wish, a virtual hug, and a sweet forever promise.", isViral: false, previewImages: ["https://i.ibb.co/93cPv4x2/Screenshot-2026-07-19-10-01-22-860-com-android-chrome.jpg", "https://i.ibb.co/RppFdq8j/Screenshot-2026-07-19-10-01-28-521-com-android-chrome.jpg", "https://i.ibb.co/x8SshKbB/Screenshot-2026-07-19-10-01-30-606-com-android-chrome.jpg", "https://i.ibb.co/mrStzzm2/Screenshot-2026-07-19-10-01-34-067-com-android-chrome.jpg", "https://i.ibb.co/mVcB5kf0/Screenshot-2026-07-19-10-01-38-044-com-android-chrome.jpg", "https://i.ibb.co/M5GymhYM/Screenshot-2026-07-19-10-01-32-281-com-android-chrome.jpg"], downloadUrl: "https://soravtemplates.github.io/Temp5/" }
+      { name: "Pls Accept The Gift", category: "Birthday", emoji: "🎁", image: "https://files.catbox.moe/vwkd6g.png", desc: "A playful accept-or-reject gift reveal that leads to a birthday cake surprise and a hidden gift box to open.", isViral: true, downloadUrl: "https://soravtemplates.github.io/Temp1/" },
+      { name: "Cute Diary Surprise", category: "Birthday", emoji: "🧸", image: "https://files.catbox.moe/25on12.png", desc: "A cosy diary-style birthday surprise with a heartfelt love letter, a virtual hug, and a romantic proposal ending.", isViral: false, downloadUrl: "https://soravtemplates.github.io/Temp4/" },
+      { name: "Milk & Mocha Anniversary Surprise", category: "Anniversary", emoji: "🤎", image: "https://files.catbox.moe/bj21sv.png", desc: "A soft, cosy anniversary tribute with a heartfelt wish, a virtual hug, and a sweet forever promise.", isViral: false, downloadUrl: "https://soravtemplates.github.io/Temp5/" }
     ];
 
     // ============================================================
@@ -3183,7 +3150,7 @@ var qrcode = function() {
     // Standard price for every paid template: ₹100
     // ============================================================
     const paidTemplates = [
-      { name: "Cute Birthday Surprise (With Passcode)", category: "Birthday", emoji: "🔒", image: "https://files.catbox.moe/18g5a5.png", price: "₹100", desc: "A passcode-locked birthday surprise with cute cat reactions, a heartfelt wish, and a sweet 'will you be mine' finish.", isViral: true, previewImages: ["https://i.ibb.co/p66cDPGg/Screenshot-2026-07-19-09-51-06-513-com-android-chrome.jpg", "https://i.ibb.co/hppjBzz/Screenshot-2026-07-19-09-51-11-367-com-android-chrome.jpg", "https://i.ibb.co/7JpzwM4f/Screenshot-2026-07-19-09-51-14-039-com-android-chrome.jpg", "https://i.ibb.co/FLgd2vHT/Screenshot-2026-07-19-09-51-16-282-com-android-chrome.jpg", "https://i.ibb.co/Lzbv25fF/Screenshot-2026-07-19-09-51-18-130-com-android-chrome.jpg", "https://i.ibb.co/7JPJRdjJ/Screenshot-2026-07-19-09-51-19-838-com-android-chrome.jpg", "https://i.ibb.co/LKTYkB9/Screenshot-2026-07-19-09-51-21-451-com-android-chrome.jpg"], downloadUrl: "https://soravtemplates.github.io/Temp3/" }
+      { name: "Cute Birthday Surprise (With Passcode)", category: "Birthday", emoji: "🔒", image: "https://files.catbox.moe/18g5a5.png", price: "₹100", desc: "A passcode-locked birthday surprise with cute cat reactions, a heartfelt wish, and a sweet 'will you be mine' finish.", isViral: true, downloadUrl: "https://soravtemplates.github.io/Temp3/" }
     ];
 
     // ============================================================
@@ -3210,7 +3177,7 @@ var qrcode = function() {
           { type: 'photos', key: 'photos', label: 'Upload Photos (4 required)', count: 4, required: true },
           { type: 'music', key: 'music', label: 'Background Music (optional, mp3 upload karo)', required: false }
         ],
-        image:"https://files.catbox.moe/3i7zex.png", previewImages: ["https://files.catbox.moe/tdq62x.jpg", "https://files.catbox.moe/p1ujma.jpg","https://files.catbox.moe/kfcqze.jpg","https://files.catbox.moe/hovisp.jpg","https://files.catbox.moe/t21pp5.jpg","https://files.catbox.moe/9mxrxj.jpg", "https://files.catbox.moe/dg3phj.jpg","https://files.catbox.moe/9407pe.jpg","https://files.catbox.moe/55whm6.jpg","https://files.catbox.moe/hhqpgf.jpg"], downloadUrl:"https://s96693884-gif.github.io/Birthdaypremium/" },
+        image:"https://files.catbox.moe/3i7zex.png", downloadUrl:"https://s96693884-gif.github.io/Birthdaypremium/" },
        
          { name: "A Little Surprise (Lock, Quiz & Memories)", category: "Birthday", emoji: "💌", price: "₹199", desc: "A story-style locked surprise with a quiz, scratch-card reveal, balloon pop, swipeable memories, and a final love letter.", isViral: false, photosRequired: 0,
         fields: [
@@ -3223,14 +3190,14 @@ var qrcode = function() {
           { type: 'photos', key: 'memoryPhotos', label: 'Memory Photos (up to 6)', count: 6, required: true },
           { type: 'music', key: 'music', label: 'Background Music (optional, mp3 upload karo)', required: false }
         ],
-        image: "https://files.catbox.moe/k76y8a.jpg", previewImages: ["https://files.catbox.moe/eet6w2.jpg","https://files.catbox.moe/qtdrio.jpg","https://files.catbox.moe/bzwhlu.jpg","https://files.catbox.moe/4whmu3.jpg","https://files.catbox.moe/yd2cfc.jpg","https://files.catbox.moe/kkac8y.jpg","https://files.catbox.moe/xtabte.jpg","https://files.catbox.moe/0jnjn5.jpg","https://files.catbox.moe/cl6z6j.jpg","https://files.catbox.moe/llu28w.jpg","https://files.catbox.moe/017e2p.jpg","https://files.catbox.moe/6ikv8g.jpg","https://files.catbox.moe/bqw2x5.jpg","https://files.catbox.moe/ndjeby.jpg","https://files.catbox.moe/ohjamo.jpg","https://files.catbox.moe/hhduv3.jpg","https://files.catbox.moe/uvpa08.jpg","https://files.catbox.moe/zogdwy.jpg","https://files.catbox.moe/4owsa2.jpg","https://files.catbox.moe/hmqdg0.jpg","https://files.catbox.moe/fxc8oi.jpg","https://files.catbox.moe/000c56.jpg","https://files.catbox.moe/5rf401.jpg","https://files.catbox.moe/ffwhri.jpg"], downloadUrl: "https://soravtemps.github.io/Surprisepremium/" },
+        image: "https://files.catbox.moe/k76y8a.jpg", downloadUrl: "https://soravtemps.github.io/Surprisepremium/" },
 
       // ============================================================
       // NAYA TEMPLATE — "A Surprise For You" (gift box → letter/photo/
       // our-song reveal). Iske fields us live template ke actual data
       // ke hisaab se bane hain (recipientName, senderName, letter,
       // finalNote, ek photo, aur DO music — background + surprise).
-      // image/previewImages/downloadUrl sab PLACEHOLDER hain — apna
+      // image/downloadUrl PLACEHOLDER hain — apna
       // store icon, screenshots, aur asli GitHub Pages link daal dena.
       // ============================================================
       { name: "A Surprise For You", category: "Birthday", emoji: "🎁", price: "₹50", desc: "A gift-box surprise that unwraps into a heartfelt letter, a favourite photo, and your own background + surprise song.", isViral: false, photosRequired: 1,
@@ -3243,12 +3210,12 @@ var qrcode = function() {
           { type: 'music', key: 'music', label: 'Background Music (optional, poore page mein bajega)', required: false },
           { type: 'music', key: 'revealSong', label: 'Surprise Music (optional, gift khulte hi bajega)', required: false }
         ],
-        image: "https://files.catbox.moe/7simj7.png", previewImages: ["https://files.catbox.moe/vgk9lq.jpg","https://files.catbox.moe/5pdj94.jpg","https://files.catbox.moe/3nt6gd.jpg","https://files.catbox.moe/4n0kpg.jpg","https://files.catbox.moe/3621vj.jpg","https://files.catbox.moe/z1lwap.jpg","https://files.catbox.moe/fqor28.jpg"], downloadUrl: "https://soravtemps.github.io/Premium3/" },
+        image: "https://files.catbox.moe/7simj7.png", downloadUrl: "https://soravtemps.github.io/Premium3/" },
 
       // ============================================================
       // NAYA TEMPLATE — "Happy Friendship Day" (promise note → pinky
       // promise lock → quiz → memory jar → letter → swipeable memories
-      // → final message). image/previewImages PLACEHOLDER hain — apna
+      // → final message). image PLACEHOLDER hai — apna
       // store icon aur screenshots daal dena.
       // ============================================================
       { name: "Happy Friendship Day", category: "Anniversary", emoji: "🤝", price: "₹99", desc: "A story-style friendship day surprise with a promise note, pinky-promise lock, quiz, memory jar, letter, and swipeable memories.", isViral: false, photosRequired: 0,
@@ -3266,7 +3233,7 @@ var qrcode = function() {
           { type: 'photos', key: 'journeyPhotos', label: 'Journey Timeline Photos (up to 3)', count: 3, required: false },
           { type: 'music', key: 'music', label: 'Background Music (optional, mp3 upload karo)', required: false }
         ],
-        image: "https://files.catbox.moe/7simj7.png", previewImages: ["https://files.catbox.moe/vgk9lq.jpg","https://files.catbox.moe/5pdj94.jpg","https://files.catbox.moe/3nt6gd.jpg"], downloadUrl: "https://soravtemps.github.io/Premium4/" },
+        image: "https://files.catbox.moe/g712n8.png", downloadUrl: "https://soravtemps.github.io/Premium4/" },
        ];
 
     // ============================================================
@@ -3581,13 +3548,6 @@ var qrcode = function() {
 
     let lastMenuView = 'cards';
 
-    function generateMockPages(item) {
-      // Preview screens for the template (thumbnail strip).
-      // Uses the template's real page flow if provided, starting with its thumbnail.
-      if (item.pages && item.pages.length) return item.pages;
-      return [item.emoji || '🎁', '🔒', '🎉', '📤'];
-    }
-
     function openTemplateDetail(item, kind) {
       const heroEl = document.getElementById('detailHero');
       heroEl.innerHTML = item.image ? `<img src="${item.image}" alt="${item.name}">` : (item.emoji || '🎁');
@@ -3646,24 +3606,6 @@ var qrcode = function() {
         if (previewLoader) previewLoader.classList.add('hidden');
         liveFrame.src = '';
         liveWrap.style.display = 'none';
-      }
-
-      const stripEl = document.getElementById('detailPagesStrip');
-      stripEl.innerHTML = '';
-      if (item.previewImages && item.previewImages.length) {
-        item.previewImages.forEach(src => {
-          const thumb = document.createElement('div');
-          thumb.className = 'page-thumb';
-          thumb.innerHTML = `<img src="${src}" alt="${item.name} preview">`;
-          stripEl.appendChild(thumb);
-        });
-      } else {
-        generateMockPages(item).forEach(emoji => {
-          const thumb = document.createElement('div');
-          thumb.className = 'page-thumb';
-          thumb.textContent = emoji;
-          stripEl.appendChild(thumb);
-        });
       }
 
       // Hide every other section, show the detail page
@@ -4728,7 +4670,6 @@ function confirmLogout() {
       arrays.flat().forEach(item => {
         if (!item) return;
         if (item.image) urls.add(item.image);
-        if (Array.isArray(item.previewImages)) item.previewImages.forEach(u => u && urls.add(u));
         if (Array.isArray(item.pages)) item.pages.forEach(u => { if (typeof u === 'string' && /^https?:/i.test(u)) urls.add(u); });
       });
       return [...urls].filter(u => /^https?:/i.test(u));
