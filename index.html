@@ -3178,12 +3178,106 @@ var qrcode = function() {
     const freeTemplates = [
       { name: "Pls Accept The Gift", category: "Birthday", emoji: "🎁", image: "https://files.catbox.moe/vwkd6g.png", desc: "A playful accept-or-reject gift reveal that leads to a birthday cake surprise and a hidden gift box to open.", isViral: true, downloadUrl: "https://soravtemplates.github.io/Temp1/" },
       { name: "Cute Diary Surprise", category: "Birthday", emoji: "🧸", image: "https://files.catbox.moe/25on12.png", desc: "A cosy diary-style birthday surprise with a heartfelt love letter, a virtual hug, and a romantic proposal ending.", isViral: false, downloadUrl: "https://soravtemplates.github.io/Temp4/" },
-      { name: "Milk & Mocha Anniversary Surprise", category: "Anniversary", emoji: "🤎", image: "https://files.catbox.moe/bj21sv.png", desc: "A soft, cosy anniversary tribute with a heartfelt wish, a virtual hug, and a sweet forever promise.", isViral: false, downloadUrl: "https://soravtemplates.github.io/Temp5/" },
-     {
+      { name: "Milk & Mocha Anniversary Surprise", category: "Anniversary", emoji: "🤎", image: "https://files.catbox.moe/bj21sv.png", desc: "A soft, cosy anniversary tribute with a heartfelt wish, a virtual hug, and a sweet forever promise.", isViral: false, downloadUrl: "https://soravtemplates.github.io/Temp5/" }
+    ];
+
+    // ============================================================
+    // # "SURPRISE" SECTION KE PAID TEMPLATES (₹100 wale) #
+    // Inme "price" field hai — isliye music upload field YAHAN AUTOMATIC
+    // aa jaayega, kuch extra likhne ki zaroorat nahi.
+    // Standard price for every paid template: ₹100
+    // ============================================================
+    const paidTemplates = [
+      { name: "Cute Birthday Surprise (With Passcode)", category: "Birthday", emoji: "🔒", image: "https://files.catbox.moe/18g5a5.png", price: "₹100", desc: "A passcode-locked birthday surprise with cute cat reactions, a heartfelt wish, and a sweet 'will you be mine' finish.", isViral: true, downloadUrl: "https://soravtemplates.github.io/Temp3/" }
+    ];
+
+    // ============================================================
+    // # "PREMIUM" SECTION KE TEMPLATES (₹199 wale) #
+    // Yeh templates apna custom "fields" array define karte hain
+    // (jaise age, passcode, memory) — isliye inme music field manually
+    // is line se add karna padta hai:
+    //   { type: 'music', key: 'music', label: 'Background Music (optional)', required: false }
+    // Ek se zyada music chahiye ho (jaise ek template mein "Background
+    // Music" aur ek "Surprise Music" dono chahiye), to bas alag 'key' ke
+    // saath ek aur 'music' type field jod do — jitni chahiye utni jodi ja
+    // sakti hain. Neeche dono templates mein iska use dikhaya gaya hai.
+    // ============================================================
+    // Premium section (new)
+    const premiumCategories = ["Birthday", "Marriage", "Valentine's", "Proposal"];
+
+    const premiumTemplates = [
+      { name: "Special Surprise (Passcode Birthday)", category: "Birthday", emoji: "🔒", price: "₹199", desc: "A passcode-locked birthday surprise with an age countdown, a swipeable memories carousel, and a sealed love letter to unseal.", isViral: true, photosRequired: 4,
+        fields: [
+          { type: 'text', key: 'name', label: "Recipient's Name", placeholder: 'e.g. Rahul', required: true },
+          { type: 'number', key: 'age', label: 'Age (for the countdown)', placeholder: 'e.g. 21', required: true },
+          { type: 'password', key: 'passcode', label: 'Set a Passcode', placeholder: '4-digit code', required: true },
+          { type: 'textarea', key: 'memory', label: 'A Special Memory / Love Letter', placeholder: 'Write something special...', required: false },
+          { type: 'photos', key: 'photos', label: 'Upload Photos (4 required)', count: 4, required: true },
+          { type: 'music', key: 'music', label: 'Background Music (optional, mp3 upload karo)', required: false }
+        ],
+        image:"https://files.catbox.moe/3i7zex.png", downloadUrl:"https://s96693884-gif.github.io/Birthdaypremium/" },
+       
+         { name: "A Little Surprise (Lock, Quiz & Memories)", category: "Birthday", emoji: "💌", price: "₹199", desc: "A story-style locked surprise with a quiz, scratch-card reveal, balloon pop, swipeable memories, and a final love letter.", isViral: false, photosRequired: 0,
+        fields: [
+          { type: 'text', key: 'name', label: "Recipient's Name", placeholder: 'e.g. Aditi', required: true },
+          { type: 'text', key: 'from', label: 'Your Name (from)', placeholder: 'e.g. Your Bestie', required: false },
+          { type: 'password', key: 'secretCode', label: 'Set a 4-Digit Secret Code', placeholder: 'e.g. 1403', required: true },
+          { type: 'textarea', key: 'message', label: 'Your Message / Letter', placeholder: 'Write your message... (each new line = new page)', required: false },
+          { type: 'photos', key: 'introPhoto', label: 'Main Intro Photo (1 required)', count: 1, required: true },
+          { type: 'photos', key: 'scratchPhoto', label: 'Scratch-Card Surprise Photo (1 required)', count: 1, required: true },
+          { type: 'photos', key: 'memoryPhotos', label: 'Memory Photos (up to 6)', count: 6, required: true },
+          { type: 'music', key: 'music', label: 'Background Music (optional, mp3 upload karo)', required: false }
+        ],
+        image: "https://files.catbox.moe/k76y8a.jpg", downloadUrl: "https://soravtemps.github.io/Surprisepremium/" },
+
+      // ============================================================
+      // NAYA TEMPLATE — "A Surprise For You" (gift box → letter/photo/
+      // our-song reveal). Iske fields us live template ke actual data
+      // ke hisaab se bane hain (recipientName, senderName, letter,
+      // finalNote, ek photo, aur DO music — background + surprise).
+      // image/downloadUrl PLACEHOLDER hain — apna
+      // store icon, screenshots, aur asli GitHub Pages link daal dena.
+      // ============================================================
+      { name: "A Surprise For You", category: "Birthday", emoji: "🎁", price: "₹50", desc: "A gift-box surprise that unwraps into a heartfelt letter, a favourite photo, and your own background + surprise song.", isViral: false, photosRequired: 1,
+        fields: [
+          { type: 'text', key: 'name', label: "Recipient's Name", placeholder: 'e.g. Anshika', required: true },
+          { type: 'text', key: 'from', label: 'Your Name (from)', placeholder: 'e.g. Krish', required: false },
+          { type: 'textarea', key: 'letter', label: 'The Letter', placeholder: 'Write your letter... (this is what types out on screen)', required: false },
+          { type: 'textarea', key: 'finalNote', label: 'Final Note', placeholder: 'One last sweet note before the surprise ends...', required: false },
+          { type: 'photos', key: 'photos', label: 'Upload Photo (1 required)', count: 1, required: true },
+          { type: 'music', key: 'music', label: 'Background Music (optional, poore page mein bajega)', required: false },
+          { type: 'music', key: 'revealSong', label: 'Surprise Music (optional, gift khulte hi bajega)', required: false }
+        ],
+        image: "https://files.catbox.moe/7simj7.png", downloadUrl: "https://soravtemps.github.io/Premium3/" },
+
+      // ============================================================
+      // NAYA TEMPLATE — "Happy Friendship Day" (promise note → pinky
+      // promise lock → quiz → memory jar → letter → swipeable memories
+      // → final message). image PLACEHOLDER hai — apna
+      // store icon aur screenshots daal dena.
+      // ============================================================
+      { name: "Happy Friendship Day", category: "Anniversary", emoji: "🤝", price: "₹99", desc: "A story-style friendship day surprise with a promise note, pinky-promise lock, quiz, memory jar, letter, and swipeable memories.", isViral: false, photosRequired: 0,
+        fields: [
+          { type: 'text', key: 'recipientName', label: "Recipient's Name", placeholder: 'e.g. Trisha', required: true },
+          { type: 'text', key: 'senderName', label: 'Your Name (Sender)', placeholder: 'e.g. Deepti', required: true },
+          { type: 'textarea', key: 'promiseText', label: 'Promise Note', placeholder: 'Write your promise...', required: false },
+          { type: 'textarea', key: 'letterText', label: 'Friendship Letter', placeholder: 'Write your letter...', required: false },
+          { type: 'textarea', key: 'finalMessage', label: 'Final Message', placeholder: 'One last sweet message...', required: false },
+          { type: 'textarea', key: 'jarMessages', label: 'Jar Messages (ek line = ek message)', placeholder: 'Message 1\nMessage 2\nMessage 3', required: false },
+          { type: 'photos', key: 'mainPhoto', label: 'Main Memory Photo (1 required)', count: 1, required: true },
+          { type: 'photos', key: 'memoryPhotos', label: 'Memory Swipe Photos (up to 3)', count: 3, required: false },
+          // Separate field from memoryPhotos — feeds the "Our Journey" timeline
+          // screen only, so it never gets mixed up with the swipeable memories.
+          { type: 'photos', key: 'journeyPhotos', label: 'Journey Timeline Photos (up to 3)', count: 3, required: false },
+          { type: 'music', key: 'music', label: 'Background Music (optional, mp3 upload karo)', required: false }
+        ],
+        image: "https://files.catbox.moe/g712n8.png", downloadUrl: "https://soravtemps.github.io/Premium4/" },
+      {
   name: "Birthday Scrapbook — Memories, Letter & Favourite Song",
   category: "Birthday",
   emoji: "🎀",
   desc: "A cute retro scrapbook birthday surprise with a playful Yes/No opening, birthday reveal, memories, personal video, heartfelt letter and two separate music moments.",
+  price: "₹99",
   isViral: true,
 
   image: "YOUR_THUMBNAIL_URL",
@@ -3285,99 +3379,6 @@ var qrcode = function() {
 
   downloadUrl: "https://soravtemps.github.io/Birthdaypaid2/"
 }
-    ];
-
-    // ============================================================
-    // # "SURPRISE" SECTION KE PAID TEMPLATES (₹100 wale) #
-    // Inme "price" field hai — isliye music upload field YAHAN AUTOMATIC
-    // aa jaayega, kuch extra likhne ki zaroorat nahi.
-    // Standard price for every paid template: ₹100
-    // ============================================================
-    const paidTemplates = [
-      { name: "Cute Birthday Surprise (With Passcode)", category: "Birthday", emoji: "🔒", image: "https://files.catbox.moe/18g5a5.png", price: "₹100", desc: "A passcode-locked birthday surprise with cute cat reactions, a heartfelt wish, and a sweet 'will you be mine' finish.", isViral: true, downloadUrl: "https://soravtemplates.github.io/Temp3/" }
-    ];
-
-    // ============================================================
-    // # "PREMIUM" SECTION KE TEMPLATES (₹199 wale) #
-    // Yeh templates apna custom "fields" array define karte hain
-    // (jaise age, passcode, memory) — isliye inme music field manually
-    // is line se add karna padta hai:
-    //   { type: 'music', key: 'music', label: 'Background Music (optional)', required: false }
-    // Ek se zyada music chahiye ho (jaise ek template mein "Background
-    // Music" aur ek "Surprise Music" dono chahiye), to bas alag 'key' ke
-    // saath ek aur 'music' type field jod do — jitni chahiye utni jodi ja
-    // sakti hain. Neeche dono templates mein iska use dikhaya gaya hai.
-    // ============================================================
-    // Premium section (new)
-    const premiumCategories = ["Birthday", "Marriage", "Valentine's", "Proposal"];
-
-    const premiumTemplates = [
-      { name: "Special Surprise (Passcode Birthday)", category: "Birthday", emoji: "🔒", price: "₹199", desc: "A passcode-locked birthday surprise with an age countdown, a swipeable memories carousel, and a sealed love letter to unseal.", isViral: true, photosRequired: 4,
-        fields: [
-          { type: 'text', key: 'name', label: "Recipient's Name", placeholder: 'e.g. Rahul', required: true },
-          { type: 'number', key: 'age', label: 'Age (for the countdown)', placeholder: 'e.g. 21', required: true },
-          { type: 'password', key: 'passcode', label: 'Set a Passcode', placeholder: '4-digit code', required: true },
-          { type: 'textarea', key: 'memory', label: 'A Special Memory / Love Letter', placeholder: 'Write something special...', required: false },
-          { type: 'photos', key: 'photos', label: 'Upload Photos (4 required)', count: 4, required: true },
-          { type: 'music', key: 'music', label: 'Background Music (optional, mp3 upload karo)', required: false }
-        ],
-        image:"https://files.catbox.moe/3i7zex.png", downloadUrl:"https://s96693884-gif.github.io/Birthdaypremium/" },
-       
-         { name: "A Little Surprise (Lock, Quiz & Memories)", category: "Birthday", emoji: "💌", price: "₹199", desc: "A story-style locked surprise with a quiz, scratch-card reveal, balloon pop, swipeable memories, and a final love letter.", isViral: false, photosRequired: 0,
-        fields: [
-          { type: 'text', key: 'name', label: "Recipient's Name", placeholder: 'e.g. Aditi', required: true },
-          { type: 'text', key: 'from', label: 'Your Name (from)', placeholder: 'e.g. Your Bestie', required: false },
-          { type: 'password', key: 'secretCode', label: 'Set a 4-Digit Secret Code', placeholder: 'e.g. 1403', required: true },
-          { type: 'textarea', key: 'message', label: 'Your Message / Letter', placeholder: 'Write your message... (each new line = new page)', required: false },
-          { type: 'photos', key: 'introPhoto', label: 'Main Intro Photo (1 required)', count: 1, required: true },
-          { type: 'photos', key: 'scratchPhoto', label: 'Scratch-Card Surprise Photo (1 required)', count: 1, required: true },
-          { type: 'photos', key: 'memoryPhotos', label: 'Memory Photos (up to 6)', count: 6, required: true },
-          { type: 'music', key: 'music', label: 'Background Music (optional, mp3 upload karo)', required: false }
-        ],
-        image: "https://files.catbox.moe/k76y8a.jpg", downloadUrl: "https://soravtemps.github.io/Surprisepremium/" },
-
-      // ============================================================
-      // NAYA TEMPLATE — "A Surprise For You" (gift box → letter/photo/
-      // our-song reveal). Iske fields us live template ke actual data
-      // ke hisaab se bane hain (recipientName, senderName, letter,
-      // finalNote, ek photo, aur DO music — background + surprise).
-      // image/downloadUrl PLACEHOLDER hain — apna
-      // store icon, screenshots, aur asli GitHub Pages link daal dena.
-      // ============================================================
-      { name: "A Surprise For You", category: "Birthday", emoji: "🎁", price: "₹50", desc: "A gift-box surprise that unwraps into a heartfelt letter, a favourite photo, and your own background + surprise song.", isViral: false, photosRequired: 1,
-        fields: [
-          { type: 'text', key: 'name', label: "Recipient's Name", placeholder: 'e.g. Anshika', required: true },
-          { type: 'text', key: 'from', label: 'Your Name (from)', placeholder: 'e.g. Krish', required: false },
-          { type: 'textarea', key: 'letter', label: 'The Letter', placeholder: 'Write your letter... (this is what types out on screen)', required: false },
-          { type: 'textarea', key: 'finalNote', label: 'Final Note', placeholder: 'One last sweet note before the surprise ends...', required: false },
-          { type: 'photos', key: 'photos', label: 'Upload Photo (1 required)', count: 1, required: true },
-          { type: 'music', key: 'music', label: 'Background Music (optional, poore page mein bajega)', required: false },
-          { type: 'music', key: 'revealSong', label: 'Surprise Music (optional, gift khulte hi bajega)', required: false }
-        ],
-        image: "https://files.catbox.moe/7simj7.png", downloadUrl: "https://soravtemps.github.io/Premium3/" },
-
-      // ============================================================
-      // NAYA TEMPLATE — "Happy Friendship Day" (promise note → pinky
-      // promise lock → quiz → memory jar → letter → swipeable memories
-      // → final message). image PLACEHOLDER hai — apna
-      // store icon aur screenshots daal dena.
-      // ============================================================
-      { name: "Happy Friendship Day", category: "Anniversary", emoji: "🤝", price: "₹99", desc: "A story-style friendship day surprise with a promise note, pinky-promise lock, quiz, memory jar, letter, and swipeable memories.", isViral: false, photosRequired: 0,
-        fields: [
-          { type: 'text', key: 'recipientName', label: "Recipient's Name", placeholder: 'e.g. Trisha', required: true },
-          { type: 'text', key: 'senderName', label: 'Your Name (Sender)', placeholder: 'e.g. Deepti', required: true },
-          { type: 'textarea', key: 'promiseText', label: 'Promise Note', placeholder: 'Write your promise...', required: false },
-          { type: 'textarea', key: 'letterText', label: 'Friendship Letter', placeholder: 'Write your letter...', required: false },
-          { type: 'textarea', key: 'finalMessage', label: 'Final Message', placeholder: 'One last sweet message...', required: false },
-          { type: 'textarea', key: 'jarMessages', label: 'Jar Messages (ek line = ek message)', placeholder: 'Message 1\nMessage 2\nMessage 3', required: false },
-          { type: 'photos', key: 'mainPhoto', label: 'Main Memory Photo (1 required)', count: 1, required: true },
-          { type: 'photos', key: 'memoryPhotos', label: 'Memory Swipe Photos (up to 3)', count: 3, required: false },
-          // Separate field from memoryPhotos — feeds the "Our Journey" timeline
-          // screen only, so it never gets mixed up with the swipeable memories.
-          { type: 'photos', key: 'journeyPhotos', label: 'Journey Timeline Photos (up to 3)', count: 3, required: false },
-          { type: 'music', key: 'music', label: 'Background Music (optional, mp3 upload karo)', required: false }
-        ],
-        image: "https://files.catbox.moe/g712n8.png", downloadUrl: "https://soravtemps.github.io/Premium4/" },
        ];
 
     // ============================================================
