@@ -3178,7 +3178,113 @@ var qrcode = function() {
     const freeTemplates = [
       { name: "Pls Accept The Gift", category: "Birthday", emoji: "🎁", image: "https://files.catbox.moe/vwkd6g.png", desc: "A playful accept-or-reject gift reveal that leads to a birthday cake surprise and a hidden gift box to open.", isViral: true, downloadUrl: "https://soravtemplates.github.io/Temp1/" },
       { name: "Cute Diary Surprise", category: "Birthday", emoji: "🧸", image: "https://files.catbox.moe/25on12.png", desc: "A cosy diary-style birthday surprise with a heartfelt love letter, a virtual hug, and a romantic proposal ending.", isViral: false, downloadUrl: "https://soravtemplates.github.io/Temp4/" },
-      { name: "Milk & Mocha Anniversary Surprise", category: "Anniversary", emoji: "🤎", image: "https://files.catbox.moe/bj21sv.png", desc: "A soft, cosy anniversary tribute with a heartfelt wish, a virtual hug, and a sweet forever promise.", isViral: false, downloadUrl: "https://soravtemplates.github.io/Temp5/" }
+      { name: "Milk & Mocha Anniversary Surprise", category: "Anniversary", emoji: "🤎", image: "https://files.catbox.moe/bj21sv.png", desc: "A soft, cosy anniversary tribute with a heartfelt wish, a virtual hug, and a sweet forever promise.", isViral: false, downloadUrl: "https://soravtemplates.github.io/Temp5/" },
+     {
+  name: "Birthday Scrapbook — Memories, Letter & Favourite Song",
+  category: "Birthday",
+  emoji: "🎀",
+  desc: "A cute retro scrapbook birthday surprise with a playful Yes/No opening, birthday reveal, memories, personal video, heartfelt letter and two separate music moments.",
+  isViral: true,
+
+  image: "YOUR_THUMBNAIL_URL",
+
+  fields: [
+    {
+      type: 'text',
+      key: 'name',
+      label: "Recipient's Name",
+      placeholder: "e.g. Ananya",
+      required: true
+    },
+
+    {
+      type: 'text',
+      key: 'from',
+      label: "Your Name (From)",
+      placeholder: "e.g. Rahul",
+      required: true
+    },
+
+    {
+      type: 'textarea',
+      key: 'openingMessage',
+      label: "Opening Message",
+      placeholder: "Hey! I made something for you...",
+      required: true
+    },
+
+    {
+      type: 'textarea',
+      key: 'noMessage',
+      label: "No Button Reaction",
+      placeholder: "Seriously?! how dare you...",
+      required: false
+    },
+
+    {
+      type: 'textarea',
+      key: 'birthdayMessage',
+      label: "Birthday Wish / Final Message",
+      placeholder: "May all the good things you've been waiting for...",
+      required: true
+    },
+
+    {
+      type: 'textarea',
+      key: 'letter',
+      label: "Personal Letter",
+      placeholder: "Write your birthday letter here...",
+      required: true
+    },
+
+    {
+      type: 'textarea',
+      key: 'secretNotes',
+      label: "Secret Notes",
+      placeholder: "One note per line...",
+      required: false
+    },
+
+    {
+      type: 'photos',
+      key: 'mainPhoto',
+      label: "Main Favourite Photo",
+      count: 1,
+      required: true
+    },
+
+    {
+      type: 'photos',
+      key: 'memoryPhotos',
+      label: "Memory Photos",
+      count: 6,
+      required: false
+    },
+
+    {
+      type: 'video',
+      key: 'video',
+      label: "Birthday Video",
+      required: false
+    },
+
+    {
+      type: 'music',
+      key: 'music',
+      label: "Background Music",
+      required: false
+    },
+
+    {
+      type: 'music',
+      key: 'favouriteMusic',
+      label: "Favourite Music",
+      required: false
+    }
+  ],
+
+  downloadUrl: "https://soravtemps.github.io/Birthdaypaid2/"
+}
     ];
 
     // ============================================================
