@@ -381,6 +381,8 @@
   .badge.paid { background: rgba(225, 79, 134, 0.2); color: var(--accent-pink); }
   .badge.premium { background: rgba(232, 179, 106, 0.2); color: #E8B36A; }
   .badge.cat { background: rgba(255, 255, 255, 0.1); color: #fff; }
+  .badge.offer { background: rgba(255, 71, 87, 0.2); color: #FF4757; }
+  .strike-price { text-decoration: line-through; opacity: 0.55; font-size: 0.8em; margin-right: 4px; }
 
   .card-info h3 {
     margin: 0;
@@ -3188,7 +3190,7 @@ var qrcode = function() {
     // Standard price for every paid template: ₹100
     // ============================================================
     const paidTemplates = [
-      { name: "Cute Birthday Surprise (With Passcode)", category: "Birthday", emoji: "🔒", image: "https://files.catbox.moe/18g5a5.png", price: "₹100", desc: "A passcode-locked birthday surprise with cute cat reactions, a heartfelt wish, and a sweet 'will you be mine' finish.", isViral: true, downloadUrl: "https://soravtemplates.github.io/Temp3/" }
+      { name: "Cute Birthday Surprise (With Passcode)", category: "Birthday", emoji: "🔒", image: "https://files.catbox.moe/18g5a5.png", price: "₹100", offer: true, desc: "A passcode-locked birthday surprise with cute cat reactions, a heartfelt wish, and a sweet 'will you be mine' finish.", isViral: true, downloadUrl: "https://soravtemplates.github.io/Temp3/" }
     ];
 
     // ============================================================
@@ -3206,7 +3208,10 @@ var qrcode = function() {
     const premiumCategories = ["Birthday", "Marriage", "Valentine's", "Proposal"];
 
     const premiumTemplates = [
-      { name: "Special Surprise (Passcode Birthday)", category: "Birthday", emoji: "🔒", price: "₹199", desc: "A passcode-locked birthday surprise with an age countdown, a swipeable memories carousel, and a sealed love letter to unseal.", isViral: true, photosRequired: 4,
+      // Example: offer:true daal diya hai — isliye is card par price
+      // (₹199) cut ho ke "FREE" dikhega aur payment step skip ho jaayega.
+      // Hata dena / false karna hai to bas `offer: true,` line hata do.
+      { name: "Special Surprise (Passcode Birthday)", category: "Birthday", emoji: "🔒", price: "₹199", offer: true, desc: "A passcode-locked birthday surprise with an age countdown, a swipeable memories carousel, and a sealed love letter to unseal.", isViral: true, photosRequired: 4,
         fields: [
           { type: 'text', key: 'name', label: "Recipient's Name", placeholder: 'e.g. Rahul', required: true },
           { type: 'number', key: 'age', label: 'Age (for the countdown)', placeholder: 'e.g. 21', required: true },
@@ -3217,7 +3222,7 @@ var qrcode = function() {
         ],
         image:"https://files.catbox.moe/3i7zex.png", downloadUrl:"https://s96693884-gif.github.io/Birthdaypremium/" },
        
-         { name: "A Little Surprise (Lock, Quiz & Memories)", category: "Birthday", emoji: "💌", price: "₹199", desc: "A story-style locked surprise with a quiz, scratch-card reveal, balloon pop, swipeable memories, and a final love letter.", isViral: false, photosRequired: 0,
+         { name: "A Little Surprise (Lock, Quiz & Memories)", category: "Birthday", emoji: "💌", price: "₹199", offer: true, desc: "A story-style locked surprise with a quiz, scratch-card reveal, balloon pop, swipeable memories, and a final love letter.", isViral: false, photosRequired: 0,
         fields: [
           { type: 'text', key: 'name', label: "Recipient's Name", placeholder: 'e.g. Aditi', required: true },
           { type: 'text', key: 'from', label: 'Your Name (from)', placeholder: 'e.g. Your Bestie', required: false },
@@ -3238,7 +3243,7 @@ var qrcode = function() {
       // image/downloadUrl PLACEHOLDER hain — apna
       // store icon, screenshots, aur asli GitHub Pages link daal dena.
       // ============================================================
-      { name: "A Surprise For You", category: "Birthday", emoji: "🎁", price: "₹50", desc: "A gift-box surprise that unwraps into a heartfelt letter, a favourite photo, and your own background + surprise song.", isViral: false, photosRequired: 1,
+      { name: "A Surprise For You", category: "Birthday", emoji: "🎁", price: "₹50", offer: true, desc: "A gift-box surprise that unwraps into a heartfelt letter, a favourite photo, and your own background + surprise song.", isViral: false, photosRequired: 1,
         fields: [
           { type: 'text', key: 'name', label: "Recipient's Name", placeholder: 'e.g. Anshika', required: true },
           { type: 'text', key: 'from', label: 'Your Name (from)', placeholder: 'e.g. Krish', required: false },
@@ -3256,7 +3261,7 @@ var qrcode = function() {
       // → final message). image PLACEHOLDER hai — apna
       // store icon aur screenshots daal dena.
       // ============================================================
-      { name: "Happy Friendship Day", category: "Anniversary", emoji: "🤝", price: "₹99", desc: "A story-style friendship day surprise with a promise note, pinky-promise lock, quiz, memory jar, letter, and swipeable memories.", isViral: false, photosRequired: 0,
+      { name: "Happy Friendship Day", category: "Anniversary", emoji: "🤝", price: "₹99", offer: true, desc: "A story-style friendship day surprise with a promise note, pinky-promise lock, quiz, memory jar, letter, and swipeable memories.", isViral: false, photosRequired: 0,
         fields: [
           { type: 'text', key: 'recipientName', label: "Recipient's Name", placeholder: 'e.g. Trisha', required: true },
           { type: 'text', key: 'senderName', label: 'Your Name (Sender)', placeholder: 'e.g. Deepti', required: true },
@@ -3278,6 +3283,7 @@ var qrcode = function() {
   emoji: "🎀",
   desc: "A cute retro scrapbook birthday surprise with a playful Yes/No opening, birthday reveal, memories, personal video, heartfelt letter and two separate music moments.",
   price: "₹99",
+  offer: true,
   isViral: true,
 
   image: "https://files.catbox.moe/zfayrk.png",
@@ -3483,7 +3489,7 @@ var qrcode = function() {
         const card = document.createElement('div');
         card.className = 'template-card';
 
-        const priceLabel = (kind === 'free' || kind === 'cards') ? 'FREE' : (item.price || '');
+        const priceLabel = getPriceLabel(item, kind);
         const badgeClass = kind === 'free' ? 'free' : (kind === 'premium' ? 'premium' : (kind === 'cards' ? 'free' : 'paid'));
         const badgeText = kind === 'free' ? 'FREE' : (kind === 'premium' ? 'PREMIUM' : (kind === 'cards' ? 'CARDS' : 'PAID'));
 
@@ -3493,6 +3499,7 @@ var qrcode = function() {
             <div class="badge-row">
               <span class="badge ${badgeClass}">${badgeText}</span>
               <span class="badge cat">${item.category}</span>
+              ${getOfferBadgeHtml(item, kind)}
             </div>
             <h3>${item.name}</h3>
             <p>${item.desc || ''}</p>
@@ -3643,6 +3650,44 @@ var qrcode = function() {
       buildGrid(gridId, filtered, kind);
     }
 
+    // ============================================================
+    // # OFFER SYSTEM #
+    // Kisi bhi paid/premium template object mein `offer: true` daal do
+    // — bas itna karne se uska price marketing-style cut ho jaata hai
+    // (asli price ke upar strike-through laga ke "FREE" dikhaya jaata
+    // hai) aur payment step bhi automatically skip ho jaata hai — user
+    // seedha "Use This Template" dabakar customize/generate kar sakta
+    // hai, bilkul free template ki tarah. Yeh admin waale "Free" se
+    // ALAG hai: normal user ko admin nahi maana jaata, use koi
+    // "ADMIN FREE" badge nahi dikhta — sirf ek limited-time offer jaisa
+    // dikhta hai ("LIMITED OFFER — FREE"), aur uska login/other rules
+    // bilkul waise hi rehte hain jaise ek normal paid/premium template
+    // ke hote hain (login zaroori hai waise hi).
+    //
+    // Example:
+    //   { name: "...", price: "₹199", offer: true, ... }
+    // ============================================================
+    function isOfferItem(item) {
+      return !!(item && item.offer);
+    }
+
+    // Returns the HTML to drop into a `.price` element for a card/grid entry.
+    function getPriceLabel(item, kind) {
+      if (kind === 'free' || kind === 'cards') return 'FREE';
+      if (isOfferItem(item)) {
+        return item.price ? `<span class="strike-price">${item.price}</span>FREE` : 'FREE';
+      }
+      return item.price || '';
+    }
+
+    // Returns the extra "OFFER" badge markup for grid cards (paid/premium only).
+    function getOfferBadgeHtml(item, kind) {
+      if ((kind === 'paid' || kind === 'premium') && isOfferItem(item)) {
+        return '<span class="badge offer">OFFER</span>';
+      }
+      return '';
+    }
+
     // ---------- GRID RENDERING ----------
 
     function buildGrid(gridId, data, kind) {
@@ -3658,7 +3703,7 @@ var qrcode = function() {
         const card = document.createElement('div');
         card.className = 'template-card';
 
-        const priceLabel = (kind === 'free' || kind === 'cards') ? 'FREE' : (item.price || '');
+        const priceLabel = getPriceLabel(item, kind);
         const badgeClass = kind === 'free' ? 'free' : (kind === 'premium' ? 'premium' : (kind === 'cards' ? 'free' : 'paid'));
         const badgeText = kind === 'free' ? 'FREE' : (kind === 'premium' ? 'PREMIUM' : (kind === 'cards' ? 'CARDS' : 'PAID'));
 
@@ -3668,6 +3713,7 @@ var qrcode = function() {
             <div class="badge-row">
               <span class="badge ${badgeClass}">${badgeText}</span>
               <span class="badge cat">${item.category}</span>
+              ${getOfferBadgeHtml(item, kind)}
             </div>
             <h3>${item.name}</h3>
             <p>${item.desc || ''}</p>
@@ -3700,8 +3746,12 @@ var qrcode = function() {
       document.getElementById('detailDesc').textContent = item.desc || '';
 
       const isAdminFreebie = !!window.isAdminUser && (kind === 'paid' || kind === 'premium');
-      const isFreeFlow = (kind === 'free' || kind === 'cards') || isAdminFreebie;
-      const isDirectLink = (kind === 'free'); // surprise free templates only: no name/photo needed. Admin freebies still customize, just skip payment.
+      // offer:true on a paid/premium template cuts its price to FREE for
+      // every user (not just admin) and skips the payment step below —
+      // but unlike isAdminFreebie, this never marks the user as admin.
+      const isOffer = !isAdminFreebie && isOfferItem(item) && (kind === 'paid' || kind === 'premium');
+      const isFreeFlow = (kind === 'free' || kind === 'cards') || isAdminFreebie || isOffer;
+      const isDirectLink = (kind === 'free'); // surprise free templates only: no name/photo needed. Admin freebies / offers still customize, just skip payment.
 
       const badgeClass = kind === 'free' ? 'free' : (kind === 'premium' ? 'premium' : (kind === 'cards' ? 'free' : 'paid'));
       const badgeText = kind === 'free' ? 'FREE' : (kind === 'premium' ? 'PREMIUM' : (kind === 'cards' ? 'CARDS' : 'PAID'));
@@ -3709,10 +3759,11 @@ var qrcode = function() {
         <span class="badge ${badgeClass}">${badgeText}</span>
         <span class="badge cat">${item.category}</span>
         ${isAdminFreebie ? '<span class="badge free">ADMIN FREE</span>' : ''}
+        ${isOffer ? '<span class="badge offer">LIMITED OFFER — FREE</span>' : ''}
       `;
 
-      const priceLabel = isAdminFreebie ? 'FREE (Admin)' : (isFreeFlow ? 'FREE' : (item.price || ''));
-      document.getElementById('detailPrice').textContent = priceLabel;
+      const priceLabel = isAdminFreebie ? 'FREE (Admin)' : getPriceLabel(item, kind);
+      document.getElementById('detailPrice').innerHTML = priceLabel;
 
       const buyBtn = document.getElementById('detailBuyBtn');
       buyBtn.textContent = isDirectLink ? 'Get Link' : (isFreeFlow ? 'Use This Template' : ('Buy Now' + (item.price ? ' — ' + item.price : '')));
