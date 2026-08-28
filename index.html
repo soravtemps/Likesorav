@@ -1908,7 +1908,8 @@
         <div class="coins-action-row">
           <div class="coins-action-copy">
             <strong>👥 Refer your friend</strong>
-            <span>Friend ko apna link bhejo aur signup hone par <b id="referBonusText">10</b> coins pao.</span>
+            <span>Friend ko apna link bhejo. Har <b>unique first-time signup</b> par <b id="referBonusText">10</b> coins pao — max <b>10 friends</b>.</span>
+            <small id="referralProgressText">0/10 rewarded referrals</small>
             <div class="refer-link-box compact">
               <input type="text" id="referLinkInput" readonly value="">
               <button onclick="copyReferLink()">Copy</button>
@@ -5412,8 +5413,9 @@ function confirmLogout() {
     // # REFER & EARN — COINS CONFIG #
     // Yahan se saare coin values control hote hain.
     // ============================================================
-    const SIGNUP_BONUS_COINS = 5;   // naye user ko signup pe milne wale coins
-    const REFER_BONUS_COINS = 10;   // refer karne wale ko har naye signup pe
+    const SIGNUP_BONUS_COINS = 10;  // naye user ko first signup pe milne wale coins
+    const REFER_BONUS_COINS = 10;   // har unique successful referral pe
+    const MAX_REFERRALS = 10;        // ek user ko max 10 rewarded referrals
     const AD_COIN_REWARD = 1;       // ek ad dekhne pe
     const AD_DAILY_LIMIT = 5;       // roz max kitne ads se coins milenge
     const AD_WATCH_SECONDS = 15;    // "ad" placeholder kitni der chalega
@@ -5438,44 +5440,68 @@ function confirmLogout() {
 
     async function saveUserData(user) {
       const userRef = doc(db, "users", user.uid);
-      const existingSnap = await getDoc(userRef).catch(() => null);
-      const isFirstTimeUser = !existingSnap || !existingSnap.exists();
+      const pendingReferrer = localStorage.getItem('pendingReferrer');
+      const validReferral = !!pendingReferrer && pendingReferrer !== user.uid;
+      let isFirstTimeUser = false;
 
-      await setDoc(userRef, {
-        name: user.displayName || '',
-        email: user.email || '',
-        photoURL: user.photoURL || '',
-        lastLogin: serverTimestamp()
-      }, { merge: true });
+      // Atomically create the user on first sign-in and give the one-time
+      // signup bonus. Existing users only get their profile/lastLogin updated.
+      await runTransaction(db, async (tx) => {
+        const snap = await tx.get(userRef);
+        if (!snap.exists()) {
+          isFirstTimeUser = true;
+          tx.set(userRef, {
+            name: user.displayName || '',
+            email: user.email || '',
+            photoURL: user.photoURL || '',
+            coins: SIGNUP_BONUS_COINS,
+            referredBy: validReferral ? pendingReferrer : null,
+            referrals: [],
+            referralCount: 0,
+            lastLogin: serverTimestamp()
+          }, { merge: true });
+        } else {
+          tx.set(userRef, {
+            name: user.displayName || '',
+            email: user.email || '',
+            photoURL: user.photoURL || '',
+            lastLogin: serverTimestamp()
+          }, { merge: true });
+        }
+      });
+
+      // Only a genuinely new account can complete a referral. The referrer
+      // transaction makes the reward idempotent: the same friend UID can
+      // never pay the referrer twice, and each referrer can earn for max 10
+      // unique friends.
+      if (isFirstTimeUser && validReferral) {
+        try {
+          const referrerRef = doc(db, "users", pendingReferrer);
+          await runTransaction(db, async (tx) => {
+            const refSnap = await tx.get(referrerRef);
+            if (!refSnap.exists()) return;
+            const data = refSnap.data() || {};
+            const referrals = Array.isArray(data.referrals) ? data.referrals : [];
+            if (referrals.includes(user.uid)) return;
+            if (referrals.length >= MAX_REFERRALS) return;
+
+            tx.set(referrerRef, {
+              coins: increment(REFER_BONUS_COINS),
+              referrals: arrayUnion(user.uid),
+              referralCount: referrals.length + 1
+            }, { merge: true });
+          });
+        } catch (e) { console.warn('Referral credit failed:', e); }
+      }
 
       if (isFirstTimeUser) {
-        const pendingReferrer = localStorage.getItem('pendingReferrer');
-        const validReferral = pendingReferrer && pendingReferrer !== user.uid;
-
-        await setDoc(userRef, {
-          coins: increment(SIGNUP_BONUS_COINS),
-          referredBy: validReferral ? pendingReferrer : null
-        }, { merge: true });
-
-        if (validReferral) {
-          try {
-            const referrerRef = doc(db, "users", pendingReferrer);
-            const referrerSnap = await getDoc(referrerRef);
-            if (referrerSnap.exists()) {
-              await setDoc(referrerRef, {
-                coins: increment(REFER_BONUS_COINS),
-                referrals: arrayUnion(user.uid)
-              }, { merge: true });
-            }
-          } catch (e) { console.warn('Referral credit failed:', e); }
-        }
         localStorage.setItem('referredBy_processed', '1');
-        localStorage.removeItem('pendingReferrer');
       }
+      localStorage.removeItem('pendingReferrer');
     }
 
     // Live coin balance — keeps navbar chip + coins modal in sync without a
-    // manual refresh whenever coins change (referral, ad, spin, redeem...).
+    // manual refresh whenever coins change (referral, ad, spin, coin purchase...).
     let coinsUnsub = null;
     function listenToCoins(uid) {
       if (coinsUnsub) { coinsUnsub(); coinsUnsub = null; }
@@ -5493,6 +5519,11 @@ function confirmLogout() {
         if (navBal) navBal.textContent = window.isAdminUser ? '∞' : coins;
         const modalBal = document.getElementById('coinsModalBalance');
         if (modalBal) modalBal.textContent = window.isAdminUser ? '∞' : coins;
+        const referralProgress = document.getElementById('referralProgressText');
+        if (referralProgress) {
+          const count = Math.min(Number(data.referralCount || (Array.isArray(data.referrals) ? data.referrals.length : 0)), MAX_REFERRALS);
+          referralProgress.textContent = window.isAdminUser ? '♾️ Unlimited admin account' : `${count}/${MAX_REFERRALS} rewarded referrals · ${Math.max(0, MAX_REFERRALS - count)} left`;
+        }
       }, (err) => console.warn('Coins listener error:', err));
     }
 
