@@ -1166,7 +1166,54 @@
     .refer-fab { padding: 10px 14px; font-size: 12px; right: 12px; bottom: 16px; }
   }
 
-  .coins-modal-box { max-width: 380px; }
+  .coins-modal-box { max-width: 390px; }
+
+  .coins-single-page {
+    max-height: 88vh;
+    overflow-y: auto;
+    padding: 20px 16px 14px;
+  }
+  .coins-single-page h3 { margin-bottom: 12px; }
+  .free-spin-balance {
+    margin-top: 5px; font-size: 11px; color: var(--text-muted);
+  }
+  .free-spin-balance b { color: var(--accent-gold); }
+  .coins-action-list { display:flex; flex-direction:column; gap:10px; }
+  .coins-action-row {
+    display:flex; align-items:center; gap:10px;
+    background:rgba(255,255,255,.045);
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:14px; padding:12px;
+  }
+  .coins-action-copy { flex:1; min-width:0; }
+  .coins-action-copy strong { display:block; font-size:13px; color:#fff; margin-bottom:4px; }
+  .coins-action-copy span { display:block; font-size:11px; line-height:1.4; color:var(--text-muted); }
+  .coins-action-copy small { display:block; margin-top:4px; font-size:9.5px; color:#b9afcc; }
+  .coins-action-btn {
+    width:auto !important; flex:0 0 auto; margin:0 !important;
+    padding:9px 13px !important; border-radius:18px !important;
+    background:linear-gradient(135deg,#900909,#300710) !important;
+    color:#fff !important; font-size:11px !important; font-weight:800 !important;
+  }
+  .refer-link-box.compact { margin-top:8px; padding:6px 7px; }
+  .refer-link-box.compact input { font-size:10px; min-width:0; }
+  .refer-link-box.compact button { padding:7px 10px; font-size:10px; }
+  .spin-inline-box {
+    background:rgba(255,255,255,.025); border:1px solid rgba(232,179,106,.14);
+    border-radius:14px; padding:8px 8px 10px; text-align:center;
+  }
+  .compact-wheel { width:190px; height:190px; margin:2px auto 8px; }
+  .spin-inline-box .spin-result-text { min-height:18px; margin:0; font-size:12px; }
+  .redeem-inline-list { margin-top:8px; display:flex; flex-direction:column; gap:6px; }
+  .redeem-inline-list .redeem-item { margin:0; padding:8px; }
+  .redeem-inline-list .redeem-item .rn { font-size:11px; }
+  .redeem-inline-list .redeem-item .rc { font-size:10px; }
+  .redeem-inline-list .redeem-item button { padding:6px 10px; font-size:10px; }
+  @media (max-width:420px) {
+    .coins-single-page { width:94%; max-height:90vh; }
+    .coins-action-row { padding:10px; }
+    .compact-wheel { width:175px; height:175px; }
+  }
   .coins-balance-banner {
     text-align: center;
     background: linear-gradient(135deg, rgba(232,179,106,0.18), rgba(232,179,106,0.05));
@@ -1814,73 +1861,73 @@
   </div>
 
   <!-- ============================================================
-       # REFER & EARN — floating button + coins modal #
-       Yeh chota animated button har page corner mein dikhta hai.
-       Isse click karne pe coins modal khulta hai jisme 4 tabs hain:
-       Refer, Watch Ad, Spin & Win, Redeem. Coins Firestore mein
-       users/{uid}.coins field mein store hote hain.
+       # REFER & EARN — single-page coins panel #
+       Sab earning actions ek hi jagah dikhte hain — tabs nahi.
   ============================================================ -->
   <button class="refer-fab" id="referFab" onclick="openCoinsModal()">
     <span class="refer-fab-emoji">🎁</span> Refer &amp; Earn
   </button>
 
   <div class="modal-overlay" id="coinsModal">
-    <div class="modal-box coins-modal-box">
-      <h3>Refer &amp; Earn Coins</h3>
+    <div class="modal-box coins-modal-box coins-single-page">
+      <h3>Refer &amp; Earn</h3>
 
       <div class="coins-balance-banner">
         <div style="font-size:11px; color:var(--text-muted); font-weight:700; letter-spacing:0.5px;">YOUR COINS</div>
         <div class="big-coin">🪙 <span id="coinsModalBalance">0</span></div>
+        <div id="freeSpinBalance" class="free-spin-balance">🎡 Free Spins: <b>0</b></div>
       </div>
 
-      <div class="coins-tabs">
-        <button class="coins-tab-btn active" data-tab="refer" onclick="switchCoinsTab('refer')">Refer</button>
-        <button class="coins-tab-btn" data-tab="ad" onclick="switchCoinsTab('ad')">Watch Ad</button>
-        <button class="coins-tab-btn" data-tab="spin" onclick="switchCoinsTab('spin')">Spin &amp; Win</button>
-        <button class="coins-tab-btn" data-tab="redeem" onclick="switchCoinsTab('redeem')">Redeem</button>
-      </div>
-
-      <!-- REFER TAB -->
-      <div class="coins-tab-panel active" id="coinsTab-refer">
-        <p class="hint">Apna link share karo — jab koi is link se sign up karega, tumhe <b id="referBonusText">10</b> coins milenge!</p>
-        <div class="refer-link-box">
-          <input type="text" id="referLinkInput" readonly value="">
-          <button onclick="copyReferLink()">Copy</button>
+      <div class="coins-action-list">
+        <div class="coins-action-row">
+          <div class="coins-action-copy">
+            <strong>👥 Refer your friend</strong>
+            <span>Friend ko apna link bhejo aur signup hone par <b id="referBonusText">10</b> coins pao.</span>
+            <div class="refer-link-box compact">
+              <input type="text" id="referLinkInput" readonly value="">
+              <button onclick="copyReferLink()">Copy</button>
+            </div>
+          </div>
+          <button class="coins-action-btn" onclick="shareReferLink()">Share</button>
         </div>
-        <button onclick="shareReferLink()">📤 Share Link</button>
-        <p class="status-text" id="referStatusText"></p>
-      </div>
 
-      <!-- WATCH AD TAB -->
-      <div class="coins-tab-panel" id="coinsTab-ad">
-        <p class="hint">Ek chota ad dekho aur <b>1 coin</b> paao. Roz ki limit: <span id="adDailyLimitText">5</span> ads.</p>
-        <div class="ad-watch-box">
-          <span>▶️ Watch Ad — earn 1 coin</span>
-          <button onclick="startWatchAd()" id="watchAdBtn">Watch</button>
+        <div class="coins-action-row">
+          <div class="coins-action-copy">
+            <strong>▶️ Watch an ad</strong>
+            <span><b>1 coin</b> per completed ad · Daily limit: <b id="adDailyLimitText">5</b></span>
+          </div>
+          <button class="coins-action-btn" onclick="startWatchAd()" id="watchAdBtn">Watch</button>
         </div>
-        <p class="status-text" id="adStatusText"></p>
-      </div>
 
-      <!-- SPIN & WIN TAB -->
-      <div class="coins-tab-panel" id="coinsTab-spin">
-        <p class="hint">Ek spin ki keemat <b>5 coins</b>. Jeeto free template, bonus coins, ya bada prize! 🎉</p>
-        <div class="spin-wheel-wrap">
-          <div class="spin-wheel-outer">
+        <div class="coins-action-row coins-spin-row">
+          <div class="coins-action-copy">
+            <strong>🎡 Spin &amp; Win</strong>
+            <span>5 coins per spin. Win 50 coins, Premium 7 days, or another free spin.</span>
+            <small>₹10 is shown on the wheel but <b>can never be won</b>.</small>
+          </div>
+          <button class="coins-action-btn spin-action-btn" onclick="doSpin()" id="spinBtn">Spin</button>
+        </div>
+
+        <div class="spin-inline-box">
+          <div class="spin-wheel-outer compact-wheel">
             <div class="spin-wheel-pointer"></div>
             <svg class="spin-wheel" id="spinWheel" viewBox="0 0 200 200"></svg>
           </div>
           <div class="spin-result-text" id="spinResultText"></div>
-          <button onclick="doSpin()" id="spinBtn">🎡 Spin Now (5 coins)</button>
+        </div>
+
+        <div class="coins-action-row">
+          <div class="coins-action-copy">
+            <strong>🎁 Redeem template</strong>
+            <span>Coins se eligible templates unlock karo — payment ki zaroorat nahi.</span>
+            <div id="redeemStoreList" class="redeem-inline-list"></div>
+          </div>
         </div>
       </div>
 
-      <!-- REDEEM TAB -->
-      <div class="coins-tab-panel" id="coinsTab-redeem">
-        <p class="hint">Coins se seedhe template unlock karo — payment ki zaroorat nahi!</p>
-        <div id="redeemStoreList"></div>
-        <p class="status-text" id="redeemStatusText"></p>
-      </div>
-
+      <p class="status-text" id="referStatusText"></p>
+      <p class="status-text" id="adStatusText"></p>
+      <p class="status-text" id="redeemStatusText"></p>
       <button class="modal-close" onclick="closeCoinsModal()">Close</button>
     </div>
   </div>
@@ -4008,6 +4055,10 @@ var qrcode = function() {
       document.getElementById('detailName').textContent = item.name;
       document.getElementById('detailDesc').textContent = item.desc || '';
 
+      const premiumUntilValue = window.currentUserPremiumUntil && typeof window.currentUserPremiumUntil.toMillis === 'function'
+        ? window.currentUserPremiumUntil.toMillis()
+        : Number(window.currentUserPremiumUntil || 0);
+      const isPremiumActive = kind === 'premium' && premiumUntilValue > Date.now();
       const isAdminFreebie = !!window.isAdminUser && (kind === 'paid' || kind === 'premium');
       // offer:true on a paid/premium template discounts its price by
       // offerPercent for every user (not just admin). Only a 100% offer
@@ -4023,7 +4074,7 @@ var qrcode = function() {
       // populated from users/{uid}.redeemedTemplates). Treat exactly like
       // an admin freebie — skip payment, go straight to customize.
       const isCoinRedeemed = window.redeemedTemplateNames instanceof Set && window.redeemedTemplateNames.has(item.name);
-      const isFreeFlow = (kind === 'free' || kind === 'cards') || isAdminFreebie || isFullyFreeOffer || isCoinRedeemed;
+      const isFreeFlow = (kind === 'free' || kind === 'cards') || isAdminFreebie || isFullyFreeOffer || isCoinRedeemed || isPremiumActive;
       const isDirectLink = (kind === 'free'); // surprise free templates only: no name/photo needed. Admin freebies / fully-free offers still customize, just skip payment.
 
       const badgeClass = kind === 'free' ? 'free' : (kind === 'premium' ? 'premium' : (kind === 'cards' ? 'free' : 'paid'));
@@ -4033,10 +4084,11 @@ var qrcode = function() {
         <span class="badge cat">${item.category}</span>
         ${isAdminFreebie ? '<span class="badge free">ADMIN FREE</span>' : ''}
         ${isCoinRedeemed ? '<span class="badge free">🪙 COINS UNLOCKED</span>' : ''}
+        ${isPremiumActive ? '<span class="badge premium">⭐ PREMIUM ACTIVE</span>' : ''}
         ${isOffer ? `<span class="badge offer">${isFullyFreeOffer ? 'LIMITED OFFER — FREE' : offerPricing.percent + '% OFF'}</span>` : ''}
       `;
 
-      const priceLabel = isAdminFreebie ? 'FREE (Admin)' : (isCoinRedeemed ? 'FREE (Coins Redeemed)' : getPriceLabel(item, kind));
+      const priceLabel = isAdminFreebie ? 'FREE (Admin)' : (isPremiumActive ? 'FREE (Premium Access)' : (isCoinRedeemed ? 'FREE (Coins Redeemed)' : getPriceLabel(item, kind)));
       document.getElementById('detailPrice').innerHTML = priceLabel;
 
       // Item actually charged/used downstream: for a partial offer, price is
@@ -5382,6 +5434,9 @@ function confirmLogout() {
         const data = snap.data() || {};
         const coins = data.coins || 0;
         window.currentUserCoins = coins;
+        window.currentUserFreeSpins = Number(data.freeSpins || 0);
+        window.currentUserPremiumUntil = data.premiumUntil || 0;
+        updateSpinButtonState();
         const navChip = document.getElementById('navCoinChip');
         if (navChip) navChip.style.display = 'flex';
         const navBal = document.getElementById('navCoinBalance');
@@ -5730,97 +5785,115 @@ function confirmLogout() {
     }
 
     // ---------- SPIN & WIN TAB ----------
-    // Weighted prize table. Keep the jackpot entries (Free Template / iPhone)
-    // rare — they create a "spinWins" record for the admin to manually
-    // verify + deliver (see loadAdminSpinWins below).
+    // Five fixed wheel prizes. ₹10 is display-only and can never be selected.
+    // Exactly 5 wheel prizes. ₹10 is DISPLAY-ONLY and is NEVER selectable.
     const SPIN_PRIZES = [
-      { label: '😅 Better Luck', type: 'none', weight: 32, color: '#2A2340' },
-      { label: '+1 Coin', type: 'coins', value: 1, weight: 26, color: '#3A2E55' },
-      { label: '+2 Coins', type: 'coins', value: 2, weight: 18, color: '#5C2450' },
-      { label: '+5 Coins', type: 'coins', value: 5, weight: 12, color: '#900909' },
-      { label: '🎁 Free Template', type: 'template', weight: 8, color: '#C9782F' },
-      { label: '📱 iPhone!', type: 'jackpot', weight: 2, color: '#E8B36A' },
-      { label: '+3 Coins', type: 'coins', value: 3, weight: 2, color: '#1D1733' }
+      { label: '🪙 Earn 50 coins', type: 'coins', value: 50, weight: 22, color: '#900909', canWin: true },
+      { label: '😅 Try again', type: 'none', weight: 46, color: '#2A2340', canWin: true },
+      { label: '₹10', type: 'cash', weight: 0, color: '#3A2E55', canWin: false },
+      { label: '⭐ Premium (7 days)', type: 'premium7', weight: 12, color: '#C9782F', canWin: true },
+      { label: '🎡 Spin again', type: 'freeSpin', weight: 20, color: '#5C2450', canWin: true }
     ];
 
     function drawSpinWheel() {
       const svg = document.getElementById('spinWheel');
       if (!svg || svg.dataset.drawn) return;
-      const total = SPIN_PRIZES.reduce((s, p) => s + p.weight, 0);
-      let startAngle = 0;
+
+      // The wheel always has 5 equal visual sections.
+      const total = SPIN_PRIZES.length;
+      const sliceAngle = 360 / total;
       const cx = 100, cy = 100, r = 98;
       let html = '';
-      SPIN_PRIZES.forEach((p) => {
-        const sliceAngle = (p.weight / total) * 360;
+
+      SPIN_PRIZES.forEach((p, i) => {
+        const startAngle = i * sliceAngle;
         const endAngle = startAngle + sliceAngle;
         const x1 = cx + r * Math.cos(Math.PI * (startAngle - 90) / 180);
         const y1 = cy + r * Math.sin(Math.PI * (startAngle - 90) / 180);
         const x2 = cx + r * Math.cos(Math.PI * (endAngle - 90) / 180);
         const y2 = cy + r * Math.sin(Math.PI * (endAngle - 90) / 180);
-        const largeArc = sliceAngle > 180 ? 1 : 0;
-        html += `<path d="M${cx},${cy} L${x1.toFixed(2)},${y1.toFixed(2)} A${r},${r} 0 ${largeArc} 1 ${x2.toFixed(2)},${y2.toFixed(2)} Z" fill="${p.color}" stroke="#0B0A17" stroke-width="1"/>`;
+        html += `<path d="M${cx},${cy} L${x1.toFixed(2)},${y1.toFixed(2)} A${r},${r} 0 0 1 ${x2.toFixed(2)},${y2.toFixed(2)} Z" fill="${p.color}" stroke="#0B0A17" stroke-width="1"/>`;
+
         const midAngle = startAngle + sliceAngle / 2;
         const tx = cx + (r * 0.62) * Math.cos(Math.PI * (midAngle - 90) / 180);
         const ty = cy + (r * 0.62) * Math.sin(Math.PI * (midAngle - 90) / 180);
-        html += `<text x="${tx.toFixed(2)}" y="${ty.toFixed(2)}" fill="#fff" font-size="9" font-weight="700" text-anchor="middle" transform="rotate(${midAngle.toFixed(2)}, ${tx.toFixed(2)}, ${ty.toFixed(2)})">${p.label}</text>`;
-        startAngle = endAngle;
+        html += `<text x="${tx.toFixed(2)}" y="${ty.toFixed(2)}" fill="#fff" font-size="8" font-weight="700" text-anchor="middle" transform="rotate(${midAngle.toFixed(2)}, ${tx.toFixed(2)}, ${ty.toFixed(2)})">${p.label}</text>`;
       });
+
       svg.innerHTML = html;
       svg.dataset.drawn = '1';
       svg.dataset.rotation = '0';
+      updateSpinButtonState();
+    }
+
+    function updateSpinButtonState() {
+      const btn = document.getElementById('spinBtn');
+      if (!btn || isSpinning) return;
+      const free = Number(window.currentUserFreeSpins || 0);
+      if (free > 0) {
+        btn.textContent = `Spin Free (${free})`;
+        btn.title = 'Free spin available';
+      } else {
+        btn.textContent = `Spin (5 coins)`;
+        btn.title = 'Costs 5 coins';
+      }
+      const fs = document.getElementById('freeSpinBalance');
+      if (fs) fs.innerHTML = `🎡 Free Spins: <b>${free}</b>`;
     }
 
     let isSpinning = false;
     window.doSpin = async function () {
       if (!window.isUserLoggedIn) { openLogin(); return; }
       if (isSpinning) return;
+
       const resultEl = document.getElementById('spinResultText');
       resultEl.textContent = '';
-
-      if ((window.currentUserCoins || 0) < SPIN_COST_COINS) {
-        resultEl.textContent = 'Kaafi coins nahi hain — pehle Refer/Ad/Redeem se coins kamao!';
-        return;
-      }
-
       isSpinning = true;
       const spinBtn = document.getElementById('spinBtn');
       spinBtn.disabled = true;
 
-      // Deduct the cost up front via a transaction (re-checks balance
-      // server-side so two rapid taps can't double-spend).
-      let deducted = false;
+      // A "Spin again" prize gives a free spin. Use that before coins.
+      let usedFreeSpin = false;
       try {
         const userRef = doc(db, "users", window.currentUserUid);
         await runTransaction(db, async (tx) => {
           const snap = await tx.get(userRef);
-          const coins = (snap.data() || {}).coins || 0;
-          if (coins < SPIN_COST_COINS) throw new Error('NOT_ENOUGH');
-          tx.update(userRef, { coins: increment(-SPIN_COST_COINS) });
+          const data = snap.data() || {};
+          const freeSpins = Number(data.freeSpins || 0);
+          const coins = Number(data.coins || 0);
+
+          if (freeSpins > 0) {
+            tx.update(userRef, { freeSpins: increment(-1) });
+            usedFreeSpin = true;
+          } else if (coins >= SPIN_COST_COINS) {
+            tx.update(userRef, { coins: increment(-SPIN_COST_COINS) });
+          } else {
+            throw new Error('NOT_ENOUGH');
+          }
         });
-        deducted = true;
       } catch (e) {
-        resultEl.textContent = 'Kaafi coins nahi hain.';
+        resultEl.textContent = 'Kaafi coins nahi hain — pehle Refer ya Ad se coins kamao!';
         isSpinning = false;
         spinBtn.disabled = false;
+        updateSpinButtonState();
         return;
       }
 
-      // Weighted random pick.
-      const total = SPIN_PRIZES.reduce((s, p) => s + p.weight, 0);
-      let roll = Math.random() * total;
-      let winnerIndex = 0;
+      // ₹10 can NEVER be selected: only prizes explicitly marked canWin.
+      const winPrizes = SPIN_PRIZES.filter(p => p.canWin !== false && p.weight > 0);
+      const totalWeight = winPrizes.reduce((sum, p) => sum + p.weight, 0);
+      let roll = Math.random() * totalWeight;
+      let prize = winPrizes[winPrizes.length - 1];
       let cumulative = 0;
-      for (let i = 0; i < SPIN_PRIZES.length; i++) {
-        cumulative += SPIN_PRIZES[i].weight;
-        if (roll <= cumulative) { winnerIndex = i; break; }
+      for (const p of winPrizes) {
+        cumulative += p.weight;
+        if (roll < cumulative) { prize = p; break; }
       }
-      const prize = SPIN_PRIZES[winnerIndex];
+      const winnerIndex = SPIN_PRIZES.indexOf(prize);
 
-      // Rotate wheel so the winning slice lands under the top pointer.
-      let sweepStart = 0;
-      for (let i = 0; i < winnerIndex; i++) sweepStart += (SPIN_PRIZES[i].weight / total) * 360;
-      const sliceAngle = (prize.weight / total) * 360;
-      const targetMid = sweepStart + sliceAngle / 2;
+      // Rotate the equal-slice wheel so the winning slice lands under the pointer.
+      const sliceAngle = 360 / SPIN_PRIZES.length;
+      const targetMid = winnerIndex * sliceAngle + sliceAngle / 2;
       const svg = document.getElementById('spinWheel');
       const prevRotation = parseFloat(svg.dataset.rotation || '0');
       const extraSpins = 5 * 360;
@@ -5829,29 +5902,30 @@ function confirmLogout() {
       svg.dataset.rotation = String(newRotation);
 
       setTimeout(async () => {
-        isSpinning = false;
-        spinBtn.disabled = false;
-        if (prize.type === 'coins') {
-          try {
-            await setDoc(doc(db, "users", window.currentUserUid), { coins: increment(prize.value) }, { merge: true });
-          } catch (e) { console.warn(e); }
-          resultEl.textContent = '🎉 Aapko ' + prize.value + ' coins mile!';
-        } else if (prize.type === 'template' || prize.type === 'jackpot') {
-          try {
-            await addDoc(collection(db, "spinWins"), {
-              uid: window.currentUserUid,
-              email: (auth.currentUser && auth.currentUser.email) || '',
-              name: (auth.currentUser && auth.currentUser.displayName) || '',
-              prize: prize.label,
-              claimed: false,
-              createdAt: serverTimestamp()
-            });
-          } catch (e) { console.warn(e); }
-          resultEl.textContent = prize.type === 'jackpot'
-            ? '🎊 JACKPOT! ' + prize.label + ' jeeta! Claim ke liye humein WhatsApp/Instagram par contact karo.'
-            : '🎁 Aapne ek Free Template jeeta! Claim ke liye humein WhatsApp/Instagram par contact karo.';
-        } else {
-          resultEl.textContent = 'Is baar kuch nahi mila — phir try karo!';
+        try {
+          const userRef = doc(db, "users", window.currentUserUid);
+
+          if (prize.type === 'coins') {
+            await setDoc(userRef, { coins: increment(prize.value) }, { merge: true });
+            resultEl.textContent = '🎉 Aapko 50 coins mile!';
+          } else if (prize.type === 'premium7') {
+            const until = Date.now() + (7 * 24 * 60 * 60 * 1000);
+            await setDoc(userRef, { premiumUntil: until }, { merge: true });
+            window.currentUserPremiumUntil = until;
+            resultEl.textContent = '⭐ Premium access 7 days ke liye unlock ho gaya!';
+          } else if (prize.type === 'freeSpin') {
+            await setDoc(userRef, { freeSpins: increment(1) }, { merge: true });
+            resultEl.textContent = '🎡 Spin again! Aapko 1 free spin mil gaya.';
+          } else {
+            resultEl.textContent = '😅 Is baar try again!';
+          }
+        } catch (e) {
+          console.warn('Spin reward failed:', e);
+          resultEl.textContent = 'Reward save nahi ho paya. Please dobara check karo.';
+        } finally {
+          isSpinning = false;
+          spinBtn.disabled = false;
+          updateSpinButtonState();
         }
       }, 4600);
     };
