@@ -422,6 +422,34 @@
     font-family: var(--font-display);
   }
 
+  .coin-price {
+    color: var(--accent-gold);
+    font-size: 10px;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+
+  .detail-buy-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .coin-buy-btn {
+    background: linear-gradient(135deg, #E8B36A, #C9782F);
+    color: #1a1206;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 25px;
+    font-weight: 800;
+    font-size: 12px;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(232,179,106,.22);
+  }
+  .coin-buy-btn:disabled {
+    opacity: .65;
+    cursor: default;
+  }
+
   .view-btn {
     background: linear-gradient(135deg, var(--accent-pink), #0B0A17);
     color: #fff;
@@ -1204,11 +1232,6 @@
   }
   .compact-wheel { width:190px; height:190px; margin:2px auto 8px; }
   .spin-inline-box .spin-result-text { min-height:18px; margin:0; font-size:12px; }
-  .redeem-inline-list { margin-top:8px; display:flex; flex-direction:column; gap:6px; }
-  .redeem-inline-list .redeem-item { margin:0; padding:8px; }
-  .redeem-inline-list .redeem-item .rn { font-size:11px; }
-  .redeem-inline-list .redeem-item .rc { font-size:10px; }
-  .redeem-inline-list .redeem-item button { padding:6px 10px; font-size:10px; }
   @media (max-width:420px) {
     .coins-single-page { width:94%; max-height:90vh; }
     .coins-action-row { padding:10px; }
@@ -1691,9 +1714,9 @@
       <p class="section-sub">Jab koi Spin &amp; Win mein bada prize jeete, uska record yaha aata hai — WhatsApp/Instagram par contact karke prize deliver karo.</p>
       <div id="adminSpinWinsList"></div>
 
-      <h2 class="section-title" style="margin-top:30px;">Admin — Coin Redemptions</h2>
+      <h2 class="section-title" style="margin-top:30px;">Admin — Coin Template Purchases</h2>
       <p class="section-sub">Coins se unlock kiye gaye templates ki list.</p>
-      <div id="adminRedemptionsList"></div>
+      <div id="adminCoinPurchasesList"></div>
     </div>
 
     <!-- TEMPLATE DETAIL PAGE (opens when a template's View button is clicked) -->
@@ -1728,7 +1751,10 @@
 
       <div class="detail-footer-bar">
         <span class="price" id="detailPrice"></span>
-        <button class="buy-btn" id="detailBuyBtn">Buy Now</button>
+        <div class="detail-buy-actions">
+          <button class="coin-buy-btn" id="detailCoinBuyBtn" style="display:none;"></button>
+          <button class="buy-btn" id="detailBuyBtn">Buy Now</button>
+        </div>
       </div>
     </div>
 
@@ -1916,18 +1942,10 @@
           <div class="spin-result-text" id="spinResultText"></div>
         </div>
 
-        <div class="coins-action-row">
-          <div class="coins-action-copy">
-            <strong>🎁 Redeem template</strong>
-            <span>Coins se eligible templates unlock karo — payment ki zaroorat nahi.</span>
-            <div id="redeemStoreList" class="redeem-inline-list"></div>
-          </div>
-        </div>
       </div>
 
       <p class="status-text" id="referStatusText"></p>
       <p class="status-text" id="adStatusText"></p>
-      <p class="status-text" id="redeemStatusText"></p>
       <button class="modal-close" onclick="closeCoinsModal()">Close</button>
     </div>
   </div>
@@ -3901,7 +3919,7 @@ var qrcode = function() {
         if (typeof loadAdminUsers === 'function') loadAdminUsers();
         if (typeof loadAdminOrders === 'function') loadAdminOrders();
         if (typeof loadAdminSpinWins === 'function') loadAdminSpinWins();
-        if (typeof loadAdminRedemptions === 'function') loadAdminRedemptions();
+        if (typeof loadAdminCoinPurchases === 'function') loadAdminCoinPurchases();
       }
     }
 
@@ -3979,14 +3997,33 @@ var qrcode = function() {
       return { original, discounted: `${currencyPrefix}${discountedNum}`, percent, isFree: false };
     }
 
+    // Coin price is tied to the current rupee selling price: ₹1 = 1 coin.
+    // For an active offer, coins use the discounted rupee amount.
+    function getCoinPrice(item, kind) {
+      if (kind === 'free' || kind === 'cards') return 0;
+      let amount = 0;
+      if (isOfferItem(item)) {
+        amount = parsePriceNumber(getOfferPricing(item).discounted);
+      } else {
+        amount = parsePriceNumber(item.price);
+      }
+      return Math.max(1, Math.round(amount));
+    }
+
+    function getCoinPriceLabel(item, kind) {
+      const coins = getCoinPrice(item, kind);
+      return coins ? `<span class="coin-price">🪙 ${coins} coins</span>` : '';
+    }
+
     // Returns the HTML to drop into a `.price` element for a card/grid entry.
     function getPriceLabel(item, kind) {
       if (kind === 'free' || kind === 'cards') return 'FREE';
+      let cashHtml = item.price || '';
       if (isOfferItem(item)) {
         const { original, discounted } = getOfferPricing(item);
-        return original ? `<span class="strike-price">${original}</span>${discounted}` : discounted;
+        cashHtml = original ? `<span class="strike-price">${original}</span>${discounted}` : discounted;
       }
-      return item.price || '';
+      return `${cashHtml} <span class="coin-price">• 🪙 ${getCoinPrice(item, kind)}</span>`;
     }
 
     // Returns the extra "OFFER" badge markup for grid cards (paid/premium only).
@@ -4088,7 +4125,10 @@ var qrcode = function() {
         ${isOffer ? `<span class="badge offer">${isFullyFreeOffer ? 'LIMITED OFFER — FREE' : offerPricing.percent + '% OFF'}</span>` : ''}
       `;
 
-      const priceLabel = isAdminFreebie ? 'FREE (Admin)' : (isPremiumActive ? 'FREE (Premium Access)' : (isCoinRedeemed ? 'FREE (Coins Redeemed)' : getPriceLabel(item, kind)));
+      const coinUnlocked = window.coinUnlockedTemplateNames instanceof Set && window.coinUnlockedTemplateNames.has(item.name);
+      const coinCost = getCoinPrice(item, kind);
+      const isFreeFlowFinal = isFreeFlow || coinUnlocked;
+      const priceLabel = isAdminFreebie ? 'FREE (Admin)' : (isPremiumActive ? 'FREE (Premium Access)' : (coinUnlocked ? 'FREE (Coins Unlocked)' : getPriceLabel(item, kind)));
       document.getElementById('detailPrice').innerHTML = priceLabel;
 
       // Item actually charged/used downstream: for a partial offer, price is
@@ -4099,19 +4139,28 @@ var qrcode = function() {
         : item;
 
       const buyBtn = document.getElementById('detailBuyBtn');
-      buyBtn.textContent = isDirectLink ? 'Get Link' : (isFreeFlow ? 'Use This Template' : ('Buy Now' + (effectiveItem.price ? ' — ' + effectiveItem.price : '')));
+      const coinBuyBtn = document.getElementById('detailCoinBuyBtn');
+      buyBtn.textContent = isDirectLink ? 'Get Link' : (isFreeFlowFinal ? 'Use This Template' : ('Buy Now' + (effectiveItem.price ? ' — ' + effectiveItem.price : '')));
       buyBtn.onclick = () => {
         if (isDirectLink) {
           openDirectLink(item);
-        } else if (isFreeFlow) {
-          if (isCoinRedeemed && typeof window.consumeRedeemedTemplate === 'function') {
-            window.consumeRedeemedTemplate(item.name);
-          }
+        } else if (isFreeFlowFinal) {
           openCustomizeModal(item);
         } else {
           openPaymentModal(effectiveItem);
         }
       };
+
+      if (coinBuyBtn && (kind === 'paid' || kind === 'premium') && !isFreeFlow && !isFullyFreeOffer && !isPremiumActive) {
+        coinBuyBtn.style.display = 'inline-flex';
+        coinBuyBtn.textContent = coinUnlocked ? '🪙 Unlocked ✓' : `🪙 ${coinCost} Coins`;
+        coinBuyBtn.disabled = !!coinUnlocked;
+        coinBuyBtn.onclick = () => buyTemplateWithCoins(item, kind, coinCost);
+      } else if (coinBuyBtn) {
+        coinBuyBtn.style.display = 'none';
+        coinBuyBtn.onclick = null;
+        coinBuyBtn.disabled = false;
+      }
 
       const liveWrap = document.getElementById('livePreviewWrap');
       const liveFrame = document.getElementById('livePreviewFrame');
@@ -5433,19 +5482,17 @@ function confirmLogout() {
       coinsUnsub = onSnapshot(doc(db, "users", uid), (snap) => {
         const data = snap.data() || {};
         const coins = data.coins || 0;
-        window.currentUserCoins = coins;
+        window.currentUserCoins = window.isAdminUser ? Infinity : coins;
         window.currentUserFreeSpins = Number(data.freeSpins || 0);
         window.currentUserPremiumUntil = data.premiumUntil || 0;
+        window.coinUnlockedTemplateNames = new Set(data.coinUnlockedTemplates || []);
         updateSpinButtonState();
         const navChip = document.getElementById('navCoinChip');
         if (navChip) navChip.style.display = 'flex';
         const navBal = document.getElementById('navCoinBalance');
-        if (navBal) navBal.textContent = coins;
+        if (navBal) navBal.textContent = window.isAdminUser ? '∞' : coins;
         const modalBal = document.getElementById('coinsModalBalance');
-        if (modalBal) modalBal.textContent = coins;
-
-        window.redeemedTemplateNames = new Set(data.redeemedTemplates || []);
-        if (typeof renderRedeemStore === 'function') renderRedeemStore();
+        if (modalBal) modalBal.textContent = window.isAdminUser ? '∞' : coins;
       }, (err) => console.warn('Coins listener error:', err));
     }
 
@@ -5547,6 +5594,7 @@ function confirmLogout() {
 
         window.currentUserUid = null;
         window.currentUserCoins = 0;
+        window.coinUnlockedTemplateNames = new Set();
         window.redeemedTemplateNames = new Set();
         if (coinsUnsub) { coinsUnsub(); coinsUnsub = null; }
         const navChip = document.getElementById('navCoinChip');
@@ -5673,7 +5721,7 @@ function confirmLogout() {
     };
 
     // ============================================================
-    // # REFER & EARN — MODAL, TABS, REFERRAL, ADS, SPIN, REDEEM #
+    // # REFER & EARN — MODAL, REFERRAL, ADS, SPIN & COIN PURCHASES #
     // ============================================================
 
     function hideCoinsModal() {
@@ -5684,19 +5732,12 @@ function confirmLogout() {
       document.getElementById('coinsModal').classList.add('active');
       if (typeof window.pushOverlay === 'function') window.pushOverlay('coins', hideCoinsModal);
       drawSpinWheel();
-      renderRedeemStore();
     };
     window.closeCoinsModal = function () {
       if (typeof window.requestCloseOverlay === 'function') window.requestCloseOverlay('coins', hideCoinsModal);
       else hideCoinsModal();
     };
 
-    window.switchCoinsTab = function (tab) {
-      document.querySelectorAll('.coins-tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
-      document.querySelectorAll('.coins-tab-panel').forEach(p => p.classList.toggle('active', p.id === 'coinsTab-' + tab));
-      if (tab === 'spin') drawSpinWheel();
-      if (tab === 'redeem') renderRedeemStore();
-    };
 
     // ---------- REFER TAB ----------
     window.copyReferLink = function () {
@@ -5862,6 +5903,10 @@ function confirmLogout() {
           const freeSpins = Number(data.freeSpins || 0);
           const coins = Number(data.coins || 0);
 
+          // Admin has unlimited coins: spinning never deducts coins.
+          if (window.isAdminUser) {
+            return;
+          }
           if (freeSpins > 0) {
             tx.update(userRef, { freeSpins: increment(-1) });
             usedFreeSpin = true;
@@ -5930,82 +5975,64 @@ function confirmLogout() {
       }, 4600);
     };
 
-    // ---------- REDEEM TAB ----------
-    // Coin-price list for unlocking specific paid templates directly with
-    // coins instead of a UPI payment. Names must exactly match an item's
-    // `name` in paidTemplates/premiumTemplates above.
-    const REDEEM_STORE = [
-      { name: 'A Surprise For You', coins: 10 },
-      { name: 'Happy Friendship Day', coins: 18 },
-      { name: 'Special Surprise (Passcode Birthday)', coins: 35 }
-    ];
-
-    function renderRedeemStore() {
-      const list = document.getElementById('redeemStoreList');
-      if (!list) return;
-      const redeemed = window.redeemedTemplateNames instanceof Set ? window.redeemedTemplateNames : new Set();
-      list.innerHTML = REDEEM_STORE.map((entry) => {
-        const already = redeemed.has(entry.name);
-        return `
-          <div class="redeem-item">
-            <div class="redeem-info">
-              <div class="rn">${entry.name}</div>
-              <div class="rc">🪙 ${entry.coins} coins</div>
-            </div>
-            <button ${already ? 'disabled' : ''} onclick="redeemTemplateWithCoins('${entry.name.replace(/'/g, "\\'")}', ${entry.coins})">
-              ${already ? 'Unlocked ✓' : 'Redeem'}
-            </button>
-          </div>`;
-      }).join('');
-    }
-    window.renderRedeemStore = renderRedeemStore;
-
-    window.redeemTemplateWithCoins = async function (templateName, coinCost) {
+    // ---------- BUY TEMPLATE WITH COINS ----------
+    // Coin purchases permanently unlock the template for this user.
+    // Admin is treated as having unlimited coins, so no balance is deducted.
+    window.buyTemplateWithCoins = async function (item, kind, coinCost) {
       if (!window.isUserLoggedIn) { openLogin(); return; }
-      const statusEl = document.getElementById('redeemStatusText');
-      statusEl.textContent = '';
+      if (!(kind === 'paid' || kind === 'premium') || !coinCost) return;
+
+      const statusEl = document.getElementById('referStatusText');
+      if (statusEl) statusEl.textContent = '';
+
       try {
         const userRef = doc(db, "users", window.currentUserUid);
         await runTransaction(db, async (tx) => {
           const snap = await tx.get(userRef);
           const data = snap.data() || {};
-          const coins = data.coins || 0;
-          const already = (data.redeemedTemplates || []).includes(templateName);
-          if (already) throw new Error('ALREADY');
+          const unlocked = Array.isArray(data.coinUnlockedTemplates) ? data.coinUnlockedTemplates : [];
+          if (unlocked.includes(item.name)) return;
+
+          // Admin: unlimited coins — unlock without deducting anything.
+          if (window.isAdminUser) {
+            tx.set(userRef, { coinUnlockedTemplates: arrayUnion(item.name) }, { merge: true });
+            return;
+          }
+
+          const coins = Number(data.coins || 0);
           if (coins < coinCost) throw new Error('NOT_ENOUGH');
           tx.set(userRef, {
             coins: increment(-coinCost),
-            redeemedTemplates: arrayUnion(templateName)
+            coinUnlockedTemplates: arrayUnion(item.name)
           }, { merge: true });
         });
-        await addDoc(collection(db, "redemptions"), {
-          uid: window.currentUserUid,
-          email: (auth.currentUser && auth.currentUser.email) || '',
-          templateName,
-          coinCost,
-          createdAt: serverTimestamp()
-        });
-        statusEl.textContent = '✅ Unlock ho gaya! Ab "' + templateName + '" ko free mein use kar sakte ho.';
+
+        if (!window.isAdminUser) {
+          await addDoc(collection(db, "coinPurchases"), {
+            uid: window.currentUserUid,
+            email: (auth.currentUser && auth.currentUser.email) || '',
+            templateName: item.name,
+            coinCost,
+            createdAt: serverTimestamp()
+          });
+        }
+
+        if (!(window.coinUnlockedTemplateNames instanceof Set)) window.coinUnlockedTemplateNames = new Set();
+        window.coinUnlockedTemplateNames.add(item.name);
+        if (statusEl) statusEl.textContent = window.isAdminUser
+          ? '♾️ Admin access: template unlocked free.'
+          : `✅ ${item.name} unlocked for 🪙 ${coinCost} coins.`;
+
+        openCustomizeModal(item);
       } catch (e) {
-        statusEl.textContent = (e && e.message === 'ALREADY')
-          ? 'Yeh template pehle se unlocked hai.'
-          : 'Kaafi coins nahi hain.';
+        if (statusEl) statusEl.textContent = (e && e.message === 'NOT_ENOUGH')
+          ? `Kaafi coins nahi hain — ${coinCost} coins chahiye.`
+          : 'Coin purchase nahi ho paya. Dobara try karo.';
       }
-      setTimeout(() => { statusEl.textContent = ''; }, 3500);
+      setTimeout(() => { if (statusEl) statusEl.textContent = ''; }, 3500);
     };
 
-    // Called from the template-detail buy button once a coin-redeemed
-    // template is actually used, so it can't be reused for free again.
-    window.consumeRedeemedTemplate = async function (templateName) {
-      if (!window.currentUserUid) return;
-      try {
-        await setDoc(doc(db, "users", window.currentUserUid), {
-          redeemedTemplates: arrayRemove(templateName)
-        }, { merge: true });
-      } catch (e) { console.warn(e); }
-    };
-
-    // ---------- ADMIN: spin wins + redemptions ----------
+    // ---------- ADMIN: spin wins + coin purchases ----------
     window.loadAdminSpinWins = async function () {
       const listEl = document.getElementById('adminSpinWinsList');
       if (!listEl) return;
@@ -6039,15 +6066,15 @@ function confirmLogout() {
       }
     };
 
-    window.loadAdminRedemptions = async function () {
-      const listEl = document.getElementById('adminRedemptionsList');
+    window.loadAdminCoinPurchases = async function () {
+      const listEl = document.getElementById('adminCoinPurchasesList');
       if (!listEl) return;
       listEl.innerHTML = '<div class="empty-note">Loading...</div>';
       try {
-        const q = query(collection(db, "redemptions"), orderBy("createdAt", "desc"));
+        const q = query(collection(db, "coinPurchases"), orderBy("createdAt", "desc"));
         const snap = await getDocs(q);
         if (snap.empty) {
-          listEl.innerHTML = '<div class="empty-note">Abhi tak koi redemption nahi hua.</div>';
+          listEl.innerHTML = '<div class="empty-note">Abhi tak koi coin purchase nahi hua.</div>';
           return;
         }
         listEl.innerHTML = '';
@@ -6068,9 +6095,10 @@ function confirmLogout() {
         });
       } catch (err) {
         console.error(err);
-        listEl.innerHTML = '<div class="empty-note">Redemptions load nahi hue. Firestore rules check karo.</div>';
+        listEl.innerHTML = '<div class="empty-note">Coin purchases load nahi hue. Firestore rules check karo.</div>';
       }
     };
+;
   </script>
 </body>
 </html>
