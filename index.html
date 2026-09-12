@@ -434,7 +434,7 @@
     align-items: center;
     gap: 8px;
   }
-  .coin-buy-btn {
+  .wallet-buy-btn {
     background: linear-gradient(135deg, #E8B36A, #C9782F);
     color: #1a1206;
     border: none;
@@ -445,7 +445,7 @@
     cursor: pointer;
     box-shadow: 0 6px 16px rgba(232,179,106,.22);
   }
-  .coin-buy-btn:disabled {
+  .wallet-buy-btn:disabled {
     opacity: .65;
     cursor: default;
   }
@@ -1157,10 +1157,10 @@
     display: none;
     align-items: center;
     gap: 4px;
-    background: rgba(232, 179, 106, 0.15);
+    background: #fff8e6;
     border: 1px solid rgba(232, 179, 106, 0.4);
-    color: var(--accent-gold);
-    font-weight: 700;
+    color: #b78316;
+    font-weight: 800;
     font-size: 12px;
     padding: 6px 10px;
     border-radius: 14px;
@@ -1203,14 +1203,14 @@
     .refer-fab { padding: 10px 14px; font-size: 12px; right: 12px; bottom: 16px; }
   }
 
-  .coins-modal-box { max-width: 390px; }
+  .wallet-modal-box { max-width: 390px; }
 
-  .coins-single-page {
+  .wallet-single-page {
     max-height: 88vh;
     overflow-y: auto;
     padding: 20px 16px 14px;
   }
-  .coins-single-page h3 { margin-bottom: 12px; }
+  .wallet-single-page h3 { margin-bottom: 12px; }
   .free-spin-balance {
     margin-top: 5px; font-size: 11px; color: var(--text-muted);
   }
@@ -1242,7 +1242,7 @@
   .compact-wheel { width:190px; height:190px; margin:2px auto 8px; }
   .spin-inline-box .spin-result-text { min-height:18px; margin:0; font-size:12px; }
   @media (max-width:420px) {
-    .coins-single-page { width:94%; max-height:90vh; }
+    .wallet-single-page { width:94%; max-height:90vh; }
     .coins-action-row { padding:10px; }
     .compact-wheel { width:175px; height:175px; }
   }
@@ -1446,6 +1446,460 @@
   }
 
   footer { text-align: center; padding: 30px 20px; font-size: 13px; color: var(--text-muted); }
+
+/* ============================================================
+   BDYwish LIGHT THEME — inspired by the supplied AlwaysYou
+   reference: clean white background, black typography,
+   soft grey surfaces, subtle pink/gold accents.
+   ============================================================ */
+:root {
+  --bg-main: #ffffff;
+  --card-bg: #ffffff;
+  --card-bg-alt: #faf8f8;
+  --accent-pink: #e85b86;
+  --accent-blue: #d9a3b4;
+  --accent-pink-deep: #b83f67;
+  --accent-gold: #d9a72e;
+  --text-light: #171717;
+  --text-muted: #777777;
+}
+
+body {
+  background: #ffffff !important;
+  background-image: none !important;
+  animation: none !important;
+  background-attachment: initial !important;
+  color: #171717 !important;
+}
+
+.navbar {
+  background: rgba(255,255,255,.96) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid #eeeeee !important;
+  box-shadow: 0 3px 14px rgba(0,0,0,.06) !important;
+}
+
+.nav-links a {
+  color: #777 !important;
+}
+.nav-links a:hover,
+.nav-links a.active {
+  color: #171717 !important;
+  background: #f5f2f3 !important;
+}
+
+.login-btn {
+  background: #111111 !important;
+  color: #ffffff !important;
+  box-shadow: 0 5px 14px rgba(0,0,0,.12) !important;
+}
+.login-btn:hover {
+  box-shadow: 0 7px 18px rgba(0,0,0,.16) !important;
+}
+
+.settings-icon {
+  color: #222 !important;
+}
+
+.profile-avatar {
+  background: #fafafa !important;
+  border-color: #e8b6c5 !important;
+  box-shadow: 0 4px 18px rgba(0,0,0,.06) !important;
+}
+
+.section-title {
+  color: #171717 !important;
+}
+.section-title::after {
+  background: #e8b04a !important;
+}
+
+.section-sub {
+  color: #777 !important;
+}
+
+.category-bar {
+  scrollbar-color: #ddd transparent;
+}
+.category-chip {
+  background: #f7f5f5 !important;
+  border: 1px solid #eeeeee !important;
+  color: #555 !important;
+}
+.category-chip.active {
+  background: #171717 !important;
+  border-color: #171717 !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+.search-box {
+  background: #ffffff !important;
+  border-color: #e3e3e3 !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,.03);
+}
+.search-box input {
+  color: #171717 !important;
+}
+.search-box input::placeholder {
+  color: #a0a0a0 !important;
+}
+.search-box svg {
+  color: #888 !important;
+}
+
+.template-card {
+  background: #ffffff !important;
+  border-color: #eeeeee !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,.07) !important;
+}
+.template-card:hover {
+  box-shadow: 0 14px 30px rgba(0,0,0,.10) !important;
+  border-color: #e9c3ce !important;
+}
+.card-image-box {
+  background: #f7f4f4 !important;
+}
+.card-info h3 {
+  color: #171717 !important;
+}
+.card-info p {
+  color: #777 !important;
+}
+.card-footer {
+  border-top-color: #eeeeee !important;
+}
+.price {
+  color: #171717 !important;
+}
+.coin-price {
+  color: #c18b17 !important;
+}
+
+.badge.free {
+  background: #edf9f2 !important;
+  color: #23945d !important;
+}
+.badge.paid {
+  background: #fff0f4 !important;
+  color: #d64d78 !important;
+}
+.badge.premium {
+  background: #fff7df !important;
+  color: #b78316 !important;
+}
+.badge.cat {
+  background: #f2f2f2 !important;
+  color: #555 !important;
+}
+.badge.offer {
+  background: #fff0f0 !important;
+  color: #e04444 !important;
+}
+
+.wallet-buy-btn,
+.refer-fab {
+  background: #e7b33f !important;
+  color: #231b08 !important;
+  box-shadow: 0 6px 18px rgba(190,145,35,.22) !important;
+}
+
+.view-btn {
+  background: #111111 !important;
+  color: #ffffff !important;
+}
+
+.about-box,
+.live-preview-wrap {
+  background: #ffffff !important;
+  border-color: #eeeeee !important;
+}
+.about-grid-item,
+.coins-action-row,
+.ad-watch-box,
+.redeem-item,
+.refer-link-box,
+.coins-tab-btn,
+.multi-photo-icon,
+.upload-box {
+  background: #fafafa !important;
+  border-color: #e8e8e8 !important;
+}
+.about-hero .founder-avatar {
+  background: #f7dbe4 !important;
+  color: #a63c5d !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,.06) !important;
+}
+.about-hero h3,
+.about-section-block h4,
+.about-grid-item h5,
+.about-faq-item .faq-q {
+  color: #171717 !important;
+}
+.about-hero .founder-role,
+.about-timeline-item .att-year,
+.about-values-list li::before {
+  color: #d64d78 !important;
+}
+.about-timeline {
+  border-left-color: #f0cbd6 !important;
+}
+.about-timeline-item::before {
+  background: #e85b86 !important;
+  box-shadow: 0 0 6px rgba(232,91,134,.25) !important;
+}
+.about-contact-box {
+  background: #fff6f8 !important;
+  border-color: #f0cbd6 !important;
+}
+
+.back-btn {
+  background: #ffffff !important;
+  border-color: #e5e5e5 !important;
+  color: #333 !important;
+}
+
+.detail-hero {
+  background: #f7f4f4 !important;
+  border-color: #eeeeee !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,.07) !important;
+}
+.detail-name {
+  color: #171717 !important;
+}
+.detail-desc,
+.detail-subheading {
+  color: #777 !important;
+}
+
+.detail-footer-bar {
+  background: rgba(255,255,255,.97) !important;
+  border-top-color: #e8e8e8 !important;
+}
+.buy-btn {
+  background: #111111 !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 16px rgba(0,0,0,.12) !important;
+}
+
+.live-preview-wrap {
+  background: #fffaf7 !important;
+}
+.live-preview-copy .lp-title {
+  color: #171717 !important;
+}
+.live-preview-copy .lp-title em {
+  color: #c18b17 !important;
+}
+.phone-mockup {
+  background: #111111 !important;
+  box-shadow: 0 0 0 2px #ead39d, 0 18px 40px rgba(0,0,0,.16) !important;
+}
+.phone-notch {
+  background: #111111 !important;
+}
+
+.modal-overlay {
+  background: rgba(0,0,0,.42) !important;
+}
+.modal-box {
+  background: #ffffff !important;
+  border-color: #eeeeee !important;
+  color: #171717 !important;
+  box-shadow: 0 20px 50px rgba(0,0,0,.16) !important;
+}
+.modal-box input,
+.modal-box textarea,
+.modal-box select {
+  background: #ffffff !important;
+  border-color: #e3e3e3 !important;
+  color: #171717 !important;
+}
+.modal-box input::placeholder,
+.modal-box textarea::placeholder {
+  color: #999 !important;
+}
+.modal-box button {
+  background: #111111 !important;
+  color: #ffffff !important;
+}
+.modal-close {
+  color: #777 !important;
+}
+.field-label,
+.status-text {
+  color: #777 !important;
+}
+.upload-box {
+  color: #777 !important;
+}
+.upload-box.has-image {
+  border-color: #e85b86 !important;
+}
+.link-result {
+  background: #fff7f9 !important;
+  border-color: #e85b86 !important;
+}
+.link-result input {
+  color: #333 !important;
+}
+
+.coins-balance-banner {
+  background: #fff9e9 !important;
+  border-color: #ead39d !important;
+}
+.coins-balance-banner .big-coin,
+.free-spin-balance b,
+.redeem-item .redeem-info .rc {
+  color: #b78316 !important;
+}
+.coins-tab-btn.active,
+.coins-action-btn {
+  background: #111111 !important;
+  color: #ffffff !important;
+}
+.coins-tab-btn {
+  color: #777 !important;
+}
+.ad-overlay {
+  background: rgba(0,0,0,.65) !important;
+}
+.ad-overlay .ad-box {
+  background: #ffffff !important;
+  border-color: #ead39d !important;
+  color: #333 !important;
+}
+
+.empty-note {
+  background: #ffffff !important;
+  border-color: #dddddd !important;
+  color: #777 !important;
+}
+
+.fullscreen-link {
+  color: #b78316 !important;
+  border-color: #ead39d !important;
+}
+
+/* Remove remaining dark decorative gradients from common components. */
+.card-image-box,
+.detail-hero,
+.ad-overlay .ad-box,
+.view-btn,
+.buy-btn,
+.login-btn,
+.coins-tab-btn.active,
+.coins-action-btn {
+  background-image: none !important;
+}
+
+
+/* Fixed card text area: titles stay on one line; descriptions stay on two.
+   This prevents long text from changing the template-grid card height. */
+.template-card .card-info h3 {
+  height: 17px !important;
+  min-height: 17px !important;
+  max-height: 17px !important;
+  line-height: 17px !important;
+  display: block !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  -webkit-line-clamp: unset !important;
+  -webkit-box-orient: unset !important;
+}
+
+.template-card .card-info p {
+  height: 29px !important;
+  min-height: 29px !important;
+  max-height: 29px !important;
+  line-height: 14.5px !important;
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 2 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+
+/* Fixed card text slots: long titles/descriptions never change grid height. */
+.card-info h3 {
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 1 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  min-height: 1.35em !important;
+  max-height: 1.35em !important;
+}
+.card-info p {
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 2 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  min-height: 2.8em !important;
+  max-height: 2.8em !important;
+}
+.wallet-buy-btn {
+  background: #111 !important;
+  color: #fff !important;
+  border: none !important;
+}
+.wallet-box {
+  margin: 0 0 14px;
+  padding: 13px 14px;
+  border: 1px solid #ead39d;
+  border-radius: 14px;
+  background: #fffaf0;
+}
+.wallet-box-top { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+.wallet-box-label { font-size:11px; color:#777; font-weight:800; letter-spacing:.4px; }
+.wallet-box-balance { font-size:23px; font-weight:900; color:#b78316; }
+.wallet-box-note { font-size:10px; color:#888; margin-top:3px; }
+.wallet-apply-btn { width:auto !important; margin:0 !important; padding:9px 13px !important; background:#111 !important; color:#fff !important; border-radius:20px !important; }
+.wallet-panel {
+  background:#fff;
+  border:1px solid #eee;
+  border-radius:18px;
+  padding:15px;
+  margin-top:12px;
+}
+.wallet-panel .wallet-big { font-size:28px; font-weight:900; color:#b78316; }
+.wallet-panel .wallet-muted { color:#777; font-size:11px; line-height:1.45; }
+.referral-hero {
+  background:#0d0d0d;
+  color:#fff;
+  border-radius:20px;
+  padding:22px 16px;
+  text-align:center;
+  margin-bottom:12px;
+}
+.referral-hero .gift { font-size:52px; margin-bottom:8px; }
+.referral-hero .eyebrow { color:#777; font-size:10px; font-weight:800; letter-spacing:1.5px; }
+.referral-hero h4 { font-size:30px; margin:10px 0 5px; }
+.referral-hero p { color:#aaa; font-size:12px; margin:0; }
+.referral-rewards { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:16px; }
+.referral-reward-card { border-radius:14px; padding:12px; background:#191919; border:1px solid #292929; }
+.referral-reward-card b { display:block; font-size:23px; margin-top:3px; }
+.referral-reward-card span { font-size:9px; color:#aaa; text-transform:uppercase; letter-spacing:.8px; }
+.daily-checkin {
+  background:#fff;
+  border:1px solid #eee;
+  border-radius:16px;
+  padding:14px;
+  margin-top:10px;
+}
+.daily-checkin-row { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+.daily-checkin h4 { margin:0 0 4px; font-size:14px; }
+.daily-checkin p { margin:0; color:#777; font-size:11px; }
+.daily-checkin button { width:auto; margin:0; padding:9px 14px; border-radius:20px; background:#111; color:#fff; }
+.daily-checkin button:disabled { opacity:.5; }
+
+
+/* Legacy coin/spin styles are intentionally unused after the wallet migration. */
+.coin-price, .coin-chip-old, .coins-tabs, .coins-tab-panel, .spin-wheel-wrap, .spin-wheel-outer, .spin-wheel, .spin-wheel-pointer, .spin-inline-box, .free-spin-balance { display:none !important; }
 </style>
 </head>
 <body>
@@ -1485,7 +1939,7 @@
     </div>
 
     
-    <div id="navCoinChip" class="coin-chip" onclick="openCoinsModal()">🪙 <span id="navCoinBalance">0</span></div>
+    <div id="navCoinChip" class="coin-chip" onclick="openWalletModal()">₹<span id="navCoinBalance">0</span></div>
     <button class="login-btn" id="navLoginBtn" onclick="openLogin()">Login</button>
 <div id="navUserChip" style="display:none; align-items:center; gap:6px; cursor:pointer;" onclick="openSettings()">
   <img id="navUserPhoto" src="" alt="" style="width:24px; height:24px; border-radius:50%; object-fit:cover; border:1px solid var(--accent-pink);">
@@ -1744,13 +2198,9 @@
       <p class="section-sub">This list is visible only to the admin account.</p>
       <div id="adminUsersList"></div>
 
-      <h2 class="section-title" style="margin-top:30px;">Admin — Big Spin Wins (Free Template / iPhone)</h2>
-      <p class="section-sub">When someone wins a big prize on Spin &amp; Win, the record shows up here — contact them via WhatsApp/Instagram to deliver the prize.</p>
-      <div id="adminSpinWinsList"></div>
-
-      <h2 class="section-title" style="margin-top:30px;">Admin — Coin Template Purchases</h2>
-      <p class="section-sub">List of templates unlocked with coins.</p>
-      <div id="adminCoinPurchasesList"></div>
+      <h2 class="section-title" style="margin-top:30px;">Admin — Website Wallet Purchases</h2>
+      <p class="section-sub">Templates purchased using website wallet balance.</p>
+      <div id="adminWalletPurchasesList"></div>
     </div>
 
     <!-- TEMPLATE DETAIL PAGE (opens when a template's View button is clicked) -->
@@ -1790,11 +2240,11 @@
       <div class="detail-footer-bar">
         <span class="price" id="detailPrice"></span>
         <div class="detail-buy-actions">
-          <button class="coin-buy-btn" id="detailCoinBuyBtn" style="display:none;"></button>
+          <button class="wallet-buy-btn" id="detailWalletBuyBtn" style="display:none;"></button>
           <button class="buy-btn" id="detailBuyBtn">Buy Now</button>
         </div>
       </div>
-      <div class="status-text" id="detailCoinStatusText" style="text-align:right; min-height:16px;"></div>
+      <div class="status-text" id="detailWalletStatusText" style="text-align:right; min-height:16px;"></div>
     </div>
 
   </main>
@@ -1865,6 +2315,18 @@
       <p style="text-align:center; color:var(--text-muted); font-size:13px; margin: 0 0 6px;" id="paymentTemplateName"></p>
       <p style="text-align:center; font-size:24px; font-weight:800; margin: 0 0 16px;" id="paymentAmountText"></p>
 
+      <div class="wallet-box" id="paymentWalletBox">
+        <div class="wallet-box-top">
+          <div>
+            <div class="wallet-box-label">WEBSITE WALLET BALANCE</div>
+            <div class="wallet-box-balance">₹<span id="paymentWalletBalance">0</span></div>
+            <div class="wallet-box-note">Wallet credit can only be spent on BDYwish.</div>
+          </div>
+          <button type="button" class="wallet-apply-btn" id="applyWalletBtn" onclick="applyWalletPayment()">Use Wallet</button>
+        </div>
+        <div class="status-text" id="walletPaymentStatus"></div>
+      </div>
+
       <button id="payUpiBtn" onclick="payViaUPI('gpay')" style="display:flex; align-items:center; justify-content:center; gap:8px; background:#fff; color:#4285F4; font-weight:800;">
         <span style="width:18px; height:18px; border-radius:50%; background:conic-gradient(#4285F4 0 25%, #34A853 25% 50%, #FBBC05 50% 75%, #EA4335 75% 100%); display:inline-block;"></span>
         Google Pay
@@ -1927,6 +2389,7 @@
       <div class="settings-tabs">
         <button class="settings-tab active" id="settingsTabOrders" onclick="showAccountTab('orders')">🧾 Orders</button>
         <button class="settings-tab" id="settingsTabWishlist" onclick="showAccountTab('wishlist')">♡ Wishlist</button>
+        <button class="settings-tab" id="settingsTabReferral" onclick="showAccountTab('referral')">🎁 Refer &amp; Earn</button>
       </div>
       <div id="accountOrdersPanel">
         <div class="settings-section-title">My orders</div>
@@ -1935,6 +2398,40 @@
       <div id="accountWishlistPanel" style="display:none;">
         <div class="settings-section-title">Saved templates</div>
         <div class="settings-data-list" id="settingsWishlistList"><div class="empty-note">Loading...</div></div>
+      </div>
+
+      <div id="accountReferralPanel" style="display:none;">
+        <div class="wallet-panel">
+          <div class="wallet-box-label">WEBSITE WALLET</div>
+          <div class="wallet-big">₹<span id="profileWalletBalance">0</span></div>
+          <div class="wallet-muted">Wallet balance can only be used to buy templates on BDYwish. It cannot be withdrawn as cash.</div>
+        </div>
+
+        <div class="referral-hero">
+          <div class="gift">🎁</div>
+          <div class="eyebrow">INVITE FRIENDS · EARN WALLET CREDIT</div>
+          <h4>Give ₹20.<br>Get ₹10.</h4>
+          <p>Share your referral link. Your friend gets ₹20 off their first order and you get ₹10 wallet credit.</p>
+          <div class="referral-rewards">
+            <div class="referral-reward-card"><span>They get</span><b>₹20</b></div>
+            <div class="referral-reward-card"><span>You earn</span><b>₹10</b></div>
+          </div>
+        </div>
+
+        <div class="refer-link-box compact">
+          <input type="text" id="profileReferLinkInput" readonly value="">
+          <button onclick="copyProfileReferLink()">Copy</button>
+        </div>
+        <button class="generate-btn" style="margin-top:0;" onclick="shareProfileReferLink()">Share Referral Link</button>
+        <div class="status-text" id="profileReferralStatus"></div>
+
+        <div class="daily-checkin">
+          <div class="daily-checkin-row">
+            <div><h4>🎁 Daily Check-in</h4><p>Claim a random ₹1–₹20 wallet reward every 24 hours.</p></div>
+            <button id="dailyCheckinBtn" onclick="claimDailyCheckin()">Claim</button>
+          </div>
+          <div class="status-text" id="dailyCheckinStatus"></div>
+        </div>
       </div>
 
       <div class="settings-list">
@@ -1947,75 +2444,52 @@
   </div>
 
   <!-- ============================================================
-       # REFER & EARN — single-page coins panel #
-       All earning actions are shown in one place — no tabs.
+       # WALLET + REFER & EARN #
   ============================================================ -->
-  <button class="refer-fab" id="referFab" onclick="openCoinsModal()">
+  <button class="refer-fab" id="referFab" onclick="openWalletModal()">
     <span class="refer-fab-emoji">🎁</span> Refer &amp; Earn
   </button>
 
-  <div class="modal-overlay" id="coinsModal">
-    <div class="modal-box coins-modal-box coins-single-page">
-      <h3>Refer &amp; Earn</h3>
-
-      <div class="coins-balance-banner">
-        <div style="font-size:11px; color:var(--text-muted); font-weight:700; letter-spacing:0.5px;">YOUR COINS</div>
-        <div class="big-coin">🪙 <span id="coinsModalBalance">0</span></div>
-        <div id="freeSpinBalance" class="free-spin-balance">🎡 Free Spins: <b>0</b></div>
+  <div class="modal-overlay" id="walletModal">
+    <div class="modal-box wallet-modal-box wallet-single-page">
+      <h3>Wallet &amp; Refer &amp; Earn</h3>
+      <div class="wallet-box">
+        <div class="wallet-box-top">
+          <div>
+            <div class="wallet-box-label">YOUR WEBSITE WALLET</div>
+            <div class="wallet-box-balance">₹<span id="walletModalBalance">0</span></div>
+            <div class="wallet-box-note">Use this balance only on BDYwish templates.</div>
+          </div>
+        </div>
       </div>
 
-      <div class="coins-action-list">
-        <div class="coins-action-row">
-          <div class="coins-action-copy">
-            <strong>👥 Refer your friend</strong>
-            <span>Send your link to a friend. Get <b id="referBonusText">10</b> coins for every <b>unique first-time signup</b> — up to <b>10 friends</b>.</span>
-            <small id="referralProgressText">0/10 rewarded referrals</small>
-            <div class="refer-link-box compact">
-              <input type="text" id="referLinkInput" readonly value="">
-              <button onclick="copyReferLink()">Copy</button>
-            </div>
-          </div>
-          <button class="coins-action-btn" onclick="shareReferLink()">Share</button>
+      <div class="referral-hero">
+        <div class="gift">🎁</div>
+        <div class="eyebrow">INVITE FRIENDS · EARN WALLET CREDIT</div>
+        <h4>Give ₹20.<br>Get ₹10.</h4>
+        <p>Friend gets ₹20 off first order · You get ₹10 wallet credit.</p>
+        <div class="referral-rewards">
+          <div class="referral-reward-card"><span>They get</span><b>₹20</b></div>
+          <div class="referral-reward-card"><span>You earn</span><b>₹10</b></div>
         </div>
+      </div>
+      <div class="refer-link-box compact">
+        <input type="text" id="referLinkInput" readonly value="">
+        <button onclick="copyReferLink()">Copy</button>
+      </div>
+      <button class="generate-btn" style="margin-top:0;" onclick="shareReferLink()">Share Referral Link</button>
+      <div class="status-text" id="referStatusText"></div>
 
-        <div class="coins-action-row">
-          <div class="coins-action-copy">
-            <strong>▶️ Watch an ad</strong>
-            <span><b>1 coin</b> per completed ad · Daily limit: <b id="adDailyLimitText">5</b></span>
-          </div>
-          <button class="coins-action-btn" onclick="startWatchAd()" id="watchAdBtn">Watch</button>
+      <div class="daily-checkin">
+        <div class="daily-checkin-row">
+          <div><h4>🎁 Daily Check-in</h4><p>Random ₹1–₹20 wallet reward every 24 hours.</p></div>
+          <button id="dailyCheckinBtnModal" onclick="claimDailyCheckin()">Claim</button>
         </div>
-
-        <div class="coins-action-row coins-spin-row">
-          <div class="coins-action-copy">
-            <strong>🎡 Spin &amp; Win</strong>
-            <span>5 coins per spin. Win 50 coins, Premium 7 days, or another free spin.</span>
-            <small>₹10 is shown on the wheel but <b>can never be won</b>.</small>
-          </div>
-          <button class="coins-action-btn spin-action-btn" onclick="doSpin()" id="spinBtn">Spin</button>
-        </div>
-
-        <div class="spin-inline-box">
-          <div class="spin-wheel-outer compact-wheel">
-            <div class="spin-wheel-pointer"></div>
-            <svg class="spin-wheel" id="spinWheel" viewBox="0 0 200 200"></svg>
-          </div>
-          <div class="spin-result-text" id="spinResultText"></div>
-        </div>
-
+        <div class="status-text" id="dailyCheckinStatusModal"></div>
       </div>
 
-      <p class="status-text" id="referStatusText"></p>
-      <p class="status-text" id="adStatusText"></p>
-      <button class="modal-close" onclick="closeCoinsModal()">Close</button>
+      <button class="modal-close" onclick="closeWalletModal()">Close</button>
     </div>
-  </div>
-
-  <!-- Fullscreen "ad" placeholder shown while watching an ad for a coin -->
-  <div class="ad-overlay" id="adOverlay">
-    <div class="ad-box">📺 Ad Playing…</div>
-    <div class="ad-timer" id="adTimerText">15</div>
-    <p style="color:var(--text-muted); font-size:12px;">You'll get the coin after the ad ends.</p>
   </div>
 
   <!-- QR code generator — MIT-licensed "qrcode-generator" by Kazuhiko Arase,
@@ -3986,8 +4460,7 @@ var qrcode = function() {
         adminWrapper.style.display = 'block';
         if (typeof loadAdminUsers === 'function') loadAdminUsers();
         if (typeof loadAdminOrders === 'function') loadAdminOrders();
-        if (typeof loadAdminSpinWins === 'function') loadAdminSpinWins();
-        if (typeof loadAdminCoinPurchases === 'function') loadAdminCoinPurchases();
+        if (typeof loadAdminWalletPurchases === 'function') loadAdminWalletPurchases();
       }
     }
 
@@ -4065,22 +4538,13 @@ var qrcode = function() {
       return { original, discounted: `${currencyPrefix}${discountedNum}`, percent, isFree: false };
     }
 
-    // Coin price is tied to the current rupee selling price: ₹1 = 1 coin.
-    // For an active offer, coins use the discounted rupee amount.
-    function getCoinPrice(item, kind) {
+    // Website-wallet price follows the same rupee selling price as normal UPI payment.
+    function getWalletPrice(item, kind) {
       if (kind === 'free' || kind === 'cards') return 0;
       let amount = 0;
-      if (isOfferItem(item)) {
-        amount = parsePriceNumber(getOfferPricing(item).discounted);
-      } else {
-        amount = parsePriceNumber(item.price);
-      }
+      if (isOfferItem(item)) amount = parsePriceNumber(getOfferPricing(item).discounted);
+      else amount = parsePriceNumber(item.price);
       return Math.max(1, Math.round(amount));
-    }
-
-    function getCoinPriceLabel(item, kind) {
-      const coins = getCoinPrice(item, kind);
-      return coins ? `<span class="coin-price">🪙 ${coins} coins</span>` : '';
     }
 
     // Returns the HTML to drop into a `.price` element for a card/grid entry.
@@ -4091,7 +4555,7 @@ var qrcode = function() {
         const { original, discounted } = getOfferPricing(item);
         cashHtml = original ? `<span class="strike-price">${original}</span>${discounted}` : discounted;
       }
-      return `${cashHtml} <span class="coin-price">• 🪙 ${getCoinPrice(item, kind)}</span>`;
+      return cashHtml;
     }
 
     // Returns the extra "OFFER" badge markup for grid cards (paid/premium only).
@@ -4157,6 +4621,7 @@ var qrcode = function() {
 
     function openTemplateDetail(item, kind) {
       currentDetailItem = item;
+      window.currentDetailKind = kind;
       updateWishlistButton();
       updateLikeButton();
       refreshTemplateStats(item);
@@ -4188,12 +4653,8 @@ var qrcode = function() {
       const offerPricing = isOfferItem(item) ? getOfferPricing(item) : null;
       const isOffer = !isAdminFreebie && !!offerPricing && (kind === 'paid' || kind === 'premium');
       const isFullyFreeOffer = isOffer && offerPricing.isFree;
-      // Coins-redeemed templates: user already paid with coins in the
-      // "Refer & Earn" modal's Redeem tab (see redeemedTemplateNames,
-      // populated from users/{uid}.redeemedTemplates). Treat exactly like
-      // an admin freebie — skip payment, go straight to customize.
-      const isCoinRedeemed = window.redeemedTemplateNames instanceof Set && window.redeemedTemplateNames.has(item.name);
-      const isFreeFlow = (kind === 'free' || kind === 'cards') || isAdminFreebie || isFullyFreeOffer || isCoinRedeemed || isPremiumActive;
+      const walletUnlocked = window.walletUnlockedTemplateNames instanceof Set && window.walletUnlockedTemplateNames.has(item.name);
+      const isFreeFlow = (kind === 'free' || kind === 'cards') || isAdminFreebie || isFullyFreeOffer || walletUnlocked || isPremiumActive;
       const isDirectLink = (kind === 'free'); // surprise free templates only: no name/photo needed. Admin freebies / fully-free offers still customize, just skip payment.
 
       const badgeClass = kind === 'free' ? 'free' : (kind === 'premium' ? 'premium' : (kind === 'cards' ? 'free' : 'paid'));
@@ -4202,15 +4663,14 @@ var qrcode = function() {
         <span class="badge ${badgeClass}">${badgeText}</span>
         <span class="badge cat">${item.category}</span>
         ${isAdminFreebie ? '<span class="badge free">ADMIN FREE</span>' : ''}
-        ${isCoinRedeemed ? '<span class="badge free">🪙 COINS UNLOCKED</span>' : ''}
+        ${walletUnlocked ? '<span class="badge free">WALLET UNLOCKED</span>' : ''}
         ${isPremiumActive ? '<span class="badge premium">⭐ PREMIUM ACTIVE</span>' : ''}
         ${isOffer ? `<span class="badge offer">${isFullyFreeOffer ? 'LIMITED OFFER — FREE' : offerPricing.percent + '% OFF'}</span>` : ''}
       `;
 
-      const coinUnlocked = window.coinUnlockedTemplateNames instanceof Set && window.coinUnlockedTemplateNames.has(item.name);
-      const coinCost = getCoinPrice(item, kind);
-      const isFreeFlowFinal = isFreeFlow || coinUnlocked;
-      const priceLabel = isAdminFreebie ? 'FREE (Admin)' : (isPremiumActive ? 'FREE (Premium Access)' : (coinUnlocked ? 'FREE (Coins Unlocked)' : getPriceLabel(item, kind)));
+      const walletCost = getWalletPrice(item, kind);
+      const isFreeFlowFinal = isFreeFlow || walletUnlocked;
+      const priceLabel = isAdminFreebie ? 'FREE (Admin)' : (isPremiumActive ? 'FREE (Premium Access)' : (walletUnlocked ? 'FREE (Wallet Unlocked)' : getPriceLabel(item, kind)));
       document.getElementById('detailPrice').innerHTML = priceLabel;
 
       // Item actually charged/used downstream: for a partial offer, price is
@@ -4221,7 +4681,7 @@ var qrcode = function() {
         : item;
 
       const buyBtn = document.getElementById('detailBuyBtn');
-      const coinBuyBtn = document.getElementById('detailCoinBuyBtn');
+      const walletBuyBtn = document.getElementById('detailWalletBuyBtn');
       buyBtn.textContent = isDirectLink ? 'Get Link' : (isFreeFlowFinal ? 'Use This Template' : ('Buy Now' + (effectiveItem.price ? ' — ' + effectiveItem.price : '')));
       buyBtn.onclick = () => {
         if (isDirectLink) {
@@ -4233,15 +4693,15 @@ var qrcode = function() {
         }
       };
 
-      if (coinBuyBtn && (kind === 'paid' || kind === 'premium') && !isFreeFlow && !isFullyFreeOffer && !isPremiumActive) {
-        coinBuyBtn.style.display = 'inline-flex';
-        coinBuyBtn.textContent = coinUnlocked ? '🪙 Unlocked ✓' : `🪙 ${coinCost} Coins`;
-        coinBuyBtn.disabled = !!coinUnlocked;
-        coinBuyBtn.onclick = () => buyTemplateWithCoins(item, kind, coinCost);
-      } else if (coinBuyBtn) {
-        coinBuyBtn.style.display = 'none';
-        coinBuyBtn.onclick = null;
-        coinBuyBtn.disabled = false;
+      if (walletBuyBtn && (kind === 'paid' || kind === 'premium') && !isFreeFlow && !isFullyFreeOffer && !isPremiumActive) {
+        walletBuyBtn.style.display = 'inline-flex';
+        walletBuyBtn.textContent = walletUnlocked ? 'Wallet Unlocked ✓' : `Use Wallet ₹${walletCost}`;
+        walletBuyBtn.disabled = !!walletUnlocked;
+        walletBuyBtn.onclick = () => buyTemplateWithWallet(item, kind, walletCost);
+      } else if (walletBuyBtn) {
+        walletBuyBtn.style.display = 'none';
+        walletBuyBtn.onclick = null;
+        walletBuyBtn.disabled = false;
       }
 
       const liveWrap = document.getElementById('livePreviewWrap');
@@ -4527,6 +4987,12 @@ var qrcode = function() {
       document.getElementById('payBuyerContact').value = '';
       document.getElementById('payUtr').value = '';
       document.getElementById('paymentStatusText').textContent = '';
+      const walletBalanceEl = document.getElementById('paymentWalletBalance');
+      if (walletBalanceEl) walletBalanceEl.textContent = window.isAdminUser ? '∞' : Number(window.currentUserWallet || 0);
+      const walletStatus = document.getElementById('walletPaymentStatus');
+      if (walletStatus) walletStatus.textContent = '';
+      const applyBtn = document.getElementById('applyWalletBtn');
+      if (applyBtn) applyBtn.disabled = !window.isAdminUser && Number(window.currentUserWallet || 0) < getWalletPrice(item, currentDetailKind || 'paid');
       document.getElementById('paymentModal').classList.add('active');
       pushOverlay('payment', hidePaymentModal);
     }
@@ -4590,6 +5056,37 @@ var qrcode = function() {
       if (emailPattern.test(value)) return true;
       const digitsOnly = value.replace(/[\s-]/g, '').replace(/^(\+91|91|0)/, '');
       return /^[6-9]\d{9}$/.test(digitsOnly);
+    }
+
+    async function applyWalletPayment() {
+      if (!window.isUserLoggedIn || !currentPaymentTemplate) { openLogin(); return; }
+      const amount = parsePriceNumber(currentPaymentTemplate.price);
+      const status = document.getElementById('walletPaymentStatus');
+      const btn = document.getElementById('applyWalletBtn');
+      if (status) status.textContent = 'Applying wallet…';
+      if (btn) btn.disabled = true;
+      try {
+        const userRef = doc(db, 'users', window.currentUserUid);
+        await runTransaction(db, async (tx) => {
+          const snap = await tx.get(userRef);
+          const data = snap.data() || {};
+          if (!window.isAdminUser && Number(data.walletBalance || 0) < amount) throw new Error('NOT_ENOUGH');
+          if (!window.isAdminUser) tx.update(userRef, { walletBalance: increment(-amount) });
+        });
+        await saveOrderToFirestore({
+          templateName: currentPaymentTemplate.name,
+          price: currentPaymentTemplate.price,
+          buyerName: (auth.currentUser && auth.currentUser.displayName) || '',
+          buyerContact: (auth.currentUser && auth.currentUser.email) || '',
+          utr: 'WALLET',
+          paymentMethod: 'website_wallet'
+        });
+        if (status) status.textContent = window.isAdminUser ? 'Wallet payment approved.' : `✅ ₹${amount} paid from wallet.`;
+        setTimeout(() => { closePaymentModal(); openCustomizeModal(currentPaymentTemplate); }, 400);
+      } catch (e) {
+        if (status) status.textContent = e.message === 'NOT_ENOUGH' ? `Wallet balance is too low. Need ₹${amount}.` : 'Wallet payment failed. Please try again.';
+        if (btn) btn.disabled = false;
+      }
     }
 
     function submitPayment() {
@@ -5458,13 +5955,23 @@ var qrcode = function() {
     function showAccountTab(tab) {
       const orders = document.getElementById('accountOrdersPanel');
       const wish = document.getElementById('accountWishlistPanel');
+      const referral = document.getElementById('accountReferralPanel');
       const ot = document.getElementById('settingsTabOrders');
       const wt = document.getElementById('settingsTabWishlist');
+      const rt = document.getElementById('settingsTabReferral');
       const isOrders = tab === 'orders';
+      const isWish = tab === 'wishlist';
       orders.style.display = isOrders ? 'block' : 'none';
-      wish.style.display = isOrders ? 'none' : 'block';
-      ot.classList.toggle('active', isOrders); wt.classList.toggle('active', !isOrders);
-      if (!isOrders) loadAccountWishlist();
+      wish.style.display = isWish ? 'block' : 'none';
+      if (referral) referral.style.display = tab === 'referral' ? 'block' : 'none';
+      ot.classList.toggle('active', isOrders);
+      wt.classList.toggle('active', isWish);
+      if (rt) rt.classList.toggle('active', tab === 'referral');
+      if (isWish) loadAccountWishlist();
+      if (tab === 'referral') {
+        const link = window.currentUserUid ? window.location.origin + window.location.pathname + '?ref=' + window.currentUserUid : '';
+        const input = document.getElementById('profileReferLinkInput'); if (input) input.value = link;
+      }
     }
 
     function escapeHtml(v) {
@@ -5701,24 +6208,18 @@ function confirmLogout() {
     setPersistence(auth, browserLocalPersistence).catch((e) => console.warn('Persistence set failed:', e));
 
     // ============================================================
-    // # REFER & EARN — COINS CONFIG #
-    // All coin values are controlled from here.
+    // # WEBSITE WALLET + REFER & EARN + DAILY CHECK-IN #
+    // Wallet money is website-only credit; it is not withdrawable cash.
     // ============================================================
-    const SIGNUP_BONUS_COINS = 50;  // coins a new user gets on first signup
-    const REFER_BONUS_COINS = 10;   // per unique successful referral
-    const MAX_REFERRALS = 10;        // max 10 rewarded referrals per user
-    const AD_COIN_REWARD = 1;       // for watching one ad
-    const AD_DAILY_LIMIT = 5;       // max ads per day that give coins
-    const AD_WATCH_SECONDS = 15;    // how long the "ad" placeholder runs for
-    const SPIN_COST_COINS = 5;      // ek spin ki keemat
+    const SIGNUP_BONUS_WALLET = 50;
+    const REFER_BONUS_WALLET = 10;
+    const FRIEND_FIRST_ORDER_DISCOUNT = 20;
+    const MAX_REFERRALS = 10;
+    const DAILY_CHECKIN_MIN = 1;
+    const DAILY_CHECKIN_MAX = 20;
+    const DAILY_CHECKIN_COOLDOWN_MS = 24 * 60 * 60 * 1000;
 
-    document.getElementById('adDailyLimitText').textContent = AD_DAILY_LIMIT;
-    document.getElementById('referBonusText').textContent = REFER_BONUS_COINS;
-
-    // Capture ?ref=<uid> from the URL (someone's referral link) and remember
-    // it in localStorage so we can credit that referrer once this visitor
-    // actually signs in for the first time — even if they browse a bit
-    // before logging in.
+    // Capture ?ref=<uid> and remember it until a genuinely new account signs in.
     (function captureReferralParam() {
       try {
         const params = new URLSearchParams(window.location.search);
@@ -5735,8 +6236,6 @@ function confirmLogout() {
       const validReferral = !!pendingReferrer && pendingReferrer !== user.uid;
       let isFirstTimeUser = false;
 
-      // Atomically create the user on first sign-in and give the one-time
-      // signup bonus. Existing users only get their profile/lastLogin updated.
       await runTransaction(db, async (tx) => {
         const snap = await tx.get(userRef);
         if (!snap.exists()) {
@@ -5745,7 +6244,7 @@ function confirmLogout() {
             name: user.displayName || '',
             email: user.email || '',
             photoURL: user.photoURL || '',
-            coins: SIGNUP_BONUS_COINS,
+            walletBalance: SIGNUP_BONUS_WALLET,
             referredBy: validReferral ? pendingReferrer : null,
             referrals: [],
             referralCount: 0,
@@ -5753,19 +6252,20 @@ function confirmLogout() {
             lastLogin: serverTimestamp()
           }, { merge: true });
         } else {
-          tx.set(userRef, {
+          const existing = snap.data() || {};
+          const migration = {};
+          if (existing.walletBalance == null && Number.isFinite(Number(existing.coins))) {
+            migration.walletBalance = Number(existing.coins);
+          }
+          tx.set(userRef, Object.assign({
             name: user.displayName || '',
             email: user.email || '',
             photoURL: user.photoURL || '',
             lastLogin: serverTimestamp()
-          }, { merge: true });
+          }, migration), { merge: true });
         }
       });
 
-      // Only a genuinely new account can complete a referral. The referrer
-      // transaction makes the reward idempotent: the same friend UID can
-      // never pay the referrer twice, and each referrer can earn for max 10
-      // unique friends.
       if (isFirstTimeUser && validReferral) {
         try {
           const referrerRef = doc(db, "users", pendingReferrer);
@@ -5774,11 +6274,9 @@ function confirmLogout() {
             if (!refSnap.exists()) return;
             const data = refSnap.data() || {};
             const referrals = Array.isArray(data.referrals) ? data.referrals : [];
-            if (referrals.includes(user.uid)) return;
-            if (referrals.length >= MAX_REFERRALS) return;
-
+            if (referrals.includes(user.uid) || referrals.length >= MAX_REFERRALS) return;
             tx.set(referrerRef, {
-              coins: increment(REFER_BONUS_COINS),
+              walletBalance: increment(REFER_BONUS_WALLET),
               referrals: arrayUnion(user.uid),
               referralCount: referrals.length + 1
             }, { merge: true });
@@ -5786,611 +6284,204 @@ function confirmLogout() {
         } catch (e) { console.warn('Referral credit failed:', e); }
       }
 
-      if (isFirstTimeUser) {
-        localStorage.setItem('referredBy_processed', '1');
-      }
+      if (isFirstTimeUser) localStorage.setItem('referredBy_processed', '1');
       localStorage.removeItem('pendingReferrer');
     }
 
-    // Live coin balance — keeps navbar chip + coins modal in sync without a
-    // manual refresh whenever coins change (referral, ad, spin, coin purchase...).
-    let coinsUnsub = null;
-    function listenToCoins(uid) {
-      if (coinsUnsub) { coinsUnsub(); coinsUnsub = null; }
-      coinsUnsub = onSnapshot(doc(db, "users", uid), (snap) => {
+    let walletUnsub = null;
+    function listenToWallet(uid) {
+      if (walletUnsub) { walletUnsub(); walletUnsub = null; }
+      walletUnsub = onSnapshot(doc(db, "users", uid), (snap) => {
         const data = snap.data() || {};
-        const coins = data.coins || 0;
-        window.currentUserCoins = window.isAdminUser ? Infinity : coins;
-        window.currentUserFreeSpins = Number(data.freeSpins || 0);
+        const wallet = Number(data.walletBalance || 0);
+        window.currentUserWallet = window.isAdminUser ? Infinity : wallet;
         window.currentUserPremiumUntil = data.premiumUntil || 0;
-        window.coinUnlockedTemplateNames = new Set(data.coinUnlockedTemplates || []);
-        updateSpinButtonState();
+        window.walletUnlockedTemplateNames = new Set(data.walletUnlockedTemplates || []);
+
         const navChip = document.getElementById('navCoinChip');
-        if (navChip) navChip.style.display = 'flex';
-        const navBal = document.getElementById('navCoinBalance');
-        if (navBal) navBal.textContent = window.isAdminUser ? '∞' : coins;
-        const modalBal = document.getElementById('coinsModalBalance');
-        if (modalBal) modalBal.textContent = window.isAdminUser ? '∞' : coins;
-        const referralProgress = document.getElementById('referralProgressText');
-        if (referralProgress) {
-          const count = Math.min(Number(data.referralCount || (Array.isArray(data.referrals) ? data.referrals.length : 0)), MAX_REFERRALS);
-          referralProgress.textContent = window.isAdminUser ? '♾️ Unlimited admin account' : `${count}/${MAX_REFERRALS} rewarded referrals · ${Math.max(0, MAX_REFERRALS - count)} left`;
+        if (navChip) {
+          navChip.style.display = 'flex';
+          navChip.innerHTML = `₹<span id="navCoinBalance">${window.isAdminUser ? '∞' : wallet}</span>`;
+          navChip.title = 'Website Wallet';
         }
-      }, (err) => console.warn('Coins listener error:', err));
+        const modalBal = document.getElementById('walletModalBalance');
+        if (modalBal) modalBal.textContent = window.isAdminUser ? '∞' : wallet;
+        const profileBal = document.getElementById('profileWalletBalance');
+        if (profileBal) profileBal.textContent = window.isAdminUser ? '∞' : wallet;
+        const paymentBal = document.getElementById('paymentWalletBalance');
+        if (paymentBal) paymentBal.textContent = window.isAdminUser ? '∞' : wallet;
+
+        const count = Math.min(Number(data.referralCount || (Array.isArray(data.referrals) ? data.referrals.length : 0)), MAX_REFERRALS);
+        const progress = document.getElementById('referralProgressText');
+        if (progress) progress.textContent = window.isAdminUser ? 'Unlimited admin account' : `${count}/${MAX_REFERRALS} rewarded referrals`;
+        updateDailyCheckinState(data);
+      });
     }
 
-    window.signInWithGoogle = async function () {
-      const statusText = document.getElementById('loginStatusText');
+    // Backward-compatible name for any old call sites.
+    function listenToCoins(uid) { listenToWallet(uid); }
 
-      if (isInAppBrowser) {
-        statusText.innerHTML = 'This page is open inside an app\'s browser (WhatsApp / Instagram / Facebook), where Google login doesn\'t work.<br><br>Choose <b>"Open in Chrome"</b> or <b>"Open in Browser"</b> from the "•••" menu in the top-right corner, then try again.';
-        return;
-      }
-
-      statusText.textContent = 'Signing in...';
-      try {
-        // Try popup first on every device — it avoids the redirect round-trip
-        // entirely, which is where things were silently failing.
-        const result = await signInWithPopup(auth, provider);
-        await saveUserData(result.user);
-        statusText.textContent = '';
-      } catch (err) {
-        const code = err && err.code;
-        if (code === 'auth/popup-closed-by-user' || code === 'auth/cancelled-popup-request') {
-          statusText.textContent = '';
-          return;
-        }
-        // Popup blocked/unsupported — fall back to redirect flow.
-        try {
-          sessionStorage.setItem('googleLoginPending', '1');
-          await signInWithRedirect(auth, provider);
-        } catch (err2) {
-          console.error(err2);
-          statusText.textContent = 'Error: ' + (err2.code || err2.message || 'unknown');
-        }
-      }
-    };
-
-    // Handle result after redirect-based login (mobile fallback)
-    getRedirectResult(auth).then(async (result) => {
-      sessionStorage.removeItem('googleLoginPending');
-      if (result && result.user) {
-        await saveUserData(result.user);
-        openLogin(); // ensure modal is visible so the "logged in" state is obvious, then it auto-closes via onAuthStateChanged
-      }
-    }).catch((err) => {
-      sessionStorage.removeItem('googleLoginPending');
-      console.error('Redirect login error:', err);
-      const statusText = document.getElementById('loginStatusText');
-      if (statusText) statusText.textContent = 'Error: ' + (err.code || err.message || 'unknown');
-    });
-
-    // Safety net: if we sent the user off to sign in via redirect but the page
-    // came back with no error AND no user, the browser silently dropped the
-    // session (common with strict privacy modes) — tell the user clearly
-    // instead of leaving them guessing.
-    setTimeout(() => {
-      if (sessionStorage.getItem('googleLoginPending') && !auth.currentUser) {
-        sessionStorage.removeItem('googleLoginPending');
-        const statusText = document.getElementById('loginStatusText');
-        if (statusText) {
-          statusText.innerHTML = 'Login could not be completed (the browser blocked the session).<br>Open the site directly in Chrome or Safari and try again.';
-        }
-      }
-    }, 3000);
-
-    window.signOutUser = function () {
-      signOut(auth);
-    };
-
-    onAuthStateChanged(auth, (user) => {
-      const loginBtn = document.getElementById('navLoginBtn');
-      const userChip = document.getElementById('navUserChip');
-      const adminMenu = document.getElementById('menu-admin');
-
-      if (user) {
-        window.isUserLoggedIn = true;
-       loginBtn.style.display = 'none';
-        userChip.style.display = 'flex';
-        document.getElementById('navUserPhoto').src = user.photoURL || '';
-        document.getElementById('navUserName').textContent = (user.displayName || 'User').split(' ')[0];
-        if (typeof closeLogin === 'function') closeLogin();
-
-        if (user.email === ADMIN_EMAIL) {
-          adminMenu.style.display = 'inline-block';
-          window.isAdminUser = true;
-        } else {
-          adminMenu.style.display = 'none';
-          window.isAdminUser = false;
-        }
-
-        window.currentUserUid = user.uid;
-        loadCurrentUserWishlist();
-        listenToCoins(user.uid);
-        const referInput = document.getElementById('referLinkInput');
-        if (referInput) referInput.value = window.location.origin + window.location.pathname + '?ref=' + user.uid;
-      } else {
-        window.isUserLoggedIn = false;
-       loginBtn.style.display = 'inline-block';
-        userChip.style.display = 'none';
-        adminMenu.style.display = 'none';
-        window.isAdminUser = false;
-
-        window.currentUserUid = null;
-        window.currentUserCoins = 0;
-        window.coinUnlockedTemplateNames = new Set();
-        window.redeemedTemplateNames = new Set();
-        if (coinsUnsub) { coinsUnsub(); coinsUnsub = null; }
-        const navChip = document.getElementById('navCoinChip');
-        if (navChip) navChip.style.display = 'none';
-      }
-    });
-
-    window.loadAdminUsers = async function () {
-      const listEl = document.getElementById('adminUsersList');
-      if (!listEl) return;
-      listEl.innerHTML = '<div class="empty-note">Loading...</div>';
-      try {
-        const q = query(collection(db, "users"), orderBy("lastLogin", "desc"));
-        const snap = await getDocs(q);
-        if (snap.empty) {
-          listEl.innerHTML = '<div class="empty-note">No user has logged in yet.</div>';
-          return;
-        }
-        listEl.innerHTML = '';
-        snap.forEach((docSnap) => {
-          const d = docSnap.data();
-          const row = document.createElement('div');
-          row.className = 'settings-list-item';
-          row.style.textAlign = 'left';
-          const time = d.lastLogin && d.lastLogin.toDate ? d.lastLogin.toDate().toLocaleString() : '';
-          row.innerHTML = `
-            <span style="display:flex; align-items:center; gap:10px;">
-              <img src="${d.photoURL || ''}" alt="" style="width:32px; height:32px; border-radius:50%; object-fit:cover;">
-              <span>
-                <div style="font-weight:700;">${d.name || 'Unknown'}</div>
-                <div style="font-weight:400; color:var(--text-muted); font-size:11px;">${d.email || ''}</div>
-                <div style="font-weight:400; color:var(--text-muted); font-size:10px;">${time}</div>
-              </span>
-            </span>`;
-          listEl.appendChild(row);
-        });
-      } catch (err) {
-        console.error(err);
-        listEl.innerHTML = '<div class="empty-note">Data could not be loaded. Check Firestore rules.</div>';
-      }
-    };
-    // Saves whatever fields a template's `fields` array collected — text values
-    // (name, message, age, passcode, memory, ...) plus any photo groups —
-    // directly inside one Firestore document. Photos themselves live on
-    // Cloudinary now (see handlePhotoSelect above); only their short URLs
-    // land here, so the old base64-size limit isn't needed anymore. Returns
-    // the card's document ID, which gets appended to the template's URL as
-    // ?id=... so the template page can fetch this doc and read back e.g.
-    // docSnap.data().age or docSnap.data().passcode by the same `key` used
-    // in that template's fields.
-    //
-    // Backward compatible: a `photos` field still gets stored as `photoUrls`
-    // (an array), and `values.name` / `values.message` land as top-level `name`
-    // / `message` — exactly like every existing template page already expects.
-    window.saveCardData = async function ({ templateName, values, photoGroups }) {
-      const docData = {
-        templateName: templateName || '',
-        createdAt: serverTimestamp()
-      };
-
-      Object.entries(values || {}).forEach(([key, val]) => {
-        docData[key] = val;
-      });
-
-      Object.entries(photoGroups || {}).forEach(([key, slots]) => {
-        const slotNums = Object.keys(slots || {}).sort((a, b) => Number(a) - Number(b));
-        const urls = slotNums.map(slot => slots[slot]).filter(Boolean);
-        docData[key === 'photos' ? 'photoUrls' : key] = urls;
-      });
-
-      const cardRef = await addDoc(collection(db, "cards"), docData);
-      return cardRef.id;
-    };
-
-    window.saveOrderToFirestore = async function (orderData) {
-      const user = auth.currentUser;
-      await addDoc(collection(db, "orders"), {
-        templateName: orderData.templateName || '',
-        price: orderData.price || '',
-        buyerName: orderData.buyerName || '',
-        buyerContact: orderData.buyerContact || '',
-        utr: orderData.utr || '',
-        buyerUid: user ? user.uid : null,
-        buyerEmail: user ? user.email : null,
-        createdAt: serverTimestamp()
-      });
-    };
-
-    window.loadAdminOrders = async function () {
-      const listEl = document.getElementById('adminOrdersList');
-      if (!listEl) return;
-      listEl.innerHTML = '<div class="empty-note">Loading...</div>';
-      try {
-        const q = query(collection(db, "orders"), orderBy("createdAt", "desc"));
-        const snap = await getDocs(q);
-        if (snap.empty) {
-          listEl.innerHTML = '<div class="empty-note">No orders have come in yet.</div>';
-          return;
-        }
-        listEl.innerHTML = '';
-        snap.forEach((docSnap) => {
-          const d = docSnap.data();
-          const row = document.createElement('div');
-          row.className = 'settings-list-item';
-          row.style.textAlign = 'left';
-          row.style.flexDirection = 'column';
-          row.style.alignItems = 'flex-start';
-          row.style.gap = '4px';
-          const time = d.createdAt && d.createdAt.toDate ? d.createdAt.toDate().toLocaleString() : '';
-          row.innerHTML = `
-            <div style="display:flex; justify-content:space-between; width:100%;">
-              <span style="font-weight:700;">${d.templateName || 'Template'}</span>
-              <span style="color:var(--accent-pink); font-weight:800;">${d.price || ''}</span>
-            </div>
-            <div style="font-size:11px; color:var(--text-muted);">Buyer: ${d.buyerName || ''} (${d.buyerContact || ''})</div>
-            <div style="font-size:11px; color:var(--text-muted);">UTR: ${d.utr || ''}</div>
-            <div style="font-size:10px; color:var(--text-muted);">${time}</div>`;
-          listEl.appendChild(row);
-        });
-      } catch (err) {
-        console.error(err);
-        listEl.innerHTML = '<div class="empty-note">Orders could not be loaded. Check Firestore rules.</div>';
-      }
-    };
-
-    // ============================================================
-    // # REFER & EARN — MODAL, REFERRAL, ADS, SPIN & COIN PURCHASES #
-    // ============================================================
-
-    function hideCoinsModal() {
-      document.getElementById('coinsModal').classList.remove('active');
+    function getDailyCheckinState(data) {
+      const raw = data && data.dailyCheckinAt;
+      if (!raw) return { available: true, remaining: 0 };
+      const last = raw && typeof raw.toMillis === 'function' ? raw.toMillis() : Number(raw || 0);
+      const remaining = Math.max(0, DAILY_CHECKIN_COOLDOWN_MS - (Date.now() - last));
+      return { available: remaining <= 0, remaining };
     }
-    window.openCoinsModal = function () {
+
+    function formatCountdown(ms) {
+      const total = Math.ceil(ms / 1000);
+      const h = Math.floor(total / 3600);
+      const m = Math.floor((total % 3600) / 60);
+      return `${h}h ${m}m`;
+    }
+
+    function updateDailyCheckinState(data) {
+      const state = getDailyCheckinState(data || {});
+      ['dailyCheckinBtn','dailyCheckinBtnModal'].forEach(id => {
+        const b = document.getElementById(id);
+        if (!b) return;
+        b.disabled = !state.available;
+        b.textContent = state.available ? 'Claim' : `Wait ${formatCountdown(state.remaining)}`;
+      });
+    }
+
+    window.claimDailyCheckin = async function () {
       if (!window.isUserLoggedIn) { openLogin(); return; }
-      document.getElementById('coinsModal').classList.add('active');
-      if (typeof window.pushOverlay === 'function') window.pushOverlay('coins', hideCoinsModal);
-      drawSpinWheel();
-    };
-    window.closeCoinsModal = function () {
-      if (typeof window.requestCloseOverlay === 'function') window.requestCloseOverlay('coins', hideCoinsModal);
-      else hideCoinsModal();
+      const statusIds = ['dailyCheckinStatus','dailyCheckinStatusModal'];
+      statusIds.forEach(id => { const e=document.getElementById(id); if(e) e.textContent='Claiming…'; });
+      try {
+        const reward = Math.floor(Math.random() * (DAILY_CHECKIN_MAX - DAILY_CHECKIN_MIN + 1)) + DAILY_CHECKIN_MIN;
+        const userRef = doc(db, "users", window.currentUserUid);
+        await runTransaction(db, async (tx) => {
+          const snap = await tx.get(userRef);
+          const data = snap.data() || {};
+          const state = getDailyCheckinState(data);
+          if (!state.available) throw new Error('COOLDOWN');
+          tx.set(userRef, {
+            walletBalance: increment(reward),
+            dailyCheckinAt: serverTimestamp(),
+            lastDailyCheckinReward: reward
+          }, { merge: true });
+        });
+        statusIds.forEach(id => { const e=document.getElementById(id); if(e) e.textContent=`🎉 You received ₹${reward} wallet credit!`; });
+      } catch (e) {
+        statusIds.forEach(id => { const el=document.getElementById(id); if(el) el.textContent=e.message==='COOLDOWN'?'⏳ Your next check-in is available after 24 hours.':'Could not claim right now. Please try again.'; });
+      }
     };
 
-
-    // ---------- REFER TAB ----------
     window.copyReferLink = function () {
       const input = document.getElementById('referLinkInput');
+      if (!input) return;
       input.select();
       navigator.clipboard && navigator.clipboard.writeText(input.value).catch(() => {});
       const status = document.getElementById('referStatusText');
-      status.textContent = 'Link copied!';
-      setTimeout(() => { status.textContent = ''; }, 2000);
+      if (status) { status.textContent = 'Link copied!'; setTimeout(() => status.textContent = '', 2000); }
     };
-
+    window.copyProfileReferLink = function () {
+      const input = document.getElementById('profileReferLinkInput');
+      if (!input) return;
+      input.select();
+      navigator.clipboard && navigator.clipboard.writeText(input.value).catch(() => {});
+      const status = document.getElementById('profileReferralStatus');
+      if (status) { status.textContent = 'Link copied!'; setTimeout(() => status.textContent = '', 2000); }
+    };
     window.shareReferLink = function () {
-      const link = document.getElementById('referLinkInput').value;
-      const text = 'Create cute birthday/anniversary surprise templates for free — use my link and get bonus coins: ' + link;
-      if (navigator.share) {
-        navigator.share({ title: 'BDYwish', text, url: link }).catch(() => {});
-      } else {
-        window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
-      }
+      const link = document.getElementById('referLinkInput')?.value || '';
+      const text = `Give ₹20 off to a friend and earn ₹10 BDYwish wallet credit: ${link}`;
+      if (navigator.share) navigator.share({ title:'BDYwish Refer & Earn', text, url:link }).catch(()=>{});
+      else window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
+    };
+    window.shareProfileReferLink = function () {
+      const link = document.getElementById('profileReferLinkInput')?.value || '';
+      const text = `Give ₹20 off to a friend and earn ₹10 BDYwish wallet credit: ${link}`;
+      if (navigator.share) navigator.share({ title:'BDYwish Refer & Earn', text, url:link }).catch(()=>{});
+      else window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
     };
 
-    // ---------- WATCH AD TAB ----------
-    // NOTE: This is a placeholder rewarded-ad flow (a timed overlay) so the
-    // coin-earning UX works end-to-end right away. To use a REAL ad network
-    // (e.g. Adsterra / Monetag / PropellerAds / Google AdSense H5 rewarded
-    // ads), replace the body of startWatchAd() with that network's rewarded
-    // ad call, and invoke grantAdCoin() only from ITS "reward earned"
-    // callback — never purely on a timer — so people can't fake it.
-    function todayStr() {
-      const d = new Date();
-      return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
-    }
-
-    window.startWatchAd = async function () {
+    function hideWalletModal() { document.getElementById('walletModal').classList.remove('active'); }
+    window.openWalletModal = function () {
       if (!window.isUserLoggedIn) { openLogin(); return; }
-      const statusEl = document.getElementById('adStatusText');
-      statusEl.textContent = '';
-      try {
-        const userRef = doc(db, "users", window.currentUserUid);
-        const snap = await getDoc(userRef);
-        const data = snap.data() || {};
-        const usedToday = (data.adWatchDate === todayStr()) ? (data.adWatchCount || 0) : 0;
-        if (usedToday >= AD_DAILY_LIMIT) {
-          statusEl.textContent = 'Today\'s ad limit is over. Try again tomorrow!';
-          return;
-        }
-      } catch (e) { console.warn(e); }
-
-      const overlay = document.getElementById('adOverlay');
-      const timerEl = document.getElementById('adTimerText');
-      overlay.style.display = 'flex';
-      let secondsLeft = AD_WATCH_SECONDS;
-      timerEl.textContent = secondsLeft;
-      const interval = setInterval(async () => {
-        secondsLeft -= 1;
-        timerEl.textContent = secondsLeft;
-        if (secondsLeft <= 0) {
-          clearInterval(interval);
-          overlay.style.display = 'none';
-          await grantAdCoin();
-        }
-      }, 1000);
+      document.getElementById('walletModal').classList.add('active');
+      if (typeof window.pushOverlay === 'function') window.pushOverlay('wallet', hideWalletModal);
+      const link = window.location.origin + window.location.pathname + '?ref=' + window.currentUserUid;
+      const input = document.getElementById('referLinkInput'); if (input) input.value = link;
+      const profileInput = document.getElementById('profileReferLinkInput'); if (profileInput) profileInput.value = link;
+    };
+    window.closeWalletModal = function () {
+      if (typeof window.requestCloseOverlay === 'function') window.requestCloseOverlay('wallet', hideWalletModal); else hideWalletModal();
     };
 
-    async function grantAdCoin() {
-      const statusEl = document.getElementById('adStatusText');
-      try {
-        const userRef = doc(db, "users", window.currentUserUid);
-        await runTransaction(db, async (tx) => {
-          const snap = await tx.get(userRef);
-          const data = snap.data() || {};
-          const today = todayStr();
-          const usedToday = (data.adWatchDate === today) ? (data.adWatchCount || 0) : 0;
-          if (usedToday >= AD_DAILY_LIMIT) throw new Error('LIMIT_REACHED');
-          tx.set(userRef, {
-            coins: increment(AD_COIN_REWARD),
-            adWatchDate: today,
-            adWatchCount: usedToday + 1
-          }, { merge: true });
-        });
-        statusEl.textContent = '🎉 +' + AD_COIN_REWARD + ' coin received!';
-      } catch (e) {
-        statusEl.textContent = (e && e.message === 'LIMIT_REACHED') ? 'Today\'s ad limit is over.' : 'Something went wrong, please try again.';
-      }
-      setTimeout(() => { statusEl.textContent = ''; }, 3000);
-    }
-
-    // ---------- SPIN & WIN TAB ----------
-    // Five fixed wheel prizes. ₹10 is display-only and can never be selected.
-    // Exactly 5 wheel prizes. ₹10 is DISPLAY-ONLY and is NEVER selectable.
-    const SPIN_PRIZES = [
-      { label: '🪙 Earn 50 coins', type: 'coins', value: 50, weight: 22, color: '#900909', canWin: true },
-      { label: '😅 Try again', type: 'none', weight: 46, color: '#2A2340', canWin: true },
-      { label: '₹10', type: 'cash', weight: 0, color: '#3A2E55', canWin: false },
-      { label: '⭐ Premium (7 days)', type: 'premium7', weight: 12, color: '#C9782F', canWin: true },
-      { label: '🎡 Spin again', type: 'freeSpin', weight: 20, color: '#5C2450', canWin: true }
-    ];
-
-    function drawSpinWheel() {
-      const svg = document.getElementById('spinWheel');
-      if (!svg || svg.dataset.drawn) return;
-
-      // The wheel always has 5 equal visual sections.
-      const total = SPIN_PRIZES.length;
-      const sliceAngle = 360 / total;
-      const cx = 100, cy = 100, r = 98;
-      let html = '';
-
-      SPIN_PRIZES.forEach((p, i) => {
-        const startAngle = i * sliceAngle;
-        const endAngle = startAngle + sliceAngle;
-        const x1 = cx + r * Math.cos(Math.PI * (startAngle - 90) / 180);
-        const y1 = cy + r * Math.sin(Math.PI * (startAngle - 90) / 180);
-        const x2 = cx + r * Math.cos(Math.PI * (endAngle - 90) / 180);
-        const y2 = cy + r * Math.sin(Math.PI * (endAngle - 90) / 180);
-        html += `<path d="M${cx},${cy} L${x1.toFixed(2)},${y1.toFixed(2)} A${r},${r} 0 0 1 ${x2.toFixed(2)},${y2.toFixed(2)} Z" fill="${p.color}" stroke="#0B0A17" stroke-width="1"/>`;
-
-        const midAngle = startAngle + sliceAngle / 2;
-        const tx = cx + (r * 0.62) * Math.cos(Math.PI * (midAngle - 90) / 180);
-        const ty = cy + (r * 0.62) * Math.sin(Math.PI * (midAngle - 90) / 180);
-        html += `<text x="${tx.toFixed(2)}" y="${ty.toFixed(2)}" fill="#fff" font-size="8" font-weight="700" text-anchor="middle" transform="rotate(${midAngle.toFixed(2)}, ${tx.toFixed(2)}, ${ty.toFixed(2)})">${p.label}</text>`;
-      });
-
-      svg.innerHTML = html;
-      svg.dataset.drawn = '1';
-      svg.dataset.rotation = '0';
-      updateSpinButtonState();
-    }
-
-    function updateSpinButtonState() {
-      const btn = document.getElementById('spinBtn');
-      if (!btn || isSpinning) return;
-      const free = Number(window.currentUserFreeSpins || 0);
-      if (free > 0) {
-        btn.textContent = `Spin Free (${free})`;
-        btn.title = 'Free spin available';
-      } else {
-        btn.textContent = `Spin (5 coins)`;
-        btn.title = 'Costs 5 coins';
-      }
-      const fs = document.getElementById('freeSpinBalance');
-      if (fs) fs.innerHTML = `🎡 Free Spins: <b>${free}</b>`;
-    }
-
-    let isSpinning = false;
-    window.doSpin = async function () {
+    // ---------- BUY TEMPLATE WITH WEBSITE WALLET ----------
+    window.buyTemplateWithWallet = async function (item, kind, walletCost) {
       if (!window.isUserLoggedIn) { openLogin(); return; }
-      if (isSpinning) return;
-
-      const resultEl = document.getElementById('spinResultText');
-      resultEl.textContent = '';
-      isSpinning = true;
-      const spinBtn = document.getElementById('spinBtn');
-      spinBtn.disabled = true;
-
-      // A "Spin again" prize gives a free spin. Use that before coins.
-      let usedFreeSpin = false;
+      if (!(kind === 'paid' || kind === 'premium') || !walletCost) return;
+      const statusEl = document.getElementById('detailWalletStatusText');
+      const walletBtn = document.getElementById('detailWalletBuyBtn');
+      if (statusEl) { statusEl.textContent = 'Processing wallet payment…'; statusEl.style.color='var(--text-muted)'; }
+      if (walletBtn) walletBtn.disabled = true;
       try {
-        const userRef = doc(db, "users", window.currentUserUid);
-        await runTransaction(db, async (tx) => {
-          const snap = await tx.get(userRef);
-          const data = snap.data() || {};
-          const freeSpins = Number(data.freeSpins || 0);
-          const coins = Number(data.coins || 0);
-
-          // Admin has unlimited coins: spinning never deducts coins.
-          if (window.isAdminUser) {
-            return;
-          }
-          if (freeSpins > 0) {
-            tx.update(userRef, { freeSpins: increment(-1) });
-            usedFreeSpin = true;
-          } else if (coins >= SPIN_COST_COINS) {
-            tx.update(userRef, { coins: increment(-SPIN_COST_COINS) });
-          } else {
-            throw new Error('NOT_ENOUGH');
-          }
-        });
-      } catch (e) {
-        resultEl.textContent = 'Not enough coins — earn some first via Refer or Ad!';
-        isSpinning = false;
-        spinBtn.disabled = false;
-        updateSpinButtonState();
-        return;
-      }
-
-      // ₹10 can NEVER be selected: only prizes explicitly marked canWin.
-      const winPrizes = SPIN_PRIZES.filter(p => p.canWin !== false && p.weight > 0);
-      const totalWeight = winPrizes.reduce((sum, p) => sum + p.weight, 0);
-      let roll = Math.random() * totalWeight;
-      let prize = winPrizes[winPrizes.length - 1];
-      let cumulative = 0;
-      for (const p of winPrizes) {
-        cumulative += p.weight;
-        if (roll < cumulative) { prize = p; break; }
-      }
-      const winnerIndex = SPIN_PRIZES.indexOf(prize);
-
-      // Rotate the equal-slice wheel so the winning slice lands under the pointer.
-      const sliceAngle = 360 / SPIN_PRIZES.length;
-      const targetMid = winnerIndex * sliceAngle + sliceAngle / 2;
-      const svg = document.getElementById('spinWheel');
-      const prevRotation = parseFloat(svg.dataset.rotation || '0');
-      const extraSpins = 5 * 360;
-      const newRotation = prevRotation - (prevRotation % 360) + extraSpins + (360 - targetMid);
-      svg.style.transform = `rotate(${newRotation}deg)`;
-      svg.dataset.rotation = String(newRotation);
-
-      setTimeout(async () => {
-        try {
-          const userRef = doc(db, "users", window.currentUserUid);
-
-          if (prize.type === 'coins') {
-            await setDoc(userRef, { coins: increment(prize.value) }, { merge: true });
-            resultEl.textContent = '🎉 You got 50 coins!';
-          } else if (prize.type === 'premium7') {
-            const until = Date.now() + (7 * 24 * 60 * 60 * 1000);
-            await setDoc(userRef, { premiumUntil: until }, { merge: true });
-            window.currentUserPremiumUntil = until;
-            resultEl.textContent = '⭐ Premium access unlocked for 7 days!';
-          } else if (prize.type === 'freeSpin') {
-            await setDoc(userRef, { freeSpins: increment(1) }, { merge: true });
-            resultEl.textContent = '🎡 Spin again! You got 1 free spin.';
-          } else {
-            resultEl.textContent = '😅 Is baar try again!';
-          }
-        } catch (e) {
-          console.warn('Spin reward failed:', e);
-          resultEl.textContent = 'Reward could not be saved. Please check again.';
-        } finally {
-          isSpinning = false;
-          spinBtn.disabled = false;
-          updateSpinButtonState();
-        }
-      }, 4600);
-    };
-
-    // ---------- BUY TEMPLATE WITH COINS ----------
-    // Coin purchases permanently unlock the template for this user.
-    // Admin is treated as having unlimited coins, so no balance is deducted.
-    window.buyTemplateWithCoins = async function (item, kind, coinCost) {
-      if (!window.isUserLoggedIn) { openLogin(); return; }
-      if (!(kind === 'paid' || kind === 'premium') || !coinCost) return;
-
-      // Status is shown right on the template detail card (where the button
-      // actually is) — NOT in the Refer & Earn modal's status line, which
-      // isn't even visible from here. That mismatch used to make the button
-      // look completely broken: it worked, but the message went nowhere
-      // the user could see.
-      const statusEl = document.getElementById('detailCoinStatusText');
-      const coinBuyBtn = document.getElementById('detailCoinBuyBtn');
-      if (statusEl) { statusEl.textContent = 'Processing…'; statusEl.style.color = 'var(--text-muted)'; }
-      if (coinBuyBtn) coinBuyBtn.disabled = true;
-
-      try {
-        const userRef = doc(db, "users", window.currentUserUid);
+        const userRef = doc(db, 'users', window.currentUserUid);
         let alreadyUnlocked = false;
         await runTransaction(db, async (tx) => {
           const snap = await tx.get(userRef);
           if (!snap.exists()) throw new Error('NO_PROFILE');
           const data = snap.data() || {};
-          const unlocked = Array.isArray(data.coinUnlockedTemplates) ? data.coinUnlockedTemplates : [];
+          const unlocked = Array.isArray(data.walletUnlockedTemplates) ? data.walletUnlockedTemplates : [];
           if (unlocked.includes(item.name)) { alreadyUnlocked = true; return; }
-
-          // Admin: unlimited coins — unlock without deducting anything.
           if (window.isAdminUser) {
-            tx.set(userRef, { coinUnlockedTemplates: arrayUnion(item.name) }, { merge: true });
+            tx.set(userRef, { walletUnlockedTemplates: arrayUnion(item.name) }, { merge:true });
             return;
           }
-
-          const coins = Number(data.coins || 0);
-          if (coins < coinCost) throw new Error('NOT_ENOUGH');
+          const balance = Number(data.walletBalance || 0);
+          if (balance < walletCost) throw new Error('NOT_ENOUGH');
           tx.set(userRef, {
-            coins: increment(-coinCost),
-            coinUnlockedTemplates: arrayUnion(item.name)
-          }, { merge: true });
+            walletBalance: increment(-walletCost),
+            walletUnlockedTemplates: arrayUnion(item.name)
+          }, { merge:true });
         });
-
-        if (!window.isAdminUser && !alreadyUnlocked) {
-          await addDoc(collection(db, "coinPurchases"), {
+        if (!alreadyUnlocked && !window.isAdminUser) {
+          await addDoc(collection(db,'walletPurchases'), {
             uid: window.currentUserUid,
             email: (auth.currentUser && auth.currentUser.email) || '',
             templateName: item.name,
-            coinCost,
+            walletAmount: walletCost,
+            paymentMethod: 'website_wallet',
             createdAt: serverTimestamp()
           });
         }
-
-        if (!(window.coinUnlockedTemplateNames instanceof Set)) window.coinUnlockedTemplateNames = new Set();
-        window.coinUnlockedTemplateNames.add(item.name);
+        if (!(window.walletUnlockedTemplateNames instanceof Set)) window.walletUnlockedTemplateNames = new Set();
+        window.walletUnlockedTemplateNames.add(item.name);
         if (statusEl) {
-          statusEl.style.color = 'var(--accent-gold)';
-          statusEl.textContent = window.isAdminUser
-            ? '♾️ Admin access: template unlocked free.'
-            : (alreadyUnlocked ? `🪙 Already unlocked — opening template…` : `✅ Unlocked for 🪙 ${coinCost} coins.`);
+          statusEl.style.color='var(--accent-gold)';
+          statusEl.textContent = window.isAdminUser ? 'Admin access: template unlocked.' : (alreadyUnlocked ? 'Already unlocked — opening template…' : `✅ ₹${walletCost} deducted from website wallet.`);
         }
-        if (coinBuyBtn) { coinBuyBtn.textContent = '🪙 Unlocked ✓'; }
-
+        if (walletBtn) walletBtn.textContent='Wallet Unlocked ✓';
         openCustomizeModal(item);
       } catch (e) {
-        console.warn('Coin purchase failed:', e);
-        if (coinBuyBtn) coinBuyBtn.disabled = false;
+        if (walletBtn) walletBtn.disabled=false;
         if (statusEl) {
-          statusEl.style.color = '#ff6b6b';
-          statusEl.textContent = (e && e.message === 'NOT_ENOUGH')
-            ? `Not enough coins — you need ${coinCost}, earn more via Refer/Ad/Spin.`
-            : (e && e.message === 'NO_PROFILE')
-              ? 'Your profile isn\'t ready yet — please log out and log back in.'
-              : 'Coin purchase failed. Please try again.';
+          statusEl.style.color='#d64d78';
+          statusEl.textContent = e.message==='NOT_ENOUGH' ? `Wallet balance is too low. Need ₹${walletCost}.` : 'Wallet payment failed. Please try again.';
         }
       }
-      setTimeout(() => { if (statusEl) statusEl.textContent = ''; }, 4000);
     };
 
-    // ---------- ADMIN: spin wins + coin purchases ----------
-    window.loadAdminSpinWins = async function () {
-      const listEl = document.getElementById('adminSpinWinsList');
+    // ---------- ADMIN: WEBSITE WALLET PURCHASES ----------
+    window.loadAdminWalletPurchases = async function () {
+      const listEl = document.getElementById('adminWalletPurchasesList');
       if (!listEl) return;
       listEl.innerHTML = '<div class="empty-note">Loading...</div>';
       try {
-        const q = query(collection(db, "spinWins"), orderBy("createdAt", "desc"));
+        const q = query(collection(db, 'walletPurchases'), orderBy('createdAt', 'desc'));
         const snap = await getDocs(q);
         if (snap.empty) {
-          listEl.innerHTML = '<div class="empty-note">No big prize has been won yet.</div>';
+          listEl.innerHTML = '<div class="empty-note">No wallet purchases have been made yet.</div>';
           return;
         }
         listEl.innerHTML = '';
         snap.forEach((docSnap) => {
-          const d = docSnap.data();
+          const d = docSnap.data() || {};
           const row = document.createElement('div');
           row.className = 'settings-list-item';
           row.style.textAlign = 'left';
@@ -6399,50 +6490,16 @@ function confirmLogout() {
           row.style.gap = '4px';
           const time = d.createdAt && d.createdAt.toDate ? d.createdAt.toDate().toLocaleString() : '';
           row.innerHTML = `
-            <div style="font-weight:800; color:var(--accent-gold);">${d.prize || ''}</div>
-            <div style="font-size:11px; color:var(--text-muted);">${d.name || ''} — ${d.email || ''}</div>
-            <div style="font-size:10px; color:var(--text-muted);">${time}</div>`;
-          listEl.appendChild(row);
-        });
-      } catch (err) {
-        console.error(err);
-        listEl.innerHTML = '<div class="empty-note">Spin wins could not be loaded. Check Firestore rules.</div>';
-      }
-    };
-
-    window.loadAdminCoinPurchases = async function () {
-      const listEl = document.getElementById('adminCoinPurchasesList');
-      if (!listEl) return;
-      listEl.innerHTML = '<div class="empty-note">Loading...</div>';
-      try {
-        const q = query(collection(db, "coinPurchases"), orderBy("createdAt", "desc"));
-        const snap = await getDocs(q);
-        if (snap.empty) {
-          listEl.innerHTML = '<div class="empty-note">No coin purchases have been made yet.</div>';
-          return;
-        }
-        listEl.innerHTML = '';
-        snap.forEach((docSnap) => {
-          const d = docSnap.data();
-          const row = document.createElement('div');
-          row.className = 'settings-list-item';
-          row.style.textAlign = 'left';
-          row.style.flexDirection = 'column';
-          row.style.alignItems = 'flex-start';
-          row.style.gap = '4px';
-          const time = d.createdAt && d.createdAt.toDate ? d.createdAt.toDate().toLocaleString() : '';
-          row.innerHTML = `
-            <div style="font-weight:700;">${d.templateName || ''} <span style="color:var(--accent-gold);">(🪙 ${d.coinCost || 0})</span></div>
+            <div style="font-weight:700;">${d.templateName || 'Template'} <span style="color:var(--accent-gold);">(₹${d.walletAmount || 0})</span></div>
             <div style="font-size:11px; color:var(--text-muted);">${d.email || ''}</div>
             <div style="font-size:10px; color:var(--text-muted);">${time}</div>`;
           listEl.appendChild(row);
         });
       } catch (err) {
         console.error(err);
-        listEl.innerHTML = '<div class="empty-note">Coin purchases could not be loaded. Check Firestore rules.</div>';
+        listEl.innerHTML = '<div class="empty-note">Wallet purchases could not be loaded. Check Firestore rules.</div>';
       }
     };
-;
   </script>
 </body>
 </html>
