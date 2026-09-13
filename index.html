@@ -6208,6 +6208,141 @@ function confirmLogout() {
     setPersistence(auth, browserLocalPersistence).catch((e) => console.warn('Persistence set failed:', e));
 
     // ============================================================
+    // # GOOGLE LOGIN FIX
+    // The login UI uses inline onclick handlers, while Firebase is loaded
+    // inside this ES module. Expose the required functions on window so
+    // the buttons work reliably on GitHub Pages/Vercel and mobile browsers.
+    // ============================================================
+    window.openLogin = function () {
+      const modal = document.getElementById('loginModal');
+      if (modal) modal.classList.add('active');
+      const status = document.getElementById('loginStatusText');
+      if (status) status.textContent = '';
+      try {
+        if (typeof pushOverlay === 'function') pushOverlay('login', window.hideLogin);
+      } catch (e) { console.warn('Login overlay setup failed:', e); }
+    };
+
+    window.hideLogin = function () {
+      const modal = document.getElementById('loginModal');
+      if (modal) modal.classList.remove('active');
+    };
+
+    window.closeLogin = function () {
+      try {
+        if (typeof requestCloseOverlay === 'function') {
+          requestCloseOverlay('login', window.hideLogin);
+        } else {
+          window.hideLogin();
+        }
+      } catch (e) {
+        window.hideLogin();
+      }
+    };
+
+    window.signInWithGoogle = async function () {
+      const status = document.getElementById('loginStatusText');
+      const btn = document.querySelector('#loginModal button[onclick="signInWithGoogle()"]');
+      if (status) status.textContent = 'Opening Google login…';
+      if (btn) btn.disabled = true;
+
+      try {
+        // Google blocks sign-in popups inside WhatsApp/Instagram/Facebook/etc.
+        if (isInAppBrowser) {
+          if (status) status.textContent = 'Please open this website in Chrome to login with Google.';
+          return;
+        }
+
+        // Mobile browsers are more reliable with redirect than popup.
+        if (isMobile) {
+          await signInWithRedirect(auth, provider);
+          return;
+        }
+
+        const result = await signInWithPopup(auth, provider);
+        if (result && result.user) {
+          await saveUserData(result.user);
+        }
+      } catch (err) {
+        console.error('Google login failed:', err);
+        let message = 'Google login failed. Please try again.';
+        if (err && err.code === 'auth/popup-closed-by-user') message = 'Login window was closed. Please try again.';
+        else if (err && err.code === 'auth/popup-blocked') message = 'Popup was blocked. Please allow popups and try again.';
+        else if (err && err.code === 'auth/unauthorized-domain') message = 'This website domain is not authorized in Firebase Authentication.';
+        else if (err && err.code === 'auth/operation-not-allowed') message = 'Google Login is not enabled in Firebase Authentication.';
+        else if (err && err.code === 'auth/network-request-failed') message = 'Network error. Check your internet and try again.';
+        if (status) status.textContent = message;
+      } finally {
+        if (btn) btn.disabled = false;
+      }
+    };
+
+    window.signOutUser = async function () {
+      try {
+        await signOut(auth);
+      } catch (err) {
+        console.error('Logout failed:', err);
+        alert('Logout failed. Please try again.');
+      }
+    };
+
+    // Restore a redirect login result after Google sends the user back.
+    getRedirectResult(auth).then(async (result) => {
+      if (result && result.user) {
+        try {
+          await saveUserData(result.user);
+        } catch (e) {
+          console.error('Could not save user after redirect login:', e);
+        }
+      }
+    }).catch((err) => {
+      if (err && err.code) console.error('Google redirect login failed:', err);
+      const status = document.getElementById('loginStatusText');
+      if (status && err) status.textContent = 'Google login failed. Please try again.';
+    });
+
+    // Keep the navbar/profile state in sync with Firebase.
+    onAuthStateChanged(auth, async (user) => {
+      window.isUserLoggedIn = !!user;
+      window.currentUserUid = user ? user.uid : null;
+      window.isAdminUser = !!(user && user.email && user.email.toLowerCase() === ADMIN_EMAIL.toLowerCase());
+
+      const loginBtn = document.getElementById('navLoginBtn');
+      const userChip = document.getElementById('navUserChip');
+      const userPhoto = document.getElementById('navUserPhoto');
+      const userName = document.getElementById('navUserName');
+      const adminMenu = document.getElementById('menu-admin');
+
+      if (user) {
+        if (loginBtn) loginBtn.style.display = 'none';
+        if (userChip) userChip.style.display = 'flex';
+        if (userPhoto) {
+          userPhoto.src = user.photoURL || '';
+          userPhoto.alt = user.displayName || 'User';
+        }
+        if (userName) userName.textContent = user.displayName || 'Account';
+        if (adminMenu) adminMenu.style.display = window.isAdminUser ? '' : 'none';
+
+        try {
+          await saveUserData(user);
+          listenToWallet(user.uid);
+        } catch (err) {
+          console.error('User data setup failed:', err);
+        }
+      } else {
+        if (loginBtn) loginBtn.style.display = '';
+        if (userChip) userChip.style.display = 'none';
+        if (userPhoto) userPhoto.src = '';
+        if (userName) userName.textContent = '';
+        if (adminMenu) adminMenu.style.display = 'none';
+        window.currentUserWallet = 0;
+        window.currentUserPremiumUntil = 0;
+        window.walletUnlockedTemplateNames = new Set();
+      }
+    });
+
+
+    // ============================================================
     // # WEBSITE WALLET + REFER & EARN + DAILY CHECK-IN #
     // Wallet money is website-only credit; it is not withdrawable cash.
     // ============================================================
